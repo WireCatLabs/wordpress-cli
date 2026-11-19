@@ -44,6 +44,7 @@ const API_KEYS: Readonly<Record<string, string>> = {
   "posts.update": "api.posts-update",
   "posts.publish": "api.posts-update",
   "posts.unpublish": "api.posts-update",
+  "posts.delete": "api.posts-delete",
 }
 
 // cli-core lets every api write but a delete run unasked. These install code, give a user a role, or change what
