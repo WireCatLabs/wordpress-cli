@@ -7,7 +7,7 @@ ran it · ⛔ not tested offline, with the reason and where it is checked instea
 Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 [TESTING.md](TESTING.md) for how, and for the states and failures that cut across commands.
 
-**71 ✅ · 24 ⛔ · 0 ❌** — 34 commands, 61 options.
+**887 ✅ · 24 ⛔ · 0 ❌** — 195 commands, 716 options.
 
 | Command | Option | | Note |
 |---|---|---|---|
@@ -15,19 +15,835 @@ Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 | `commands info` |  | ✅ |  |
 | `session start` |  | ✅ |  |
 | `session start` | `--credential-storage` | ✅ |  |
+| `session start` | `--login` | ✅ |  |
+| `session start` | `--site` | ✅ |  |
 | `session status` |  | ✅ |  |
 | `session status` | `--check` | ✅ |  |
 | `session end` |  | ✅ |  |
 | `session list` |  | ✅ |  |
-| `comments list` |  | ✅ |  |
-| `comments list` | `--limit` | ✅ |  |
-| `comments list` | `--page` | ✅ |  |
-| `comments list` | `--all` | ✅ |  |
-| `comments show` |  | ✅ |  |
-| `comments create` |  | ✅ |  |
-| `comments create` | `--text` | ✅ |  |
-| `comments update` |  | ✅ |  |
-| `comments update` | `--text` | ✅ |  |
+| `api list` |  | ✅ |  |
+| `api show` |  | ✅ |  |
+| `api block-directory-search-list` |  | ✅ |  |
+| `api block-directory-search-list` | `--context` | ✅ |  |
+| `api block-directory-search-list` | `--page` | ✅ |  |
+| `api block-directory-search-list` | `--per-page` | ✅ |  |
+| `api block-directory-search-list` | `--term` | ✅ |  |
+| `api block-directory-search-list` | `--all` | ✅ |  |
+| `api block-patterns-categories-list` |  | ✅ |  |
+| `api block-patterns-patterns-list` |  | ✅ |  |
+| `api block-types-list` |  | ✅ |  |
+| `api block-types-list` | `--context` | ✅ |  |
+| `api block-types-list` | `--namespace` | ✅ |  |
+| `api block-types-list-namespace` |  | ✅ |  |
+| `api block-types-list-namespace` | `--namespace` | ✅ |  |
+| `api block-types-list-namespace` | `--context` | ✅ |  |
+| `api block-types-get` |  | ✅ |  |
+| `api block-types-get` | `--namespace` | ✅ |  |
+| `api block-types-get` | `--name` | ✅ |  |
+| `api block-types-get` | `--context` | ✅ |  |
+| `api blocks-list` |  | ✅ |  |
+| `api blocks-list` | `--after` | ✅ |  |
+| `api blocks-list` | `--before` | ✅ |  |
+| `api blocks-list` | `--context` | ✅ |  |
+| `api blocks-list` | `--exclude` | ✅ |  |
+| `api blocks-list` | `--include` | ✅ |  |
+| `api blocks-list` | `--modified-after` | ✅ |  |
+| `api blocks-list` | `--modified-before` | ✅ |  |
+| `api blocks-list` | `--offset` | ✅ |  |
+| `api blocks-list` | `--order` | ✅ |  |
+| `api blocks-list` | `--orderby` | ✅ |  |
+| `api blocks-list` | `--page` | ✅ |  |
+| `api blocks-list` | `--per-page` | ✅ |  |
+| `api blocks-list` | `--search` | ✅ |  |
+| `api blocks-list` | `--search-columns` | ✅ |  |
+| `api blocks-list` | `--search-semantics` | ✅ |  |
+| `api blocks-list` | `--slug` | ✅ |  |
+| `api blocks-list` | `--status` | ✅ |  |
+| `api blocks-list` | `--tax-relation` | ✅ |  |
+| `api blocks-list` | `--wp-pattern-category` | ✅ |  |
+| `api blocks-list` | `--wp-pattern-category-exclude` | ✅ |  |
+| `api blocks-list` | `--all` | ✅ |  |
+| `api blocks-create` |  | ✅ |  |
+| `api blocks-create` | `--body` | ✅ |  |
+| `api blocks-create` | `--body-file` | ✅ |  |
+| `api blocks-get` |  | ✅ |  |
+| `api blocks-get` | `--id` | ✅ |  |
+| `api blocks-get` | `--context` | ✅ |  |
+| `api blocks-get` | `--excerpt-length` | ✅ |  |
+| `api blocks-get` | `--password` | ✅ |  |
+| `api blocks-update` |  | ✅ |  |
+| `api blocks-update` | `--id` | ✅ |  |
+| `api blocks-update` | `--body` | ✅ |  |
+| `api blocks-update` | `--body-file` | ✅ |  |
+| `api blocks-delete` |  | ✅ |  |
+| `api blocks-delete` | `--id` | ✅ |  |
+| `api blocks-delete` | `--force` | ✅ |  |
+| `api blocks-autosaves-list` |  | ✅ |  |
+| `api blocks-autosaves-list` | `--id` | ✅ |  |
+| `api blocks-autosaves-list` | `--context` | ✅ |  |
+| `api blocks-autosaves-list` | `--parent` | ✅ |  |
+| `api blocks-autosaves-create` |  | ✅ |  |
+| `api blocks-autosaves-create` | `--id` | ✅ |  |
+| `api blocks-autosaves-create` | `--body` | ✅ |  |
+| `api blocks-autosaves-create` | `--body-file` | ✅ |  |
+| `api blocks-autosaves-get` |  | ✅ |  |
+| `api blocks-autosaves-get` | `--parent` | ✅ |  |
+| `api blocks-autosaves-get` | `--id` | ✅ |  |
+| `api blocks-autosaves-get` | `--context` | ✅ |  |
+| `api blocks-revisions-list` |  | ✅ |  |
+| `api blocks-revisions-list` | `--parent` | ✅ |  |
+| `api blocks-revisions-list` | `--context` | ✅ |  |
+| `api blocks-revisions-list` | `--exclude` | ✅ |  |
+| `api blocks-revisions-list` | `--include` | ✅ |  |
+| `api blocks-revisions-list` | `--offset` | ✅ |  |
+| `api blocks-revisions-list` | `--order` | ✅ |  |
+| `api blocks-revisions-list` | `--orderby` | ✅ |  |
+| `api blocks-revisions-list` | `--page` | ✅ |  |
+| `api blocks-revisions-list` | `--per-page` | ✅ |  |
+| `api blocks-revisions-list` | `--search` | ✅ |  |
+| `api blocks-revisions-list` | `--all` | ✅ |  |
+| `api blocks-revisions-get` |  | ✅ |  |
+| `api blocks-revisions-get` | `--parent` | ✅ |  |
+| `api blocks-revisions-get` | `--id` | ✅ |  |
+| `api blocks-revisions-get` | `--context` | ✅ |  |
+| `api blocks-revisions-delete` |  | ✅ |  |
+| `api blocks-revisions-delete` | `--parent` | ✅ |  |
+| `api blocks-revisions-delete` | `--id` | ✅ |  |
+| `api blocks-revisions-delete` | `--force` | ✅ |  |
+| `api categories-list` |  | ✅ |  |
+| `api categories-list` | `--context` | ✅ |  |
+| `api categories-list` | `--exclude` | ✅ |  |
+| `api categories-list` | `--hide-empty` | ✅ |  |
+| `api categories-list` | `--include` | ✅ |  |
+| `api categories-list` | `--order` | ✅ |  |
+| `api categories-list` | `--orderby` | ✅ |  |
+| `api categories-list` | `--page` | ✅ |  |
+| `api categories-list` | `--parent` | ✅ |  |
+| `api categories-list` | `--per-page` | ✅ |  |
+| `api categories-list` | `--post` | ✅ |  |
+| `api categories-list` | `--search` | ✅ |  |
+| `api categories-list` | `--slug` | ✅ |  |
+| `api categories-list` | `--all` | ✅ |  |
+| `api categories-create` |  | ✅ |  |
+| `api categories-create` | `--body` | ✅ |  |
+| `api categories-create` | `--body-file` | ✅ |  |
+| `api categories-get` |  | ✅ |  |
+| `api categories-get` | `--id` | ✅ |  |
+| `api categories-get` | `--context` | ✅ |  |
+| `api categories-update` |  | ✅ |  |
+| `api categories-update` | `--id` | ✅ |  |
+| `api categories-update` | `--body` | ✅ |  |
+| `api categories-update` | `--body-file` | ✅ |  |
+| `api categories-delete` |  | ✅ |  |
+| `api categories-delete` | `--id` | ✅ |  |
+| `api categories-delete` | `--force` | ✅ |  |
+| `api comments-list` |  | ✅ |  |
+| `api comments-list` | `--after` | ✅ |  |
+| `api comments-list` | `--author` | ✅ |  |
+| `api comments-list` | `--author-email` | ✅ |  |
+| `api comments-list` | `--author-exclude` | ✅ |  |
+| `api comments-list` | `--before` | ✅ |  |
+| `api comments-list` | `--context` | ✅ |  |
+| `api comments-list` | `--exclude` | ✅ |  |
+| `api comments-list` | `--include` | ✅ |  |
+| `api comments-list` | `--offset` | ✅ |  |
+| `api comments-list` | `--order` | ✅ |  |
+| `api comments-list` | `--orderby` | ✅ |  |
+| `api comments-list` | `--page` | ✅ |  |
+| `api comments-list` | `--parent` | ✅ |  |
+| `api comments-list` | `--parent-exclude` | ✅ |  |
+| `api comments-list` | `--password` | ✅ |  |
+| `api comments-list` | `--per-page` | ✅ |  |
+| `api comments-list` | `--post` | ✅ |  |
+| `api comments-list` | `--search` | ✅ |  |
+| `api comments-list` | `--status` | ✅ |  |
+| `api comments-list` | `--type` | ✅ |  |
+| `api comments-list` | `--all` | ✅ |  |
+| `api comments-create` |  | ✅ |  |
+| `api comments-create` | `--body` | ✅ |  |
+| `api comments-create` | `--body-file` | ✅ |  |
+| `api comments-get` |  | ✅ |  |
+| `api comments-get` | `--id` | ✅ |  |
+| `api comments-get` | `--context` | ✅ |  |
+| `api comments-get` | `--password` | ✅ |  |
+| `api comments-update` |  | ✅ |  |
+| `api comments-update` | `--id` | ✅ |  |
+| `api comments-update` | `--body` | ✅ |  |
+| `api comments-update` | `--body-file` | ✅ |  |
+| `api comments-delete` |  | ✅ |  |
+| `api comments-delete` | `--id` | ✅ |  |
+| `api comments-delete` | `--force` | ✅ |  |
+| `api comments-delete` | `--password` | ✅ |  |
+| `api font-collections-list` |  | ✅ |  |
+| `api font-collections-list` | `--context` | ✅ |  |
+| `api font-collections-list` | `--page` | ✅ |  |
+| `api font-collections-list` | `--per-page` | ✅ |  |
+| `api font-collections-list` | `--all` | ✅ |  |
+| `api font-families-list` |  | ✅ |  |
+| `api font-families-list` | `--context` | ✅ |  |
+| `api font-families-list` | `--exclude` | ✅ |  |
+| `api font-families-list` | `--include` | ✅ |  |
+| `api font-families-list` | `--offset` | ✅ |  |
+| `api font-families-list` | `--order` | ✅ |  |
+| `api font-families-list` | `--orderby` | ✅ |  |
+| `api font-families-list` | `--page` | ✅ |  |
+| `api font-families-list` | `--per-page` | ✅ |  |
+| `api font-families-list` | `--search-semantics` | ✅ |  |
+| `api font-families-list` | `--slug` | ✅ |  |
+| `api font-families-list` | `--all` | ✅ |  |
+| `api font-families-create` |  | ✅ |  |
+| `api font-families-create` | `--body` | ✅ |  |
+| `api font-families-create` | `--body-file` | ✅ |  |
+| `api font-families-font-faces-list` |  | ✅ |  |
+| `api font-families-font-faces-list` | `--font-family-id` | ✅ |  |
+| `api font-families-font-faces-list` | `--context` | ✅ |  |
+| `api font-families-font-faces-list` | `--exclude` | ✅ |  |
+| `api font-families-font-faces-list` | `--include` | ✅ |  |
+| `api font-families-font-faces-list` | `--offset` | ✅ |  |
+| `api font-families-font-faces-list` | `--order` | ✅ |  |
+| `api font-families-font-faces-list` | `--orderby` | ✅ |  |
+| `api font-families-font-faces-list` | `--page` | ✅ |  |
+| `api font-families-font-faces-list` | `--per-page` | ✅ |  |
+| `api font-families-font-faces-list` | `--search-semantics` | ✅ |  |
+| `api font-families-font-faces-list` | `--all` | ✅ |  |
+| `api font-families-font-faces-create` |  | ✅ |  |
+| `api font-families-font-faces-create` | `--font-family-id` | ✅ |  |
+| `api font-families-font-faces-create` | `--body` | ✅ |  |
+| `api font-families-font-faces-create` | `--body-file` | ✅ |  |
+| `api font-families-font-faces-get` |  | ✅ |  |
+| `api font-families-font-faces-get` | `--font-family-id` | ✅ |  |
+| `api font-families-font-faces-get` | `--id` | ✅ |  |
+| `api font-families-font-faces-get` | `--context` | ✅ |  |
+| `api font-families-font-faces-delete` |  | ✅ |  |
+| `api font-families-font-faces-delete` | `--font-family-id` | ✅ |  |
+| `api font-families-font-faces-delete` | `--id` | ✅ |  |
+| `api font-families-font-faces-delete` | `--force` | ✅ |  |
+| `api font-families-get` |  | ✅ |  |
+| `api font-families-get` | `--id` | ✅ |  |
+| `api font-families-get` | `--context` | ✅ |  |
+| `api font-families-update` |  | ✅ |  |
+| `api font-families-update` | `--id` | ✅ |  |
+| `api font-families-update` | `--body` | ✅ |  |
+| `api font-families-update` | `--body-file` | ✅ |  |
+| `api font-families-delete` |  | ✅ |  |
+| `api font-families-delete` | `--id` | ✅ |  |
+| `api font-families-delete` | `--force` | ✅ |  |
+| `api global-styles-revisions-list` |  | ✅ |  |
+| `api global-styles-revisions-list` | `--parent` | ✅ |  |
+| `api global-styles-revisions-list` | `--context` | ✅ |  |
+| `api global-styles-revisions-list` | `--offset` | ✅ |  |
+| `api global-styles-revisions-list` | `--page` | ✅ |  |
+| `api global-styles-revisions-list` | `--per-page` | ✅ |  |
+| `api global-styles-revisions-list` | `--all` | ✅ |  |
+| `api global-styles-revisions-get` |  | ✅ |  |
+| `api global-styles-revisions-get` | `--parent` | ✅ |  |
+| `api global-styles-revisions-get` | `--id` | ✅ |  |
+| `api global-styles-revisions-get` | `--context` | ✅ |  |
+| `api media-list` |  | ✅ |  |
+| `api media-list` | `--after` | ✅ |  |
+| `api media-list` | `--author` | ✅ |  |
+| `api media-list` | `--author-exclude` | ✅ |  |
+| `api media-list` | `--before` | ✅ |  |
+| `api media-list` | `--context` | ✅ |  |
+| `api media-list` | `--exclude` | ✅ |  |
+| `api media-list` | `--include` | ✅ |  |
+| `api media-list` | `--media-type` | ✅ |  |
+| `api media-list` | `--mime-type` | ✅ |  |
+| `api media-list` | `--modified-after` | ✅ |  |
+| `api media-list` | `--modified-before` | ✅ |  |
+| `api media-list` | `--offset` | ✅ |  |
+| `api media-list` | `--order` | ✅ |  |
+| `api media-list` | `--orderby` | ✅ |  |
+| `api media-list` | `--page` | ✅ |  |
+| `api media-list` | `--parent` | ✅ |  |
+| `api media-list` | `--parent-exclude` | ✅ |  |
+| `api media-list` | `--per-page` | ✅ |  |
+| `api media-list` | `--search` | ✅ |  |
+| `api media-list` | `--search-columns` | ✅ |  |
+| `api media-list` | `--search-semantics` | ✅ |  |
+| `api media-list` | `--slug` | ✅ |  |
+| `api media-list` | `--status` | ✅ |  |
+| `api media-list` | `--all` | ✅ |  |
+| `api media-create` |  | ✅ |  |
+| `api media-create` | `--body` | ✅ |  |
+| `api media-create` | `--body-file` | ✅ |  |
+| `api media-get` |  | ✅ |  |
+| `api media-get` | `--id` | ✅ |  |
+| `api media-get` | `--context` | ✅ |  |
+| `api media-update` |  | ✅ |  |
+| `api media-update` | `--id` | ✅ |  |
+| `api media-update` | `--body` | ✅ |  |
+| `api media-update` | `--body-file` | ✅ |  |
+| `api media-delete` |  | ✅ |  |
+| `api media-delete` | `--id` | ✅ |  |
+| `api media-delete` | `--force` | ✅ |  |
+| `api media-edit` |  | ✅ |  |
+| `api media-edit` | `--id` | ✅ |  |
+| `api media-edit` | `--body` | ✅ |  |
+| `api media-edit` | `--body-file` | ✅ |  |
+| `api media-post-process` |  | ✅ |  |
+| `api media-post-process` | `--id` | ✅ |  |
+| `api media-post-process` | `--body` | ✅ |  |
+| `api media-post-process` | `--body-file` | ✅ |  |
+| `api menu-items-list` |  | ✅ |  |
+| `api menu-items-list` | `--after` | ✅ |  |
+| `api menu-items-list` | `--before` | ✅ |  |
+| `api menu-items-list` | `--context` | ✅ |  |
+| `api menu-items-list` | `--exclude` | ✅ |  |
+| `api menu-items-list` | `--include` | ✅ |  |
+| `api menu-items-list` | `--menu-order` | ✅ |  |
+| `api menu-items-list` | `--menus` | ✅ |  |
+| `api menu-items-list` | `--menus-exclude` | ✅ |  |
+| `api menu-items-list` | `--modified-after` | ✅ |  |
+| `api menu-items-list` | `--modified-before` | ✅ |  |
+| `api menu-items-list` | `--offset` | ✅ |  |
+| `api menu-items-list` | `--order` | ✅ |  |
+| `api menu-items-list` | `--orderby` | ✅ |  |
+| `api menu-items-list` | `--page` | ✅ |  |
+| `api menu-items-list` | `--per-page` | ✅ |  |
+| `api menu-items-list` | `--search` | ✅ |  |
+| `api menu-items-list` | `--search-columns` | ✅ |  |
+| `api menu-items-list` | `--search-semantics` | ✅ |  |
+| `api menu-items-list` | `--slug` | ✅ |  |
+| `api menu-items-list` | `--status` | ✅ |  |
+| `api menu-items-list` | `--tax-relation` | ✅ |  |
+| `api menu-items-list` | `--all` | ✅ |  |
+| `api menu-items-create` |  | ✅ |  |
+| `api menu-items-create` | `--body` | ✅ |  |
+| `api menu-items-create` | `--body-file` | ✅ |  |
+| `api menu-items-get` |  | ✅ |  |
+| `api menu-items-get` | `--id` | ✅ |  |
+| `api menu-items-get` | `--context` | ✅ |  |
+| `api menu-items-update` |  | ✅ |  |
+| `api menu-items-update` | `--id` | ✅ |  |
+| `api menu-items-update` | `--body` | ✅ |  |
+| `api menu-items-update` | `--body-file` | ✅ |  |
+| `api menu-items-delete` |  | ✅ |  |
+| `api menu-items-delete` | `--id` | ✅ |  |
+| `api menu-items-delete` | `--force` | ✅ |  |
+| `api menu-items-autosaves-list` |  | ✅ |  |
+| `api menu-items-autosaves-list` | `--id` | ✅ |  |
+| `api menu-items-autosaves-list` | `--context` | ✅ |  |
+| `api menu-items-autosaves-list` | `--parent` | ✅ |  |
+| `api menu-items-autosaves-create` |  | ✅ |  |
+| `api menu-items-autosaves-create` | `--id` | ✅ |  |
+| `api menu-items-autosaves-create` | `--body` | ✅ |  |
+| `api menu-items-autosaves-create` | `--body-file` | ✅ |  |
+| `api menu-items-autosaves-get` |  | ✅ |  |
+| `api menu-items-autosaves-get` | `--parent` | ✅ |  |
+| `api menu-items-autosaves-get` | `--id` | ✅ |  |
+| `api menu-items-autosaves-get` | `--context` | ✅ |  |
+| `api menu-locations-list` |  | ✅ |  |
+| `api menu-locations-list` | `--context` | ✅ |  |
+| `api menu-locations-get` |  | ✅ |  |
+| `api menu-locations-get` | `--location` | ✅ |  |
+| `api menu-locations-get` | `--context` | ✅ |  |
+| `api menus-list` |  | ✅ |  |
+| `api menus-list` | `--context` | ✅ |  |
+| `api menus-list` | `--exclude` | ✅ |  |
+| `api menus-list` | `--hide-empty` | ✅ |  |
+| `api menus-list` | `--include` | ✅ |  |
+| `api menus-list` | `--offset` | ✅ |  |
+| `api menus-list` | `--order` | ✅ |  |
+| `api menus-list` | `--orderby` | ✅ |  |
+| `api menus-list` | `--page` | ✅ |  |
+| `api menus-list` | `--per-page` | ✅ |  |
+| `api menus-list` | `--post` | ✅ |  |
+| `api menus-list` | `--search` | ✅ |  |
+| `api menus-list` | `--slug` | ✅ |  |
+| `api menus-list` | `--all` | ✅ |  |
+| `api menus-create` |  | ✅ |  |
+| `api menus-create` | `--body` | ✅ |  |
+| `api menus-create` | `--body-file` | ✅ |  |
+| `api menus-get` |  | ✅ |  |
+| `api menus-get` | `--id` | ✅ |  |
+| `api menus-get` | `--context` | ✅ |  |
+| `api menus-update` |  | ✅ |  |
+| `api menus-update` | `--id` | ✅ |  |
+| `api menus-update` | `--body` | ✅ |  |
+| `api menus-update` | `--body-file` | ✅ |  |
+| `api menus-delete` |  | ✅ |  |
+| `api menus-delete` | `--id` | ✅ |  |
+| `api menus-delete` | `--force` | ✅ |  |
+| `api navigation-list` |  | ✅ |  |
+| `api navigation-list` | `--after` | ✅ |  |
+| `api navigation-list` | `--before` | ✅ |  |
+| `api navigation-list` | `--context` | ✅ |  |
+| `api navigation-list` | `--exclude` | ✅ |  |
+| `api navigation-list` | `--include` | ✅ |  |
+| `api navigation-list` | `--modified-after` | ✅ |  |
+| `api navigation-list` | `--modified-before` | ✅ |  |
+| `api navigation-list` | `--offset` | ✅ |  |
+| `api navigation-list` | `--order` | ✅ |  |
+| `api navigation-list` | `--orderby` | ✅ |  |
+| `api navigation-list` | `--page` | ✅ |  |
+| `api navigation-list` | `--per-page` | ✅ |  |
+| `api navigation-list` | `--search` | ✅ |  |
+| `api navigation-list` | `--search-columns` | ✅ |  |
+| `api navigation-list` | `--search-semantics` | ✅ |  |
+| `api navigation-list` | `--slug` | ✅ |  |
+| `api navigation-list` | `--status` | ✅ |  |
+| `api navigation-list` | `--all` | ✅ |  |
+| `api navigation-create` |  | ✅ |  |
+| `api navigation-create` | `--body` | ✅ |  |
+| `api navigation-create` | `--body-file` | ✅ |  |
+| `api navigation-get` |  | ✅ |  |
+| `api navigation-get` | `--id` | ✅ |  |
+| `api navigation-get` | `--context` | ✅ |  |
+| `api navigation-get` | `--password` | ✅ |  |
+| `api navigation-update` |  | ✅ |  |
+| `api navigation-update` | `--id` | ✅ |  |
+| `api navigation-update` | `--body` | ✅ |  |
+| `api navigation-update` | `--body-file` | ✅ |  |
+| `api navigation-delete` |  | ✅ |  |
+| `api navigation-delete` | `--id` | ✅ |  |
+| `api navigation-delete` | `--force` | ✅ |  |
+| `api navigation-autosaves-list` |  | ✅ |  |
+| `api navigation-autosaves-list` | `--id` | ✅ |  |
+| `api navigation-autosaves-list` | `--context` | ✅ |  |
+| `api navigation-autosaves-list` | `--parent` | ✅ |  |
+| `api navigation-autosaves-create` |  | ✅ |  |
+| `api navigation-autosaves-create` | `--id` | ✅ |  |
+| `api navigation-autosaves-create` | `--body` | ✅ |  |
+| `api navigation-autosaves-create` | `--body-file` | ✅ |  |
+| `api navigation-autosaves-get` |  | ✅ |  |
+| `api navigation-autosaves-get` | `--parent` | ✅ |  |
+| `api navigation-autosaves-get` | `--id` | ✅ |  |
+| `api navigation-autosaves-get` | `--context` | ✅ |  |
+| `api navigation-revisions-list` |  | ✅ |  |
+| `api navigation-revisions-list` | `--parent` | ✅ |  |
+| `api navigation-revisions-list` | `--context` | ✅ |  |
+| `api navigation-revisions-list` | `--exclude` | ✅ |  |
+| `api navigation-revisions-list` | `--include` | ✅ |  |
+| `api navigation-revisions-list` | `--offset` | ✅ |  |
+| `api navigation-revisions-list` | `--order` | ✅ |  |
+| `api navigation-revisions-list` | `--orderby` | ✅ |  |
+| `api navigation-revisions-list` | `--page` | ✅ |  |
+| `api navigation-revisions-list` | `--per-page` | ✅ |  |
+| `api navigation-revisions-list` | `--search` | ✅ |  |
+| `api navigation-revisions-list` | `--all` | ✅ |  |
+| `api navigation-revisions-get` |  | ✅ |  |
+| `api navigation-revisions-get` | `--parent` | ✅ |  |
+| `api navigation-revisions-get` | `--id` | ✅ |  |
+| `api navigation-revisions-get` | `--context` | ✅ |  |
+| `api navigation-revisions-delete` |  | ✅ |  |
+| `api navigation-revisions-delete` | `--parent` | ✅ |  |
+| `api navigation-revisions-delete` | `--id` | ✅ |  |
+| `api navigation-revisions-delete` | `--force` | ✅ |  |
+| `api pages-list` |  | ✅ |  |
+| `api pages-list` | `--after` | ✅ |  |
+| `api pages-list` | `--author` | ✅ |  |
+| `api pages-list` | `--author-exclude` | ✅ |  |
+| `api pages-list` | `--before` | ✅ |  |
+| `api pages-list` | `--context` | ✅ |  |
+| `api pages-list` | `--exclude` | ✅ |  |
+| `api pages-list` | `--include` | ✅ |  |
+| `api pages-list` | `--menu-order` | ✅ |  |
+| `api pages-list` | `--modified-after` | ✅ |  |
+| `api pages-list` | `--modified-before` | ✅ |  |
+| `api pages-list` | `--offset` | ✅ |  |
+| `api pages-list` | `--order` | ✅ |  |
+| `api pages-list` | `--orderby` | ✅ |  |
+| `api pages-list` | `--page` | ✅ |  |
+| `api pages-list` | `--parent` | ✅ |  |
+| `api pages-list` | `--parent-exclude` | ✅ |  |
+| `api pages-list` | `--per-page` | ✅ |  |
+| `api pages-list` | `--search` | ✅ |  |
+| `api pages-list` | `--search-columns` | ✅ |  |
+| `api pages-list` | `--search-semantics` | ✅ |  |
+| `api pages-list` | `--slug` | ✅ |  |
+| `api pages-list` | `--status` | ✅ |  |
+| `api pages-list` | `--all` | ✅ |  |
+| `api pages-create` |  | ✅ |  |
+| `api pages-create` | `--body` | ✅ |  |
+| `api pages-create` | `--body-file` | ✅ |  |
+| `api pages-get` |  | ✅ |  |
+| `api pages-get` | `--id` | ✅ |  |
+| `api pages-get` | `--context` | ✅ |  |
+| `api pages-get` | `--excerpt-length` | ✅ |  |
+| `api pages-get` | `--password` | ✅ |  |
+| `api pages-update` |  | ✅ |  |
+| `api pages-update` | `--id` | ✅ |  |
+| `api pages-update` | `--body` | ✅ |  |
+| `api pages-update` | `--body-file` | ✅ |  |
+| `api pages-delete` |  | ✅ |  |
+| `api pages-delete` | `--id` | ✅ |  |
+| `api pages-delete` | `--force` | ✅ |  |
+| `api pages-autosaves-list` |  | ✅ |  |
+| `api pages-autosaves-list` | `--id` | ✅ |  |
+| `api pages-autosaves-list` | `--context` | ✅ |  |
+| `api pages-autosaves-list` | `--parent` | ✅ |  |
+| `api pages-autosaves-create` |  | ✅ |  |
+| `api pages-autosaves-create` | `--id` | ✅ |  |
+| `api pages-autosaves-create` | `--body` | ✅ |  |
+| `api pages-autosaves-create` | `--body-file` | ✅ |  |
+| `api pages-autosaves-get` |  | ✅ |  |
+| `api pages-autosaves-get` | `--parent` | ✅ |  |
+| `api pages-autosaves-get` | `--id` | ✅ |  |
+| `api pages-autosaves-get` | `--context` | ✅ |  |
+| `api pages-revisions-list` |  | ✅ |  |
+| `api pages-revisions-list` | `--parent` | ✅ |  |
+| `api pages-revisions-list` | `--context` | ✅ |  |
+| `api pages-revisions-list` | `--exclude` | ✅ |  |
+| `api pages-revisions-list` | `--include` | ✅ |  |
+| `api pages-revisions-list` | `--offset` | ✅ |  |
+| `api pages-revisions-list` | `--order` | ✅ |  |
+| `api pages-revisions-list` | `--orderby` | ✅ |  |
+| `api pages-revisions-list` | `--page` | ✅ |  |
+| `api pages-revisions-list` | `--per-page` | ✅ |  |
+| `api pages-revisions-list` | `--search` | ✅ |  |
+| `api pages-revisions-list` | `--all` | ✅ |  |
+| `api pages-revisions-get` |  | ✅ |  |
+| `api pages-revisions-get` | `--parent` | ✅ |  |
+| `api pages-revisions-get` | `--id` | ✅ |  |
+| `api pages-revisions-get` | `--context` | ✅ |  |
+| `api pages-revisions-delete` |  | ✅ |  |
+| `api pages-revisions-delete` | `--parent` | ✅ |  |
+| `api pages-revisions-delete` | `--id` | ✅ |  |
+| `api pages-revisions-delete` | `--force` | ✅ |  |
+| `api pattern-directory-patterns-list` |  | ✅ |  |
+| `api pattern-directory-patterns-list` | `--category` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--context` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--keyword` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--offset` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--order` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--orderby` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--page` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--per-page` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--search` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--slug` | ✅ |  |
+| `api pattern-directory-patterns-list` | `--all` | ✅ |  |
+| `api plugins-list` |  | ✅ |  |
+| `api plugins-list` | `--context` | ✅ |  |
+| `api plugins-list` | `--search` | ✅ |  |
+| `api plugins-list` | `--status` | ✅ |  |
+| `api plugins-create` |  | ✅ |  |
+| `api plugins-create` | `--body` | ✅ |  |
+| `api plugins-create` | `--body-file` | ✅ |  |
+| `api posts-list` |  | ✅ |  |
+| `api posts-list` | `--after` | ✅ |  |
+| `api posts-list` | `--author` | ✅ |  |
+| `api posts-list` | `--author-exclude` | ✅ |  |
+| `api posts-list` | `--before` | ✅ |  |
+| `api posts-list` | `--categories` | ✅ |  |
+| `api posts-list` | `--categories-exclude` | ✅ |  |
+| `api posts-list` | `--context` | ✅ |  |
+| `api posts-list` | `--exclude` | ✅ |  |
+| `api posts-list` | `--format` | ✅ |  |
+| `api posts-list` | `--ignore-sticky` | ✅ |  |
+| `api posts-list` | `--include` | ✅ |  |
+| `api posts-list` | `--modified-after` | ✅ |  |
+| `api posts-list` | `--modified-before` | ✅ |  |
+| `api posts-list` | `--offset` | ✅ |  |
+| `api posts-list` | `--order` | ✅ |  |
+| `api posts-list` | `--orderby` | ✅ |  |
+| `api posts-list` | `--page` | ✅ |  |
+| `api posts-list` | `--per-page` | ✅ |  |
+| `api posts-list` | `--search` | ✅ |  |
+| `api posts-list` | `--search-columns` | ✅ |  |
+| `api posts-list` | `--search-semantics` | ✅ |  |
+| `api posts-list` | `--slug` | ✅ |  |
+| `api posts-list` | `--status` | ✅ |  |
+| `api posts-list` | `--sticky` | ✅ |  |
+| `api posts-list` | `--tags` | ✅ |  |
+| `api posts-list` | `--tags-exclude` | ✅ |  |
+| `api posts-list` | `--tax-relation` | ✅ |  |
+| `api posts-list` | `--all` | ✅ |  |
+| `api posts-create` |  | ✅ |  |
+| `api posts-create` | `--body` | ✅ |  |
+| `api posts-create` | `--body-file` | ✅ |  |
+| `api posts-get` |  | ✅ |  |
+| `api posts-get` | `--id` | ✅ |  |
+| `api posts-get` | `--context` | ✅ |  |
+| `api posts-get` | `--excerpt-length` | ✅ |  |
+| `api posts-get` | `--password` | ✅ |  |
+| `api posts-update` |  | ✅ |  |
+| `api posts-update` | `--id` | ✅ |  |
+| `api posts-update` | `--body` | ✅ |  |
+| `api posts-update` | `--body-file` | ✅ |  |
+| `api posts-delete` |  | ✅ |  |
+| `api posts-delete` | `--id` | ✅ |  |
+| `api posts-delete` | `--force` | ✅ |  |
+| `api posts-autosaves-list` |  | ✅ |  |
+| `api posts-autosaves-list` | `--id` | ✅ |  |
+| `api posts-autosaves-list` | `--context` | ✅ |  |
+| `api posts-autosaves-list` | `--parent` | ✅ |  |
+| `api posts-autosaves-create` |  | ✅ |  |
+| `api posts-autosaves-create` | `--id` | ✅ |  |
+| `api posts-autosaves-create` | `--body` | ✅ |  |
+| `api posts-autosaves-create` | `--body-file` | ✅ |  |
+| `api posts-autosaves-get` |  | ✅ |  |
+| `api posts-autosaves-get` | `--parent` | ✅ |  |
+| `api posts-autosaves-get` | `--id` | ✅ |  |
+| `api posts-autosaves-get` | `--context` | ✅ |  |
+| `api posts-revisions-list` |  | ✅ |  |
+| `api posts-revisions-list` | `--parent` | ✅ |  |
+| `api posts-revisions-list` | `--context` | ✅ |  |
+| `api posts-revisions-list` | `--exclude` | ✅ |  |
+| `api posts-revisions-list` | `--include` | ✅ |  |
+| `api posts-revisions-list` | `--offset` | ✅ |  |
+| `api posts-revisions-list` | `--order` | ✅ |  |
+| `api posts-revisions-list` | `--orderby` | ✅ |  |
+| `api posts-revisions-list` | `--page` | ✅ |  |
+| `api posts-revisions-list` | `--per-page` | ✅ |  |
+| `api posts-revisions-list` | `--search` | ✅ |  |
+| `api posts-revisions-list` | `--all` | ✅ |  |
+| `api posts-revisions-get` |  | ✅ |  |
+| `api posts-revisions-get` | `--parent` | ✅ |  |
+| `api posts-revisions-get` | `--id` | ✅ |  |
+| `api posts-revisions-get` | `--context` | ✅ |  |
+| `api posts-revisions-delete` |  | ✅ |  |
+| `api posts-revisions-delete` | `--parent` | ✅ |  |
+| `api posts-revisions-delete` | `--id` | ✅ |  |
+| `api posts-revisions-delete` | `--force` | ✅ |  |
+| `api search-list` |  | ✅ |  |
+| `api search-list` | `--context` | ✅ |  |
+| `api search-list` | `--exclude` | ✅ |  |
+| `api search-list` | `--include` | ✅ |  |
+| `api search-list` | `--page` | ✅ |  |
+| `api search-list` | `--per-page` | ✅ |  |
+| `api search-list` | `--search` | ✅ |  |
+| `api search-list` | `--subtype` | ✅ |  |
+| `api search-list` | `--type` | ✅ |  |
+| `api search-list` | `--all` | ✅ |  |
+| `api settings-list` |  | ✅ |  |
+| `api settings-create` |  | ✅ |  |
+| `api settings-create` | `--body` | ✅ |  |
+| `api settings-create` | `--body-file` | ✅ |  |
+| `api sidebars-list` |  | ✅ |  |
+| `api sidebars-list` | `--context` | ✅ |  |
+| `api sidebars-get` |  | ✅ |  |
+| `api sidebars-get` | `--id` | ✅ |  |
+| `api sidebars-get` | `--context` | ✅ |  |
+| `api sidebars-update` |  | ✅ |  |
+| `api sidebars-update` | `--id` | ✅ |  |
+| `api sidebars-update` | `--body` | ✅ |  |
+| `api sidebars-update` | `--body-file` | ✅ |  |
+| `api statuses-list` |  | ✅ |  |
+| `api statuses-list` | `--context` | ✅ |  |
+| `api statuses-get` |  | ✅ |  |
+| `api statuses-get` | `--status` | ✅ |  |
+| `api statuses-get` | `--context` | ✅ |  |
+| `api tags-list` |  | ✅ |  |
+| `api tags-list` | `--context` | ✅ |  |
+| `api tags-list` | `--exclude` | ✅ |  |
+| `api tags-list` | `--hide-empty` | ✅ |  |
+| `api tags-list` | `--include` | ✅ |  |
+| `api tags-list` | `--offset` | ✅ |  |
+| `api tags-list` | `--order` | ✅ |  |
+| `api tags-list` | `--orderby` | ✅ |  |
+| `api tags-list` | `--page` | ✅ |  |
+| `api tags-list` | `--per-page` | ✅ |  |
+| `api tags-list` | `--post` | ✅ |  |
+| `api tags-list` | `--search` | ✅ |  |
+| `api tags-list` | `--slug` | ✅ |  |
+| `api tags-list` | `--all` | ✅ |  |
+| `api tags-create` |  | ✅ |  |
+| `api tags-create` | `--body` | ✅ |  |
+| `api tags-create` | `--body-file` | ✅ |  |
+| `api tags-get` |  | ✅ |  |
+| `api tags-get` | `--id` | ✅ |  |
+| `api tags-get` | `--context` | ✅ |  |
+| `api tags-update` |  | ✅ |  |
+| `api tags-update` | `--id` | ✅ |  |
+| `api tags-update` | `--body` | ✅ |  |
+| `api tags-update` | `--body-file` | ✅ |  |
+| `api tags-delete` |  | ✅ |  |
+| `api tags-delete` | `--id` | ✅ |  |
+| `api tags-delete` | `--force` | ✅ |  |
+| `api taxonomies-list` |  | ✅ |  |
+| `api taxonomies-list` | `--context` | ✅ |  |
+| `api taxonomies-list` | `--type` | ✅ |  |
+| `api taxonomies-get` |  | ✅ |  |
+| `api taxonomies-get` | `--taxonomy` | ✅ |  |
+| `api taxonomies-get` | `--context` | ✅ |  |
+| `api template-parts-list` |  | ✅ |  |
+| `api template-parts-list` | `--area` | ✅ |  |
+| `api template-parts-list` | `--context` | ✅ |  |
+| `api template-parts-list` | `--post-type` | ✅ |  |
+| `api template-parts-list` | `--wp-id` | ✅ |  |
+| `api template-parts-create` |  | ✅ |  |
+| `api template-parts-create` | `--body` | ✅ |  |
+| `api template-parts-create` | `--body-file` | ✅ |  |
+| `api template-parts-lookup-list` |  | ✅ |  |
+| `api template-parts-lookup-list` | `--is-custom` | ✅ |  |
+| `api template-parts-lookup-list` | `--slug` | ✅ |  |
+| `api template-parts-lookup-list` | `--template-prefix` | ✅ |  |
+| `api templates-list` |  | ✅ |  |
+| `api templates-list` | `--area` | ✅ |  |
+| `api templates-list` | `--context` | ✅ |  |
+| `api templates-list` | `--post-type` | ✅ |  |
+| `api templates-list` | `--wp-id` | ✅ |  |
+| `api templates-create` |  | ✅ |  |
+| `api templates-create` | `--body` | ✅ |  |
+| `api templates-create` | `--body-file` | ✅ |  |
+| `api templates-lookup-list` |  | ✅ |  |
+| `api templates-lookup-list` | `--is-custom` | ✅ |  |
+| `api templates-lookup-list` | `--slug` | ✅ |  |
+| `api templates-lookup-list` | `--template-prefix` | ✅ |  |
+| `api themes-list` |  | ✅ |  |
+| `api themes-list` | `--status` | ✅ |  |
+| `api types-list` |  | ✅ |  |
+| `api types-list` | `--context` | ✅ |  |
+| `api types-get` |  | ✅ |  |
+| `api types-get` | `--type` | ✅ |  |
+| `api types-get` | `--context` | ✅ |  |
+| `api users-list` |  | ✅ |  |
+| `api users-list` | `--capabilities` | ✅ |  |
+| `api users-list` | `--context` | ✅ |  |
+| `api users-list` | `--exclude` | ✅ |  |
+| `api users-list` | `--has-published-posts` | ✅ |  |
+| `api users-list` | `--include` | ✅ |  |
+| `api users-list` | `--offset` | ✅ |  |
+| `api users-list` | `--order` | ✅ |  |
+| `api users-list` | `--orderby` | ✅ |  |
+| `api users-list` | `--page` | ✅ |  |
+| `api users-list` | `--per-page` | ✅ |  |
+| `api users-list` | `--roles` | ✅ |  |
+| `api users-list` | `--search` | ✅ |  |
+| `api users-list` | `--search-columns` | ✅ |  |
+| `api users-list` | `--slug` | ✅ |  |
+| `api users-list` | `--who` | ✅ |  |
+| `api users-list` | `--all` | ✅ |  |
+| `api users-create` |  | ✅ |  |
+| `api users-create` | `--body` | ✅ |  |
+| `api users-create` | `--body-file` | ✅ |  |
+| `api users-get` |  | ✅ |  |
+| `api users-get` | `--id` | ✅ |  |
+| `api users-get` | `--context` | ✅ |  |
+| `api users-update` |  | ✅ |  |
+| `api users-update` | `--id` | ✅ |  |
+| `api users-update` | `--body` | ✅ |  |
+| `api users-update` | `--body-file` | ✅ |  |
+| `api users-delete` |  | ✅ |  |
+| `api users-delete` | `--id` | ✅ |  |
+| `api users-delete` | `--force` | ✅ |  |
+| `api users-delete` | `--reassign` | ✅ |  |
+| `api users-application-passwords-list` |  | ✅ |  |
+| `api users-application-passwords-list` | `--user-id` | ✅ |  |
+| `api users-application-passwords-list` | `--context` | ✅ |  |
+| `api users-application-passwords-create` |  | ✅ |  |
+| `api users-application-passwords-create` | `--user-id` | ✅ |  |
+| `api users-application-passwords-create` | `--body` | ✅ |  |
+| `api users-application-passwords-create` | `--body-file` | ✅ |  |
+| `api users-application-passwords-delete-all` |  | ✅ |  |
+| `api users-application-passwords-delete-all` | `--user-id` | ✅ |  |
+| `api users-application-passwords-get` |  | ✅ |  |
+| `api users-application-passwords-get` | `--user-id` | ✅ |  |
+| `api users-application-passwords-get` | `--uuid` | ✅ |  |
+| `api users-application-passwords-get` | `--context` | ✅ |  |
+| `api users-application-passwords-update` |  | ✅ |  |
+| `api users-application-passwords-update` | `--user-id` | ✅ |  |
+| `api users-application-passwords-update` | `--uuid` | ✅ |  |
+| `api users-application-passwords-update` | `--body` | ✅ |  |
+| `api users-application-passwords-update` | `--body-file` | ✅ |  |
+| `api users-application-passwords-delete` |  | ✅ |  |
+| `api users-application-passwords-delete` | `--user-id` | ✅ |  |
+| `api users-application-passwords-delete` | `--uuid` | ✅ |  |
+| `api users-application-passwords-introspect-list` |  | ✅ |  |
+| `api users-application-passwords-introspect-list` | `--user-id` | ✅ |  |
+| `api users-application-passwords-introspect-list` | `--context` | ✅ |  |
+| `api users-me-get` |  | ✅ |  |
+| `api users-me-get` | `--context` | ✅ |  |
+| `api users-me-create` |  | ✅ |  |
+| `api users-me-create` | `--body` | ✅ |  |
+| `api users-me-create` | `--body-file` | ✅ |  |
+| `api users-me-delete` |  | ✅ |  |
+| `api users-me-delete` | `--force` | ✅ |  |
+| `api users-me-delete` | `--reassign` | ✅ |  |
+| `api widget-types-list` |  | ✅ |  |
+| `api widget-types-list` | `--context` | ✅ |  |
+| `api widget-types-get` |  | ✅ |  |
+| `api widget-types-get` | `--id` | ✅ |  |
+| `api widget-types-get` | `--context` | ✅ |  |
+| `api widget-types-encode` |  | ✅ |  |
+| `api widget-types-encode` | `--id` | ✅ |  |
+| `api widget-types-encode` | `--body` | ✅ |  |
+| `api widget-types-encode` | `--body-file` | ✅ |  |
+| `api widget-types-render` |  | ✅ |  |
+| `api widget-types-render` | `--id` | ✅ |  |
+| `api widget-types-render` | `--body` | ✅ |  |
+| `api widget-types-render` | `--body-file` | ✅ |  |
+| `api widgets-list` |  | ✅ |  |
+| `api widgets-list` | `--context` | ✅ |  |
+| `api widgets-list` | `--sidebar` | ✅ |  |
+| `api widgets-create` |  | ✅ |  |
+| `api widgets-create` | `--body` | ✅ |  |
+| `api widgets-create` | `--body-file` | ✅ |  |
+| `api widgets-get` |  | ✅ |  |
+| `api widgets-get` | `--id` | ✅ |  |
+| `api widgets-get` | `--context` | ✅ |  |
+| `api widgets-update` |  | ✅ |  |
+| `api widgets-update` | `--id` | ✅ |  |
+| `api widgets-update` | `--body` | ✅ |  |
+| `api widgets-update` | `--body-file` | ✅ |  |
+| `api widgets-delete` |  | ✅ |  |
+| `api widgets-delete` | `--id` | ✅ |  |
+| `api widgets-delete` | `--force` | ✅ |  |
+| `api wp-pattern-category-list` |  | ✅ |  |
+| `api wp-pattern-category-list` | `--context` | ✅ |  |
+| `api wp-pattern-category-list` | `--exclude` | ✅ |  |
+| `api wp-pattern-category-list` | `--hide-empty` | ✅ |  |
+| `api wp-pattern-category-list` | `--include` | ✅ |  |
+| `api wp-pattern-category-list` | `--offset` | ✅ |  |
+| `api wp-pattern-category-list` | `--order` | ✅ |  |
+| `api wp-pattern-category-list` | `--orderby` | ✅ |  |
+| `api wp-pattern-category-list` | `--page` | ✅ |  |
+| `api wp-pattern-category-list` | `--per-page` | ✅ |  |
+| `api wp-pattern-category-list` | `--post` | ✅ |  |
+| `api wp-pattern-category-list` | `--search` | ✅ |  |
+| `api wp-pattern-category-list` | `--slug` | ✅ |  |
+| `api wp-pattern-category-list` | `--all` | ✅ |  |
+| `api wp-pattern-category-create` |  | ✅ |  |
+| `api wp-pattern-category-create` | `--body` | ✅ |  |
+| `api wp-pattern-category-create` | `--body-file` | ✅ |  |
+| `api wp-pattern-category-get` |  | ✅ |  |
+| `api wp-pattern-category-get` | `--id` | ✅ |  |
+| `api wp-pattern-category-get` | `--context` | ✅ |  |
+| `api wp-pattern-category-update` |  | ✅ |  |
+| `api wp-pattern-category-update` | `--id` | ✅ |  |
+| `api wp-pattern-category-update` | `--body` | ✅ |  |
+| `api wp-pattern-category-update` | `--body-file` | ✅ |  |
+| `api wp-pattern-category-delete` |  | ✅ |  |
+| `api wp-pattern-category-delete` | `--id` | ✅ |  |
+| `api wp-pattern-category-delete` | `--force` | ✅ |  |
+| `sync` |  | ✅ |  |
+| `sync` | `--rescan` | ✅ |  |
+| `sync` | `--max-pages` | ✅ |  |
+| `channels list` |  | ✅ |  |
+| `posts list` |  | ✅ |  |
+| `posts list` | `--limit` | ✅ |  |
+| `posts list` | `--page` | ✅ |  |
+| `posts show` |  | ✅ |  |
+| `posts search` |  | ✅ |  |
+| `posts search` | `--limit` | ✅ |  |
+| `posts search` | `--page` | ✅ |  |
+| `posts stats` |  | ✅ |  |
+| `posts create` |  | ✅ |  |
+| `posts create` | `--title` | ✅ |  |
+| `posts create` | `--text-file` | ✅ |  |
+| `posts create` | `--description` | ✅ |  |
+| `posts create` | `--slug` | ✅ |  |
+| `posts create` | `--tags` | ✅ |  |
+| `posts create` | `--type` | ✅ |  |
+| `posts update` |  | ✅ |  |
+| `posts update` | `--title` | ✅ |  |
+| `posts update` | `--text-file` | ✅ |  |
+| `posts update` | `--description` | ✅ |  |
+| `posts update` | `--slug` | ✅ |  |
+| `posts update` | `--tags` | ✅ |  |
+| `posts update` | `--replace-body` | ✅ |  |
+| `posts publish` |  | ✅ |  |
+| `posts publish` | `--at-time` | ✅ |  |
+| `posts unpublish` |  | ✅ |  |
+| `posts delete` |  | ✅ |  |
+| `posts delete` | `--allow-delete` | ✅ |  |
+| `users list` |  | ✅ |  |
+| `users list` | `--limit` | ✅ |  |
+| `users list` | `--page` | ✅ |  |
+| `tags list` |  | ✅ |  |
+| `tags list` | `--limit` | ✅ |  |
+| `tags list` | `--page` | ✅ |  |
 | `doctor` |  | ✅ |  |
 | `doctor` | `--online` | ✅ |  |
 | `doctor reports show` |  | ⛔ | cli-core's appDoctorCommand; its app-mcp-command test creates and shows a report |

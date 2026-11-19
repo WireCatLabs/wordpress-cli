@@ -81,7 +81,7 @@ export default defineCli({
           optional: { message: "only an administrator lists the users", scope: "list_users" },
         },
       ],
-      // A tag's name and slug are public: editing terms is a right a contributor lacks, so no context=edit here.
+      // A tag's or category's name and slug are public. An Author or Contributor may not edit terms: no context=edit.
       term: [
         {
           list: { operation: "getWpV2Tags", query: { per_page: 100, orderby: "id" } },
