@@ -78,7 +78,7 @@ export default defineCli({
           // biome-ignore lint/security/noSecrets: an operation id, not a secret
           get: { operation: "getWpV2UsersById", path: { id: "{id}" }, query: { context: "edit" } },
           map: { externalId: "id", name: "name", email: "email", slug: "slug" },
-          optional: { message: "only an editor or administrator lists the users", scope: "list_users" },
+          optional: { message: "only an administrator lists the users", scope: "list_users" },
         },
       ],
       // A tag's name and slug are public: editing terms is a right a contributor lacks, so no context=edit here.

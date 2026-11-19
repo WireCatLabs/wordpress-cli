@@ -43,7 +43,7 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
           slug: "slug",
         },
         optional: {
-          message: "only an editor or administrator lists the users",
+          message: "only an administrator lists the users",
           scope: "list_users",
         },
       },
