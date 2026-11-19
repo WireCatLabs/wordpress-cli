@@ -38,7 +38,7 @@ Effects: `read` changes nothing; `write` changes the service; `destructive` dele
 | templates | `wordpress skill show api-templates` | 3 | 2 | 1 | 0 |
 | themes | `wordpress skill show api-themes` | 1 | 1 | 0 | 0 |
 | types | `wordpress skill show api-types` | 2 | 2 | 0 | 0 |
-| users | `wordpress skill show api-users` | 15 | 6 | 5 | 4 |
+| users | `wordpress skill show api-users` | 12 | 5 | 4 | 3 |
 | widget-types | `wordpress skill show api-widget-types` | 4 | 2 | 2 | 0 |
 | widgets | `wordpress skill show api-widgets` | 5 | 2 | 2 | 1 |
 | wp\_pattern\_category | `wordpress skill show api-wp-pattern-category` | 5 | 2 | 2 | 1 |

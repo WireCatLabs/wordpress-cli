@@ -1611,42 +1611,6 @@
     {
       "path": [
         "api",
-        "users-application-passwords-list"
-      ],
-      "summary": "getWpV2UsersByUserIdApplicationPasswords — read (GET…",
-      "effects": {
-        "remote": "read",
-        "local": "none"
-      },
-      "permission": "api.users-application-passwords-list"
-    },
-    {
-      "path": [
-        "api",
-        "users-application-passwords-create"
-      ],
-      "summary": "postWpV2UsersByUserIdApplicationPasswords — write (POST…",
-      "effects": {
-        "remote": "write",
-        "local": "none"
-      },
-      "permission": "api.users-application-passwords-create"
-    },
-    {
-      "path": [
-        "api",
-        "users-application-passwords-delete-all"
-      ],
-      "summary": "deleteWpV2UsersByUserIdApplicationPasswords — destructive (DELETE…",
-      "effects": {
-        "remote": "write",
-        "local": "none"
-      },
-      "permission": "api.users-application-passwords-delete-all"
-    },
-    {
-      "path": [
-        "api",
         "users-application-passwords-get"
       ],
       "summary": "getWpV2UsersByUserIdApplicationPasswordsByUuid — read (GET…",
@@ -2445,7 +2409,7 @@
     ],
     "signIn": {
       "gives": "Lets your agent read your WordPress posts and pages, write drafts, and publish when you allow it.",
-      "asks": "Your site's address, your user name and an application password: in WordPress, Users → Profile → Application Passwords. WordPress 5.6 or later, over https."
+      "asks": "Your site's address, your user name and an application password: in WordPress, Users → Profile → Application Passwords. WordPress 5.7 or later, over https."
     },
     "skill": {
       "status": [

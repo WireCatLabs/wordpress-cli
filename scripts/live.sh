@@ -4,7 +4,7 @@
 # temporary one and the keyring is out of reach, so nothing touches the owner's store, keyring or settings. It only
 # reads: it signs in, syncs into a temporary store, lists, and signs out.
 #   scripts/live.sh --site <address> --login <user> < password-file
-# Needs: a WordPress site you may test on (5.6 or later, over https), never a site that matters
+# Needs: a WordPress site you may test on (5.7 or later, over https), never a site that matters
 # Needs: an application password of an Editor or Administrator on it, in the keyring entry bin/live names
 # Needs: at least one post, one page and one tag or category on that site
 set -euo pipefail
@@ -15,7 +15,7 @@ trap 'rm -rf "$work"' EXIT
 export WCWP_CONFIG_DIR="$work/config" WCWP_STATE_DIR="$work/state" WCWP_CACHE_DIR="$work/cache"
 export MESSAGING_STORE="$work/wirecat.db"
 export DBUS_SESSION_BUS_ADDRESS="disabled:"
-unset WCWP_TOKEN
+unset WCWP_TOKEN WCWP_TOKEN_SITE
 cli=(node "$root/dist/bin/wordpress.js")
 
 pnpm --dir "$root" -s build >/dev/null
@@ -43,7 +43,7 @@ done
 trap '"${cli[@]}" live session end --json >/dev/null 2>&1 || true; rm -rf "$work"' EXIT
 
 "${cli[@]}" live sync --json >"$work/sync.json"
-"${cli[@]}" live posts list --json >"$work/posts.json"
+"${cli[@]}" live posts list --limit 500 --json >"$work/posts.json"
 "${cli[@]}" live tags list --json >"$work/tags.json"
 "${cli[@]}" live channels list --json >"$work/channels.json"
 node -e '

@@ -73,7 +73,7 @@ wordpress blog posts list status:draft
 that uses an account, and none is ever assumed.
 
 **The application password.** In WordPress, open Users → Profile, find Application Passwords, give the new password
-a name and click Add. WordPress 5.6 or later makes it, and only over https. `session start` asks for it without
+a name and click Add. WordPress 5.7 or later makes it, and only over https. `session start` asks for it without
 showing it, checks it with your site and keeps it with that site in the system keyring. The password goes to that
 site alone, never to another site on the same host. For a full copy, sign in as an Administrator.
 
@@ -102,8 +102,8 @@ wordpress blog mcp config                                  # the entry for Claud
 ```
 
 Over MCP nobody is at a terminal to answer a question, so a write set to `ask` goes ahead. An agent over MCP can
-publish a post. That is the owner's choice for this tool, and `wordpress blog runs list` keeps a record of every
-publication. The first line above stops it.
+publish a post. That is the owner's choice for this tool. `wordpress blog runs list` shows each publication for 7
+days (`keep_successful_runs_for_days`). The first line above stops it.
 
 More: [agents and MCP](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/mcp.md) ·
 [permissions](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/permissions.md)

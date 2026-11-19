@@ -1,7 +1,7 @@
 import { resolve } from "node:path"
 import { syncWpJson } from "@wirecat/cli-base/codegen"
 
-// SAMPLE: a plain WordPress, no plugins, and the version it runs, which the index does not say. The CLI serves every
+// A plain WordPress, no plugins, and the version it runs, which the index does not say. The CLI serves every
 // site, so take the index from your own install (a WordPress in Docker), never from a site with plugins.
 await syncWpJson({
   root: "https://localhost:8443/wp-json/",

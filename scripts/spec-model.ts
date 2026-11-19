@@ -1,7 +1,7 @@
 import { join } from "node:path"
 import { type ApiModel, adaptOpenApi, type Override, readWpJson, wpJsonToOpenApi } from "@wirecat/cli-base/codegen"
 
-// SAMPLE: the WordPress namespaces the CLI offers. A plugin's namespace belongs to the sites that run the plugin;
+// The WordPress namespaces the CLI offers. A plugin's namespace belongs to the sites that run the plugin;
 // batch/v1 is never offered, as one batch call runs other routes' writes past their own keys.
 const NAMESPACES = ["wp/v2"]
 
@@ -14,8 +14,12 @@ export const specModel = async (
 ): Promise<{ model: ApiModel; notes: string[]; overrides: Record<string, Override> }> => {
   const { document, omissions, overrides } = wpJsonToOpenApi(readWpJson(join(root, "spec/wordpress")), {
     namespaces: NAMESPACES,
-    // SAMPLE: route → why the CLI leaves it out.
-    exclude: {},
+    // The converter marks no field sensitive, so cli-core cannot see that this answer holds a new password. Only a
+    // whole route can be left out, so its list and delete-all go too.
+    exclude: {
+      "/wp/v2/users/(?P<user_id>(?:[\\d]+|me))/application-passwords":
+        "its POST creates an application password and answers with it in clear; the CLI signs in through session start",
+    },
   })
   return { model: adaptOpenApi(document), notes: omissions, overrides }
 }

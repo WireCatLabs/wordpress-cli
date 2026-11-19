@@ -61,7 +61,7 @@ an agent you connected should be able to finish the job you gave it.
 Two things keep you in control:
 
 - **Every publication is recorded.** `wordpress blog runs list` shows each write the agent made, and `runs show` what
-  it sent.
+  it sent. A run that worked is kept 7 days (`keep_successful_runs_for_days`), one that failed 30.
 - **One line stops it.** These keep publishing and deleting for good yours, and the agent still writes drafts:
 
   ```sh

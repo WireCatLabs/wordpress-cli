@@ -15,7 +15,7 @@ export interface ServiceEnvironment extends BaseEnvironment {
   fetch?: typeof fetch
 }
 
-// SAMPLE: your service's documented limit; this one is made up.
+// WordPress sets no rate limit of its own; a host or a security plugin may. A person in the editor sends about this.
 export const PACE = { perMinute: 120, burst: 20 }
 
 /**

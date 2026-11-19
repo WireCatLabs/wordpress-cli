@@ -2,18 +2,6 @@
 
 # WordPress API: users
 
-## `wordpress api users-application-passwords-create [options]`
-
-- What: postWpV2UsersByUserIdApplicationPasswords — write (POST…
-- Call: `POST /wp/v2/users/{user_id}/application-passwords`, effect: write
-- Body: `PostWpV2UsersByUserIdApplicationPasswordsRequest`, required
-
-| Flag | Required | What |
-|---|---|---|
-| `--user-id <value>` | yes | user\_id |
-| `--body <json>` | no | the request body as JSON; - reads it from stdin |
-| `--body-file <path>` | no | the request body from a JSON file; - is stdin |
-
 ## `wordpress api users-application-passwords-delete [options]`
 
 - What: deleteWpV2UsersByUserIdApplicationPasswordsByUuid — destructive (DELETE…
@@ -24,16 +12,6 @@
 |---|---|---|
 | `--user-id <value>` | yes | user\_id |
 | `--uuid <value>` | yes | uuid |
-
-## `wordpress api users-application-passwords-delete-all [options]`
-
-- What: deleteWpV2UsersByUserIdApplicationPasswords — destructive (DELETE…
-- Call: `DELETE /wp/v2/users/{user_id}/application-passwords`, effect: destructive
-- Permission keys: `users.delete`
-
-| Flag | Required | What |
-|---|---|---|
-| `--user-id <value>` | yes | user\_id |
 
 ## `wordpress api users-application-passwords-get [options]`
 
@@ -50,16 +28,6 @@
 
 - What: getWpV2UsersByUserIdApplicationPasswordsIntrospect — read (GET…
 - Call: `GET /wp/v2/users/{user_id}/application-passwords/introspect`, effect: read
-
-| Flag | Required | What |
-|---|---|---|
-| `--user-id <value>` | yes | user\_id |
-| `--context <value>` | no | Scope under which the request is made; determines fields present in response. |
-
-## `wordpress api users-application-passwords-list [options]`
-
-- What: getWpV2UsersByUserIdApplicationPasswords — read (GET…
-- Call: `GET /wp/v2/users/{user_id}/application-passwords`, effect: read
 
 | Flag | Required | What |
 |---|---|---|

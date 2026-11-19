@@ -1,6 +1,6 @@
 ---
 name: wordpress-cli
-description: Use wordpress to read and write the owner's self-hosted WordPress site - posts and pages with every status, their text as Markdown, tags, categories and authors, synced into the local WireCat store, and write drafts, update them, publish or schedule, unpublish and trash - with the owner's profile and JSON answers. Use when a task needs what the owner published or drafted on WordPress, a draft written from notes, a post published or scheduled, or a WordPress API operation (media, comments, menus).
+description: Use wordpress to read and write the owner's self-hosted WordPress site: posts and pages with every status, their text as Markdown, tags, categories and authors, synced into the local WireCat store, and write drafts, update them, publish or schedule, unpublish and trash, with the owner's profile and JSON answers. Use when a task needs what the owner published or drafted on WordPress, a draft written from notes, a post published or scheduled, or a WordPress API operation (media, comments, menus).
 metadata:
   openclaw:
     requires:
@@ -11,7 +11,7 @@ metadata:
         bins: [wordpress]
 ---
 
-# wordpress - a WordPress site from the command line
+# wordpress: a WordPress site from the command line
 
 `wordpress` reads the owner's **real, public website** from a local copy, and writes to the site itself. A published
 post is public at once, and readers see it. One call, one action: run it, read the answer, stop. The command is
@@ -61,6 +61,7 @@ wordpress blog posts unpublish 63                            # back to a draft
 wordpress blog posts delete 63                               # to the trash
 ```
 
+- Writes reach posts only. A page is read, and a write to one stops with `content.write-unsupported`.
 - `posts create` always makes a **draft**. Text is Markdown from `--text-file <path>`, or `--text-file -` for stdin.
   `--description` is the excerpt. `--tags` takes ids and replaces the post's tags.
 - **Publish only when the owner asked for it** in this task, for this post. A draft is the default answer to "write a

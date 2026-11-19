@@ -99,7 +99,7 @@ const open = async (command: Command, { readOnly }: { readOnly: boolean }): Prom
   }
 }
 
-/** cli-core's content commands over the source wirecat.config.ts describes: sync, posts, terms and channels. */
+/** cli-core's content commands over the source wirecat.config.ts describes: sync, posts, tags, users and channels. */
 export const contentCommands = (): Command[] => {
   const holder = new Command(IDENTITY.command)
   addContentCommands(holder, { app: IDENTITY, open, writes: SOURCE.writes !== undefined })

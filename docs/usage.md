@@ -144,7 +144,7 @@ Each write asks first at a terminal. See [permissions](permissions.md).
 ## The WordPress API
 
 `wordpress blog api` runs any operation of the WordPress REST API (`wp/v2`), one command each, with its own flags and
-help. It reaches what has no command of its own: media, comments, menus, users, settings and more. It holds 150
+help. It reaches what has no command of its own: media, comments, menus, users, settings and more. It holds 147
 operations, from a plain WordPress 6.9.4.
 
 ```sh

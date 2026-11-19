@@ -30,11 +30,12 @@ common ones:
 
 | Setting | Default | What it does |
 |---|---|---|
-| `limit` | `20` | How many items a list shows at once. |
+| `limit` | `20` | How many items a list of the `api` group shows at once. `posts list`, `tags list` and `users list` show 50; pass `--limit`. |
 | `permissions` | none set | What each command may do. See [Permissions](#permissions). |
 | `record` | `true` | Keep every run. `false` keeps failed runs only. |
 | `record_input` | `true` | Keep the words you typed in a run. |
 | `keep_runs_for_days` | `30` | How long a run is kept. |
+| `keep_successful_runs_for_days` | `7` | How long a run that worked is kept. |
 | `update_check` | `true` | Check once a day for a newer version. |
 
 ## Permissions

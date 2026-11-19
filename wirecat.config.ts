@@ -45,7 +45,7 @@ const posts = (operation: string, type: "post" | "page") => {
       fallback: { path: "content.rendered", format: "html" as const },
     },
     optional: {
-      message: "the sign-in may not read every post: a contributor sees its own",
+      message: "the sign-in may not read every post or page: an author or a contributor reads only some",
       scope: "edit_others_posts",
       requires: {
         operation: "getWpV2UsersMe",

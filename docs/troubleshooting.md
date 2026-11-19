@@ -29,9 +29,9 @@ wordpress blog session status --check    # asks your site whose password it is
 | `wordpress` is not found | Open a new terminal, and check that npm's global folder is on `PATH`. |
 | You typed `wp` | That is the official WP-CLI. This tool is `wordpress`. |
 | "name a profile" | Put the profile first, as in `wordpress blog config show`, or set `WCWP_PROFILE`. |
-| "not signed in" | Run `wordpress blog session start --site <address> --login <user>`. See [sign in](installation.md#sign-in). |
+| "not signed in" | Run `wordpress blog session start --site blog.example.com --login anna`, with your site and user name. See [sign in](installation.md#sign-in). |
 | The password is refused | It was revoked, mistyped, or belongs to another user. Make a new one ([how](installation.md#make-an-application-password-in-wordpress)) and run `session start` again with the right `--login`. |
-| No **Application Passwords** section in your profile | The site needs WordPress 5.6 or later over https, and a plugin or the host may turn the section off. Ask the site's admin. |
+| No **Application Passwords** section in your profile | The site needs WordPress 5.7 or later over https, and a plugin or the host may turn the section off. Ask the site's admin. |
 | A WordPress.com address | WordPress.com sites are not supported, only self-hosted WordPress. |
 | `posts list` is empty | Run `wordpress blog sync` first. Posts are read from the copy it makes. |
 | `sync` ends partial, or pages are missing | An Author or Contributor sign-in cannot list pages, and a Contributor sees only their own posts. Only an Administrator lists the users. Sign in as an Administrator for a full copy, or as an Editor for every post and page. |
@@ -41,7 +41,7 @@ wordpress blog session status --check    # asks your site whose password it is
 | `content.schedule-past` | `--at-time` must be ahead of now. |
 | `content.already-published` | A published post cannot be scheduled. Run `posts unpublish` first. |
 | `content.empty` | The write names no field. Add `--title`, `--text-file` or another field. |
-| `posts publish` fails with 403 | Your WordPress role may not publish. A Contributor cannot. Ask an Editor, or sign in as one. |
+| `posts publish` fails with `permission_error` (WordPress answered HTTP 403) | Your WordPress role may not publish. A Contributor cannot. Ask an Editor, or sign in as one. |
 | `posts stats` shows no views | WordPress itself keeps no view counts, and Jetpack stats are not supported. |
 | A plugin field, such as an SEO title, has no flag | Plugin fields are not in the API description. Send them in a raw `--body` through `wordpress blog api`. |
 | The settings file does not read | `doctor` lists every problem in the file under `config.issues`. Run the `config unset` each one gives, or fix the file by hand. |

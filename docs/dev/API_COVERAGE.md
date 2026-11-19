@@ -6,7 +6,7 @@ Run: pnpm generate
 
 # API coverage
 
-150 operations from openapi unknown.
+147 operations from openapi unknown.
 
 | Operation | Call | Command | Effect | Request source | Status | Summary |
 |---|---|---|---|---|---|---|
@@ -136,9 +136,6 @@ Run: pnpm generate
 | `getWpV2UsersById` | `GET /wp/v2/users/{id}` | `wordpress <profile> api users-get` | read | — | generated |  |
 | `postWpV2UsersById` | `POST /wp/v2/users/{id}` | `wordpress <profile> api users-update` | write | contract | generated |  |
 | `deleteWpV2UsersById` | `DELETE /wp/v2/users/{id}` | `wordpress <profile> api users-delete` | destructive | — | generated |  |
-| `getWpV2UsersByUserIdApplicationPasswords` | `GET /wp/v2/users/{user_id}/application-passwords` | `wordpress <profile> api users-application-passwords-list` | read | — | generated |  |
-| `postWpV2UsersByUserIdApplicationPasswords` | `POST /wp/v2/users/{user_id}/application-passwords` | `wordpress <profile> api users-application-passwords-create` | write | contract | generated |  |
-| `deleteWpV2UsersByUserIdApplicationPasswords` | `DELETE /wp/v2/users/{user_id}/application-passwords` | `wordpress <profile> api users-application-passwords-delete-all` | destructive | — | generated |  |
 | `getWpV2UsersByUserIdApplicationPasswordsByUuid` | `GET /wp/v2/users/{user_id}/application-passwords/{uuid}` | `wordpress <profile> api users-application-passwords-get` | read | — | generated |  |
 | `postWpV2UsersByUserIdApplicationPasswordsByUuid` | `POST /wp/v2/users/{user_id}/application-passwords/{uuid}` | `wordpress <profile> api users-application-passwords-update` | write | contract | generated |  |
 | `deleteWpV2UsersByUserIdApplicationPasswordsByUuid` | `DELETE /wp/v2/users/{user_id}/application-passwords/{uuid}` | `wordpress <profile> api users-application-passwords-delete` | destructive | — | generated |  |
@@ -246,7 +243,6 @@ Run: pnpm generate
 | `postWpV2Templates` | `templates.publish` | always |
 | `deleteWpV2UsersById` | `users.delete` | always |
 | `deleteWpV2UsersById` | `users.delete.force` | query `force` is true |
-| `deleteWpV2UsersByUserIdApplicationPasswords` | `users.delete` | always |
 | `deleteWpV2UsersByUserIdApplicationPasswordsByUuid` | `users.delete` | always |
 | `deleteWpV2UsersMe` | `users.delete` | always |
 | `deleteWpV2UsersMe` | `users.delete.force` | query `force` is true |
@@ -288,6 +284,7 @@ Run: pnpm generate
 - `/wp/v2/templates/(?P<parent>([^\/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w%-]+)/revisions/(?P<id>[\d]+)`: left out, as its value may hold a slash, which no path segment carries
 - `/wp/v2/themes/(?P<stylesheet>[^\/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)`: left out, as its value may hold a slash, which no path segment carries
 - `/wp/v2/users/(?P<id>[\d]+)`: PUT, PATCH left out, as POST does the same
+- `/wp/v2/users/(?P<user_id>(?:[\d]+|me))/application-passwords`: excluded — its POST creates an application password and answers with it in clear; the CLI signs in through session start
 - `/wp/v2/users/(?P<user_id>(?:[\d]+|me))/application-passwords/(?P<uuid>[\w\-]+)`: PUT, PATCH left out, as POST does the same
 - `/wp/v2/users/me`: PUT, PATCH left out, as POST does the same
 - `/wp/v2/widgets/(?P<id>[\w\-]+)`: PUT, PATCH left out, as POST does the same

@@ -21,3 +21,12 @@ regex = '''(?:^|[^A-Za-z0-9/])(1//[A-Za-z0-9_-]{30,})'''
 secretGroup = 1
 entropy = 3.5
 keywords = ["1//"]
+
+# WordPress shows an application password once, as 24 letters and digits in six groups of four. The entropy keeps a
+# row of six short words out.
+[[rules]]
+id = "wordpress-application-password"
+description = "WordPress application password"
+regex = '''\b([A-Za-z0-9]{4}(?: [A-Za-z0-9]{4}){5})\b'''
+secretGroup = 1
+entropy = 3.8

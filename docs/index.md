@@ -5,7 +5,7 @@ Code, Codex or Claude Desktop, a copy of your WordPress posts and pages on your 
 even offline. It writes drafts on your site, and publishes them when you allow it.
 
 Ask what you published last month, which drafts wait, or what a page says today. Hand the agent your notes, and it
-makes a draft with a title, an excerpt and tags. You need a self-hosted WordPress site, 5.6 or later over https, and
+makes a draft with a title, an excerpt and tags. You need a self-hosted WordPress site, 5.7 or later over https, and
 a user on it.
 
 **On this page:**
@@ -101,7 +101,7 @@ Agent:  (runs wordpress blog posts publish 63 --at-time 2026-11-23T09:00:00Z)
 Paste this into your agent:
 
 ```text prompt
-Install wordpress with npm install -g @wirecat/wordpress-cli. Help me make a WordPress application password and run wordpress blog session start --site <my site> --login <my user name> to connect my site, then sync and show my drafts.
+Install wordpress with npm install -g @wirecat/wordpress-cli. Help me make a WordPress application password and run wordpress blog session start --site blog.example.com --login anna to connect my site, then sync and show my drafts.
 ```
 
 Or in a terminal:
@@ -128,7 +128,8 @@ password.
   copy has.
 - Plugin fields, such as those of SEO or custom field plugins, have no flags. The `api` group sends them in a raw
   `--body`.
-- The writes work on posts. Media, comments and menus are reached through the `api` group.
+- The writes work on posts. Comments and menus are reached through the `api` group. The `api` group sends JSON only,
+  so it cannot upload a file to the media library.
 
 ## Find a guide for your task
 

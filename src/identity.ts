@@ -17,8 +17,7 @@ export const IDENTITY: AppIdentity = {
   contentLanguages: ["en"],
 }
 
-// What `wcat` and WireCat Desktop show before the tool is installed: rewrite the tagline and the sign-in texts for
-// yours. The bin passes it to wcatStart before anything else loads; src/wcat.ts adds the permission keys.
+// What `wcat` and WireCat Desktop show before the tool is installed. The bin passes it to wcatStart before anything else loads; src/wcat.ts adds the permission keys.
 export const DESKTOP = {
   ...IDENTITY,
   docs: "https://github.com/WireCatLabs/wordpress-cli#readme",
@@ -29,7 +28,7 @@ export const DESKTOP = {
     gives: "Lets your agent read your WordPress posts and pages, write drafts, and publish when you allow it.",
     asks:
       "Your site's address, your user name and an application password: in WordPress, Users → Profile → " +
-      "Application Passwords. WordPress 5.6 or later, over https.",
+      "Application Passwords. WordPress 5.7 or later, over https.",
   },
 } satisfies ManifestIdentity
 

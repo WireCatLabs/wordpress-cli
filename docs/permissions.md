@@ -62,6 +62,10 @@ run it yourself in a terminal.
   `status` to `draft`, `pending` or `private`.
 - **Deleting** needs `<route>.delete`. With `force=true`, which deletes for good, it needs `<route>.delete.force` too.
   Both ask by default.
+- **Site-wide writes ask.** `api.plugins-create` installs code on the site, `api.settings-create` changes its
+  settings, and `api.users-create`, `api.users-update` and `api.users-me-create` make or change a user, a role
+  included. Each asks by default. Other api writes run without a question.
+- Making an application password is never offered: WordPress answers with the new password in clear.
 - WordPress's batch route (`batch/v1`) is never offered: one batch call would run other routes' writes past their
   keys.
 
@@ -82,7 +86,8 @@ Any of these keeps your site's public face in your hands:
 
 Over MCP nobody is at a terminal to answer, and the server shows no form, so a write at `ask` goes ahead. With the
 built-in levels an agent over MCP can publish and delete for good. The owner chose this: an agent should be able to
-finish the job it was given. `wordpress blog runs list` records every publication.
+finish the job it was given. `wordpress blog runs list` shows each publication for 7 days
+(`keep_successful_runs_for_days`).
 
 If you want to publish yourself, set `posts.publish` to `deny` before you connect an app, as above. Or keep the levels
 and turn on approval for the `wordpress_write` tool in your agent's client, so the client asks you before each write.

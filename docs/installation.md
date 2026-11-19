@@ -17,7 +17,7 @@ permissions allow.
 
 ## What you need
 
-- A self-hosted WordPress site, version 5.6 or later, reached over https. WordPress makes application passwords only
+- A self-hosted WordPress site, version 5.7 or later, reached over https. WordPress makes application passwords only
   there. WordPress.com sites are not supported.
 - A user on the site. For a full copy, the user should be an Administrator. An Editor gets every post and page, but
   WordPress lists the users to an Administrator only. An Author or Contributor gets only part of the site: WordPress
@@ -50,7 +50,7 @@ WordPress describes these steps in its
 1. Log in to your site's wp-admin.
 2. Open **Users → Profile**.
 3. Scroll to **Application Passwords**.
-4. Type a name for the new password, such as `WireCat`, and click **Add New Application Password**.
+4. Type a name for the new password, such as `WireCat`, and click **Add Application Password**.
 5. Copy the password WordPress shows. It shows it once only.
 
 The password can do what your user can, no more. It works until you revoke it in the same place.

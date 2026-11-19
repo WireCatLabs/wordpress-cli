@@ -7,7 +7,7 @@ ran it · ⛔ not tested offline, with the reason and where it is checked instea
 Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 [TESTING.md](TESTING.md) for how, and for the states and failures that cut across commands.
 
-**887 ✅ · 24 ⛔ · 0 ❌** — 195 commands, 716 options.
+**878 ✅ · 24 ⛔ · 0 ❌** — 192 commands, 710 options.
 
 | Command | Option | | Note |
 |---|---|---|---|
@@ -719,15 +719,6 @@ Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 | `api users-delete` | `--id` | ✅ |  |
 | `api users-delete` | `--force` | ✅ |  |
 | `api users-delete` | `--reassign` | ✅ |  |
-| `api users-application-passwords-list` |  | ✅ |  |
-| `api users-application-passwords-list` | `--user-id` | ✅ |  |
-| `api users-application-passwords-list` | `--context` | ✅ |  |
-| `api users-application-passwords-create` |  | ✅ |  |
-| `api users-application-passwords-create` | `--user-id` | ✅ |  |
-| `api users-application-passwords-create` | `--body` | ✅ |  |
-| `api users-application-passwords-create` | `--body-file` | ✅ |  |
-| `api users-application-passwords-delete-all` |  | ✅ |  |
-| `api users-application-passwords-delete-all` | `--user-id` | ✅ |  |
 | `api users-application-passwords-get` |  | ✅ |  |
 | `api users-application-passwords-get` | `--user-id` | ✅ |  |
 | `api users-application-passwords-get` | `--uuid` | ✅ |  |

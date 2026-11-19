@@ -31,6 +31,15 @@ it("every option of the content commands runs over a synced copy", async () => {
   const [tag] = service.ids("term") as [string]
   const text = join(process.env.WCWP_CONFIG_DIR ?? "", "..", "post.md")
   writeFileSync(text, "# Notes\n\nA short post.\n")
+  const post = (id: string) =>
+    service.rows.post?.[0]?.find((one) => String(one.id) === id) as
+      | { status?: string; content?: { raw?: string } }
+      | undefined
+  const ok = async (argv: string[]) => {
+    const answer = await ran(argv)
+    expect(answer.code, `${argv.join(" ")}: ${answer.err}`).toBe(0)
+    return answer
+  }
   for (const argv of [
     ["channels", "list"],
     ["posts", "list", "--limit", "1", "--page", "1"],
@@ -39,7 +48,12 @@ it("every option of the content commands runs over a synced copy", async () => {
     ["posts", "stats", first],
     ["users", "list", "--limit", "1", "--page", "1"],
     ["tags", "list", "--limit", "1", "--page", "1"],
-    [
+  ]) {
+    await ok(argv)
+  }
+
+  const created = (
+    await ok([
       "posts",
       "create",
       "--title",
@@ -55,17 +69,53 @@ it("every option of the content commands runs over a synced copy", async () => {
       "--type",
       "post",
       "--yes",
-    ],
-    ["posts", "update", first, "--text-file", text, "--description", "New", "--slug", "new", "--tags", tag, "--yes"],
-    ["posts", "update", first, "--text-file", text, "--replace-body", "--yes"],
-    ["posts", "publish", first, "--yes"],
-    ["posts", "unpublish", first, "--yes"],
-    ["posts", "publish", first, "--at-time", "2030-01-01T10:00:00Z", "--yes"],
-    ["posts", "delete", second, "--yes"],
-    ["posts", "delete", second, "--allow-delete", "--yes"],
-  ]) {
-    const answer = await ran(argv)
-    expect(answer.code, `${argv.join(" ")}: ${answer.err}`).toBe(0)
-  }
+    ])
+  ).json() as { item: { post: { external_id: string } } }
+  expect(post(created.item.post.external_id)).toMatchObject({
+    status: "draft",
+    title: { raw: "Notes" },
+    excerpt: { raw: "Short" },
+    slug: "notes",
+    tags: [Number(tag)],
+  })
+  expect(String(post(created.item.post.external_id)?.content?.raw)).toContain("A short post.")
+
+  await ok([
+    "posts",
+    "update",
+    first,
+    "--text-file",
+    text,
+    "--description",
+    "New",
+    "--slug",
+    "new",
+    "--tags",
+    tag,
+    "--yes",
+  ])
+  expect(post(first)).toMatchObject({ excerpt: { raw: "New" }, slug: "new", tags: [Number(tag)] })
+
+  // An embed Markdown cannot hold: the body is kept unless --replace-body says to drop it.
+  const embed = '<!-- wp:embed {"url":"https://example.com/v"} -->\n<figure>v</figure>\n<!-- /wp:embed -->'
+  Object.assign(post(first) ?? {}, { content: { raw: embed } })
+  await ok(["sync"])
+  const kept = await ran(["posts", "update", first, "--text-file", text, "--yes"])
+  expect(kept.err).toContain("content.lossy-body")
+  expect(post(first)?.content).toEqual({ raw: embed })
+  await ok(["posts", "update", first, "--text-file", text, "--replace-body", "--yes"])
+  expect(String(post(first)?.content?.raw)).toContain("A short post.")
+
+  await ok(["posts", "publish", first, "--yes"])
+  expect(post(first)?.status).toBe("publish")
+  await ok(["posts", "unpublish", first, "--yes"])
+  expect(post(first)?.status).toBe("draft")
+  await ok(["posts", "publish", first, "--at-time", "2030-01-01T10:00:00Z", "--yes"])
+  expect(post(first)).toMatchObject({ status: "future", date_gmt: "2030-01-01T10:00:00Z" })
+
+  await ok(["posts", "delete", second, "--yes"])
+  expect(post(second)?.status).toBe("trash")
+  await ok(["posts", "delete", second, "--allow-delete", "--yes"])
+  expect(post(second)).toBeUndefined()
   expect(service.refusals).toEqual([])
 })
