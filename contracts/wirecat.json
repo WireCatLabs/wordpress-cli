@@ -1,0 +1,2571 @@
+{
+  "wcat_manifest": 2,
+  "name": "wordpress",
+  "description": "a new WireCat CLI, started from cli-template",
+  "docs_url": "https://github.com/WireCatLabs/wordpress-cli#readme",
+  "package": "@wirecat/wordpress-cli",
+  "bin": "wcat-wordpress",
+  "commands": [
+    {
+      "path": [
+        "commands"
+      ],
+      "summary": "every command by section; --json prints its contract, one path per call",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      }
+    },
+    {
+      "path": [
+        "commands",
+        "info"
+      ],
+      "summary": "one command contract, or all schemas, error reasons and explicit overrides",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      }
+    },
+    {
+      "path": [
+        "session",
+        "start"
+      ],
+      "summary": "sign in to WordPress with its application password",
+      "effects": {
+        "remote": "read",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "session",
+        "status"
+      ],
+      "summary": "show where this profile's token comes from; never the token",
+      "effects": {
+        "remote": "read",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "session",
+        "end"
+      ],
+      "summary": "forget this profile's token on this computer",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "session",
+        "list"
+      ],
+      "summary": "list the profiles here and whether each is signed in",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "api",
+        "list"
+      ],
+      "summary": "list every WordPress API operation this CLI offers, without calling WordPress",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      },
+      "permission": "api.list",
+      "entity": "api_operation"
+    },
+    {
+      "path": [
+        "api",
+        "show"
+      ],
+      "summary": "show one operation's parameters and request schema, without calling WordPress",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      },
+      "permission": "api.show"
+    },
+    {
+      "path": [
+        "api",
+        "block-directory-search-list"
+      ],
+      "summary": "getWpV2BlockDirectorySearch — read (GET /wp/v2/block-directory/search)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-directory-search-list"
+    },
+    {
+      "path": [
+        "api",
+        "block-patterns-categories-list"
+      ],
+      "summary": "getWpV2BlockPatternsCategories — read (GET /wp/v2/block-patterns/categories)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-patterns-categories-list"
+    },
+    {
+      "path": [
+        "api",
+        "block-patterns-patterns-list"
+      ],
+      "summary": "getWpV2BlockPatternsPatterns — read (GET /wp/v2/block-patterns/patterns)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-patterns-patterns-list"
+    },
+    {
+      "path": [
+        "api",
+        "block-types-list"
+      ],
+      "summary": "getWpV2BlockTypes — read (GET /wp/v2/block-types)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-types-list"
+    },
+    {
+      "path": [
+        "api",
+        "block-types-list-namespace"
+      ],
+      "summary": "getWpV2BlockTypesByNamespace — read (GET /wp/v2/block-types/{namespace})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-types-list-namespace"
+    },
+    {
+      "path": [
+        "api",
+        "block-types-get"
+      ],
+      "summary": "getWpV2BlockTypesByNamespaceByName — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.block-types-get"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-list"
+      ],
+      "summary": "getWpV2Blocks — read (GET /wp/v2/blocks)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-list"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-create"
+      ],
+      "summary": "postWpV2Blocks — write (POST /wp/v2/blocks)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.blocks-create"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-get"
+      ],
+      "summary": "getWpV2BlocksById — read (GET /wp/v2/blocks/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-get"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-update"
+      ],
+      "summary": "postWpV2BlocksById — write (POST /wp/v2/blocks/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.blocks-update"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-delete"
+      ],
+      "summary": "deleteWpV2BlocksById — destructive (DELETE /wp/v2/blocks/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.blocks-delete"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-autosaves-list"
+      ],
+      "summary": "getWpV2BlocksByIdAutosaves — read (GET /wp/v2/blocks/{id}/autosaves)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-autosaves-list"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-autosaves-create"
+      ],
+      "summary": "postWpV2BlocksByIdAutosaves — write (POST /wp/v2/blocks/{id}/autosaves)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.blocks-autosaves-create"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-autosaves-get"
+      ],
+      "summary": "getWpV2BlocksByParentAutosavesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-autosaves-get"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-revisions-list"
+      ],
+      "summary": "getWpV2BlocksByParentRevisions — read (GET /wp/v2/blocks/{parent}/revisions)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-revisions-list"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-revisions-get"
+      ],
+      "summary": "getWpV2BlocksByParentRevisionsById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.blocks-revisions-get"
+    },
+    {
+      "path": [
+        "api",
+        "blocks-revisions-delete"
+      ],
+      "summary": "deleteWpV2BlocksByParentRevisionsById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.blocks-revisions-delete"
+    },
+    {
+      "path": [
+        "api",
+        "categories-list"
+      ],
+      "summary": "getWpV2Categories — read (GET /wp/v2/categories)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.categories-list"
+    },
+    {
+      "path": [
+        "api",
+        "categories-create"
+      ],
+      "summary": "postWpV2Categories — write (POST /wp/v2/categories)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.categories-create"
+    },
+    {
+      "path": [
+        "api",
+        "categories-get"
+      ],
+      "summary": "getWpV2CategoriesById — read (GET /wp/v2/categories/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.categories-get"
+    },
+    {
+      "path": [
+        "api",
+        "categories-update"
+      ],
+      "summary": "postWpV2CategoriesById — write (POST /wp/v2/categories/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.categories-update"
+    },
+    {
+      "path": [
+        "api",
+        "categories-delete"
+      ],
+      "summary": "deleteWpV2CategoriesById — destructive (DELETE /wp/v2/categories/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.categories-delete"
+    },
+    {
+      "path": [
+        "api",
+        "comments-list"
+      ],
+      "summary": "getWpV2Comments — read (GET /wp/v2/comments)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.comments-list"
+    },
+    {
+      "path": [
+        "api",
+        "comments-create"
+      ],
+      "summary": "postWpV2Comments — write (POST /wp/v2/comments)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.comments-create"
+    },
+    {
+      "path": [
+        "api",
+        "comments-get"
+      ],
+      "summary": "getWpV2CommentsById — read (GET /wp/v2/comments/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.comments-get"
+    },
+    {
+      "path": [
+        "api",
+        "comments-update"
+      ],
+      "summary": "postWpV2CommentsById — write (POST /wp/v2/comments/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.comments-update"
+    },
+    {
+      "path": [
+        "api",
+        "comments-delete"
+      ],
+      "summary": "deleteWpV2CommentsById — destructive (DELETE /wp/v2/comments/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.comments-delete"
+    },
+    {
+      "path": [
+        "api",
+        "font-collections-list"
+      ],
+      "summary": "getWpV2FontCollections — read (GET /wp/v2/font-collections)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.font-collections-list"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-list"
+      ],
+      "summary": "getWpV2FontFamilies — read (GET /wp/v2/font-families)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.font-families-list"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-create"
+      ],
+      "summary": "postWpV2FontFamilies — write (POST /wp/v2/font-families)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.font-families-create"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-font-faces-list"
+      ],
+      "summary": "getWpV2FontFamiliesByFontFamilyIdFontFaces — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.font-families-font-faces-list"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-font-faces-create"
+      ],
+      "summary": "postWpV2FontFamiliesByFontFamilyIdFontFaces — write (POST…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.font-families-font-faces-create"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-font-faces-get"
+      ],
+      "summary": "getWpV2FontFamiliesByFontFamilyIdFontFacesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.font-families-font-faces-get"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-font-faces-delete"
+      ],
+      "summary": "deleteWpV2FontFamiliesByFontFamilyIdFontFacesById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.font-families-font-faces-delete"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-get"
+      ],
+      "summary": "getWpV2FontFamiliesById — read (GET /wp/v2/font-families/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.font-families-get"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-update"
+      ],
+      "summary": "postWpV2FontFamiliesById — write (POST /wp/v2/font-families/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.font-families-update"
+    },
+    {
+      "path": [
+        "api",
+        "font-families-delete"
+      ],
+      "summary": "deleteWpV2FontFamiliesById — destructive (DELETE /wp/v2/font-families/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.font-families-delete"
+    },
+    {
+      "path": [
+        "api",
+        "global-styles-revisions-list"
+      ],
+      "summary": "getWpV2GlobalStylesByParentRevisions — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.global-styles-revisions-list"
+    },
+    {
+      "path": [
+        "api",
+        "global-styles-revisions-get"
+      ],
+      "summary": "getWpV2GlobalStylesByParentRevisionsById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.global-styles-revisions-get"
+    },
+    {
+      "path": [
+        "api",
+        "media-list"
+      ],
+      "summary": "getWpV2Media — read (GET /wp/v2/media)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.media-list"
+    },
+    {
+      "path": [
+        "api",
+        "media-create"
+      ],
+      "summary": "postWpV2Media — write (POST /wp/v2/media)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.media-create"
+    },
+    {
+      "path": [
+        "api",
+        "media-get"
+      ],
+      "summary": "getWpV2MediaById — read (GET /wp/v2/media/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.media-get"
+    },
+    {
+      "path": [
+        "api",
+        "media-update"
+      ],
+      "summary": "postWpV2MediaById — write (POST /wp/v2/media/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.media-update"
+    },
+    {
+      "path": [
+        "api",
+        "media-delete"
+      ],
+      "summary": "deleteWpV2MediaById — destructive (DELETE /wp/v2/media/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.media-delete"
+    },
+    {
+      "path": [
+        "api",
+        "media-edit"
+      ],
+      "summary": "postWpV2MediaByIdEdit — write (POST /wp/v2/media/{id}/edit)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.media-edit"
+    },
+    {
+      "path": [
+        "api",
+        "media-post-process"
+      ],
+      "summary": "postWpV2MediaByIdPostProcess — write (POST /wp/v2/media/{id}/post-process)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.media-post-process"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-list"
+      ],
+      "summary": "getWpV2MenuItems — read (GET /wp/v2/menu-items)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-items-list"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-create"
+      ],
+      "summary": "postWpV2MenuItems — write (POST /wp/v2/menu-items)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menu-items-create"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-get"
+      ],
+      "summary": "getWpV2MenuItemsById — read (GET /wp/v2/menu-items/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-items-get"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-update"
+      ],
+      "summary": "postWpV2MenuItemsById — write (POST /wp/v2/menu-items/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menu-items-update"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-delete"
+      ],
+      "summary": "deleteWpV2MenuItemsById — destructive (DELETE /wp/v2/menu-items/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menu-items-delete"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-autosaves-list"
+      ],
+      "summary": "getWpV2MenuItemsByIdAutosaves — read (GET /wp/v2/menu-items/{id}/autosaves)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-items-autosaves-list"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-autosaves-create"
+      ],
+      "summary": "postWpV2MenuItemsByIdAutosaves — write (POST /wp/v2/menu-items/{id}/autosaves)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menu-items-autosaves-create"
+    },
+    {
+      "path": [
+        "api",
+        "menu-items-autosaves-get"
+      ],
+      "summary": "getWpV2MenuItemsByParentAutosavesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-items-autosaves-get"
+    },
+    {
+      "path": [
+        "api",
+        "menu-locations-list"
+      ],
+      "summary": "getWpV2MenuLocations — read (GET /wp/v2/menu-locations)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-locations-list"
+    },
+    {
+      "path": [
+        "api",
+        "menu-locations-get"
+      ],
+      "summary": "getWpV2MenuLocationsByLocation — read (GET /wp/v2/menu-locations/{location})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menu-locations-get"
+    },
+    {
+      "path": [
+        "api",
+        "menus-list"
+      ],
+      "summary": "getWpV2Menus — read (GET /wp/v2/menus)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menus-list"
+    },
+    {
+      "path": [
+        "api",
+        "menus-create"
+      ],
+      "summary": "postWpV2Menus — write (POST /wp/v2/menus)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menus-create"
+    },
+    {
+      "path": [
+        "api",
+        "menus-get"
+      ],
+      "summary": "getWpV2MenusById — read (GET /wp/v2/menus/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.menus-get"
+    },
+    {
+      "path": [
+        "api",
+        "menus-update"
+      ],
+      "summary": "postWpV2MenusById — write (POST /wp/v2/menus/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menus-update"
+    },
+    {
+      "path": [
+        "api",
+        "menus-delete"
+      ],
+      "summary": "deleteWpV2MenusById — destructive (DELETE /wp/v2/menus/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.menus-delete"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-list"
+      ],
+      "summary": "getWpV2Navigation — read (GET /wp/v2/navigation)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-list"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-create"
+      ],
+      "summary": "postWpV2Navigation — write (POST /wp/v2/navigation)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.navigation-create"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-get"
+      ],
+      "summary": "getWpV2NavigationById — read (GET /wp/v2/navigation/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-get"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-update"
+      ],
+      "summary": "postWpV2NavigationById — write (POST /wp/v2/navigation/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.navigation-update"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-delete"
+      ],
+      "summary": "deleteWpV2NavigationById — destructive (DELETE /wp/v2/navigation/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.navigation-delete"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-autosaves-list"
+      ],
+      "summary": "getWpV2NavigationByIdAutosaves — read (GET /wp/v2/navigation/{id}/autosaves)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-autosaves-list"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-autosaves-create"
+      ],
+      "summary": "postWpV2NavigationByIdAutosaves — write (POST /wp/v2/navigation/{id}/autosaves)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.navigation-autosaves-create"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-autosaves-get"
+      ],
+      "summary": "getWpV2NavigationByParentAutosavesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-autosaves-get"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-revisions-list"
+      ],
+      "summary": "getWpV2NavigationByParentRevisions — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-revisions-list"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-revisions-get"
+      ],
+      "summary": "getWpV2NavigationByParentRevisionsById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.navigation-revisions-get"
+    },
+    {
+      "path": [
+        "api",
+        "navigation-revisions-delete"
+      ],
+      "summary": "deleteWpV2NavigationByParentRevisionsById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.navigation-revisions-delete"
+    },
+    {
+      "path": [
+        "api",
+        "pages-list"
+      ],
+      "summary": "getWpV2Pages — read (GET /wp/v2/pages)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-list"
+    },
+    {
+      "path": [
+        "api",
+        "pages-create"
+      ],
+      "summary": "postWpV2Pages — write (POST /wp/v2/pages)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.pages-create"
+    },
+    {
+      "path": [
+        "api",
+        "pages-get"
+      ],
+      "summary": "getWpV2PagesById — read (GET /wp/v2/pages/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-get"
+    },
+    {
+      "path": [
+        "api",
+        "pages-update"
+      ],
+      "summary": "postWpV2PagesById — write (POST /wp/v2/pages/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.pages-update"
+    },
+    {
+      "path": [
+        "api",
+        "pages-delete"
+      ],
+      "summary": "deleteWpV2PagesById — destructive (DELETE /wp/v2/pages/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.pages-delete"
+    },
+    {
+      "path": [
+        "api",
+        "pages-autosaves-list"
+      ],
+      "summary": "getWpV2PagesByIdAutosaves — read (GET /wp/v2/pages/{id}/autosaves)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-autosaves-list"
+    },
+    {
+      "path": [
+        "api",
+        "pages-autosaves-create"
+      ],
+      "summary": "postWpV2PagesByIdAutosaves — write (POST /wp/v2/pages/{id}/autosaves)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.pages-autosaves-create"
+    },
+    {
+      "path": [
+        "api",
+        "pages-autosaves-get"
+      ],
+      "summary": "getWpV2PagesByParentAutosavesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-autosaves-get"
+    },
+    {
+      "path": [
+        "api",
+        "pages-revisions-list"
+      ],
+      "summary": "getWpV2PagesByParentRevisions — read (GET /wp/v2/pages/{parent}/revisions)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-revisions-list"
+    },
+    {
+      "path": [
+        "api",
+        "pages-revisions-get"
+      ],
+      "summary": "getWpV2PagesByParentRevisionsById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pages-revisions-get"
+    },
+    {
+      "path": [
+        "api",
+        "pages-revisions-delete"
+      ],
+      "summary": "deleteWpV2PagesByParentRevisionsById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.pages-revisions-delete"
+    },
+    {
+      "path": [
+        "api",
+        "pattern-directory-patterns-list"
+      ],
+      "summary": "getWpV2PatternDirectoryPatterns — read (GET /wp/v2/pattern-directory/patterns)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.pattern-directory-patterns-list"
+    },
+    {
+      "path": [
+        "api",
+        "plugins-list"
+      ],
+      "summary": "getWpV2Plugins — read (GET /wp/v2/plugins)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.plugins-list"
+    },
+    {
+      "path": [
+        "api",
+        "plugins-create"
+      ],
+      "summary": "postWpV2Plugins — write (POST /wp/v2/plugins)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.plugins-create"
+    },
+    {
+      "path": [
+        "api",
+        "posts-list"
+      ],
+      "summary": "getWpV2Posts — read (GET /wp/v2/posts)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-list"
+    },
+    {
+      "path": [
+        "api",
+        "posts-create"
+      ],
+      "summary": "postWpV2Posts — write (POST /wp/v2/posts)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.posts-create"
+    },
+    {
+      "path": [
+        "api",
+        "posts-get"
+      ],
+      "summary": "getWpV2PostsById — read (GET /wp/v2/posts/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-get"
+    },
+    {
+      "path": [
+        "api",
+        "posts-update"
+      ],
+      "summary": "postWpV2PostsById — write (POST /wp/v2/posts/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.posts-update"
+    },
+    {
+      "path": [
+        "api",
+        "posts-delete"
+      ],
+      "summary": "deleteWpV2PostsById — destructive (DELETE /wp/v2/posts/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.posts-delete"
+    },
+    {
+      "path": [
+        "api",
+        "posts-autosaves-list"
+      ],
+      "summary": "getWpV2PostsByIdAutosaves — read (GET /wp/v2/posts/{id}/autosaves)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-autosaves-list"
+    },
+    {
+      "path": [
+        "api",
+        "posts-autosaves-create"
+      ],
+      "summary": "postWpV2PostsByIdAutosaves — write (POST /wp/v2/posts/{id}/autosaves)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.posts-autosaves-create"
+    },
+    {
+      "path": [
+        "api",
+        "posts-autosaves-get"
+      ],
+      "summary": "getWpV2PostsByParentAutosavesById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-autosaves-get"
+    },
+    {
+      "path": [
+        "api",
+        "posts-revisions-list"
+      ],
+      "summary": "getWpV2PostsByParentRevisions — read (GET /wp/v2/posts/{parent}/revisions)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-revisions-list"
+    },
+    {
+      "path": [
+        "api",
+        "posts-revisions-get"
+      ],
+      "summary": "getWpV2PostsByParentRevisionsById — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.posts-revisions-get"
+    },
+    {
+      "path": [
+        "api",
+        "posts-revisions-delete"
+      ],
+      "summary": "deleteWpV2PostsByParentRevisionsById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.posts-revisions-delete"
+    },
+    {
+      "path": [
+        "api",
+        "search-list"
+      ],
+      "summary": "getWpV2Search — read (GET /wp/v2/search)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.search-list"
+    },
+    {
+      "path": [
+        "api",
+        "settings-list"
+      ],
+      "summary": "getWpV2Settings — read (GET /wp/v2/settings)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.settings-list"
+    },
+    {
+      "path": [
+        "api",
+        "settings-create"
+      ],
+      "summary": "postWpV2Settings — write (POST /wp/v2/settings)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.settings-create"
+    },
+    {
+      "path": [
+        "api",
+        "sidebars-list"
+      ],
+      "summary": "getWpV2Sidebars — read (GET /wp/v2/sidebars)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.sidebars-list"
+    },
+    {
+      "path": [
+        "api",
+        "sidebars-get"
+      ],
+      "summary": "getWpV2SidebarsById — read (GET /wp/v2/sidebars/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.sidebars-get"
+    },
+    {
+      "path": [
+        "api",
+        "sidebars-update"
+      ],
+      "summary": "postWpV2SidebarsById — write (POST /wp/v2/sidebars/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.sidebars-update"
+    },
+    {
+      "path": [
+        "api",
+        "statuses-list"
+      ],
+      "summary": "getWpV2Statuses — read (GET /wp/v2/statuses)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.statuses-list"
+    },
+    {
+      "path": [
+        "api",
+        "statuses-get"
+      ],
+      "summary": "getWpV2StatusesByStatus — read (GET /wp/v2/statuses/{status})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.statuses-get"
+    },
+    {
+      "path": [
+        "api",
+        "tags-list"
+      ],
+      "summary": "getWpV2Tags — read (GET /wp/v2/tags)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.tags-list"
+    },
+    {
+      "path": [
+        "api",
+        "tags-create"
+      ],
+      "summary": "postWpV2Tags — write (POST /wp/v2/tags)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.tags-create"
+    },
+    {
+      "path": [
+        "api",
+        "tags-get"
+      ],
+      "summary": "getWpV2TagsById — read (GET /wp/v2/tags/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.tags-get"
+    },
+    {
+      "path": [
+        "api",
+        "tags-update"
+      ],
+      "summary": "postWpV2TagsById — write (POST /wp/v2/tags/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.tags-update"
+    },
+    {
+      "path": [
+        "api",
+        "tags-delete"
+      ],
+      "summary": "deleteWpV2TagsById — destructive (DELETE /wp/v2/tags/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.tags-delete"
+    },
+    {
+      "path": [
+        "api",
+        "taxonomies-list"
+      ],
+      "summary": "getWpV2Taxonomies — read (GET /wp/v2/taxonomies)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.taxonomies-list"
+    },
+    {
+      "path": [
+        "api",
+        "taxonomies-get"
+      ],
+      "summary": "getWpV2TaxonomiesByTaxonomy — read (GET /wp/v2/taxonomies/{taxonomy})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.taxonomies-get"
+    },
+    {
+      "path": [
+        "api",
+        "template-parts-list"
+      ],
+      "summary": "getWpV2TemplateParts — read (GET /wp/v2/template-parts)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.template-parts-list"
+    },
+    {
+      "path": [
+        "api",
+        "template-parts-create"
+      ],
+      "summary": "postWpV2TemplateParts — write (POST /wp/v2/template-parts)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.template-parts-create"
+    },
+    {
+      "path": [
+        "api",
+        "template-parts-lookup-list"
+      ],
+      "summary": "getWpV2TemplatePartsLookup — read (GET /wp/v2/template-parts/lookup)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.template-parts-lookup-list"
+    },
+    {
+      "path": [
+        "api",
+        "templates-list"
+      ],
+      "summary": "getWpV2Templates — read (GET /wp/v2/templates)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.templates-list"
+    },
+    {
+      "path": [
+        "api",
+        "templates-create"
+      ],
+      "summary": "postWpV2Templates — write (POST /wp/v2/templates)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.templates-create"
+    },
+    {
+      "path": [
+        "api",
+        "templates-lookup-list"
+      ],
+      "summary": "getWpV2TemplatesLookup — read (GET /wp/v2/templates/lookup)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.templates-lookup-list"
+    },
+    {
+      "path": [
+        "api",
+        "themes-list"
+      ],
+      "summary": "getWpV2Themes — read (GET /wp/v2/themes)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.themes-list"
+    },
+    {
+      "path": [
+        "api",
+        "types-list"
+      ],
+      "summary": "getWpV2Types — read (GET /wp/v2/types)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.types-list"
+    },
+    {
+      "path": [
+        "api",
+        "types-get"
+      ],
+      "summary": "getWpV2TypesByType — read (GET /wp/v2/types/{type})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.types-get"
+    },
+    {
+      "path": [
+        "api",
+        "users-list"
+      ],
+      "summary": "getWpV2Users — read (GET /wp/v2/users)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-list"
+    },
+    {
+      "path": [
+        "api",
+        "users-create"
+      ],
+      "summary": "postWpV2Users — write (POST /wp/v2/users)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-create"
+    },
+    {
+      "path": [
+        "api",
+        "users-get"
+      ],
+      "summary": "getWpV2UsersById — read (GET /wp/v2/users/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-get"
+    },
+    {
+      "path": [
+        "api",
+        "users-update"
+      ],
+      "summary": "postWpV2UsersById — write (POST /wp/v2/users/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-update"
+    },
+    {
+      "path": [
+        "api",
+        "users-delete"
+      ],
+      "summary": "deleteWpV2UsersById — destructive (DELETE /wp/v2/users/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-delete"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-list"
+      ],
+      "summary": "getWpV2UsersByUserIdApplicationPasswords — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-list"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-create"
+      ],
+      "summary": "postWpV2UsersByUserIdApplicationPasswords — write (POST…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-create"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-delete-all"
+      ],
+      "summary": "deleteWpV2UsersByUserIdApplicationPasswords — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-delete-all"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-get"
+      ],
+      "summary": "getWpV2UsersByUserIdApplicationPasswordsByUuid — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-get"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-update"
+      ],
+      "summary": "postWpV2UsersByUserIdApplicationPasswordsByUuid — write (POST…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-update"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-delete"
+      ],
+      "summary": "deleteWpV2UsersByUserIdApplicationPasswordsByUuid — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-delete"
+    },
+    {
+      "path": [
+        "api",
+        "users-application-passwords-introspect-list"
+      ],
+      "summary": "getWpV2UsersByUserIdApplicationPasswordsIntrospect — read (GET…",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-application-passwords-introspect-list"
+    },
+    {
+      "path": [
+        "api",
+        "users-me-get"
+      ],
+      "summary": "getWpV2UsersMe — read (GET /wp/v2/users/me)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.users-me-get"
+    },
+    {
+      "path": [
+        "api",
+        "users-me-create"
+      ],
+      "summary": "postWpV2UsersMe — write (POST /wp/v2/users/me)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-me-create"
+    },
+    {
+      "path": [
+        "api",
+        "users-me-delete"
+      ],
+      "summary": "deleteWpV2UsersMe — destructive (DELETE /wp/v2/users/me)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.users-me-delete"
+    },
+    {
+      "path": [
+        "api",
+        "widget-types-list"
+      ],
+      "summary": "getWpV2WidgetTypes — read (GET /wp/v2/widget-types)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.widget-types-list"
+    },
+    {
+      "path": [
+        "api",
+        "widget-types-get"
+      ],
+      "summary": "getWpV2WidgetTypesById — read (GET /wp/v2/widget-types/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.widget-types-get"
+    },
+    {
+      "path": [
+        "api",
+        "widget-types-encode"
+      ],
+      "summary": "postWpV2WidgetTypesByIdEncode — write (POST /wp/v2/widget-types/{id}/encode)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.widget-types-encode"
+    },
+    {
+      "path": [
+        "api",
+        "widget-types-render"
+      ],
+      "summary": "postWpV2WidgetTypesByIdRender — write (POST /wp/v2/widget-types/{id}/render)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.widget-types-render"
+    },
+    {
+      "path": [
+        "api",
+        "widgets-list"
+      ],
+      "summary": "getWpV2Widgets — read (GET /wp/v2/widgets)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.widgets-list"
+    },
+    {
+      "path": [
+        "api",
+        "widgets-create"
+      ],
+      "summary": "postWpV2Widgets — write (POST /wp/v2/widgets)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.widgets-create"
+    },
+    {
+      "path": [
+        "api",
+        "widgets-get"
+      ],
+      "summary": "getWpV2WidgetsById — read (GET /wp/v2/widgets/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.widgets-get"
+    },
+    {
+      "path": [
+        "api",
+        "widgets-update"
+      ],
+      "summary": "postWpV2WidgetsById — write (POST /wp/v2/widgets/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.widgets-update"
+    },
+    {
+      "path": [
+        "api",
+        "widgets-delete"
+      ],
+      "summary": "deleteWpV2WidgetsById — destructive (DELETE /wp/v2/widgets/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.widgets-delete"
+    },
+    {
+      "path": [
+        "api",
+        "wp-pattern-category-list"
+      ],
+      "summary": "getWpV2WpPatternCategory — read (GET /wp/v2/wp_pattern_category)",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.wp-pattern-category-list"
+    },
+    {
+      "path": [
+        "api",
+        "wp-pattern-category-create"
+      ],
+      "summary": "postWpV2WpPatternCategory — write (POST /wp/v2/wp_pattern_category)",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.wp-pattern-category-create"
+    },
+    {
+      "path": [
+        "api",
+        "wp-pattern-category-get"
+      ],
+      "summary": "getWpV2WpPatternCategoryById — read (GET /wp/v2/wp_pattern_category/{id})",
+      "effects": {
+        "remote": "read",
+        "local": "none"
+      },
+      "permission": "api.wp-pattern-category-get"
+    },
+    {
+      "path": [
+        "api",
+        "wp-pattern-category-update"
+      ],
+      "summary": "postWpV2WpPatternCategoryById — write (POST /wp/v2/wp_pattern_category/{id})",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.wp-pattern-category-update"
+    },
+    {
+      "path": [
+        "api",
+        "wp-pattern-category-delete"
+      ],
+      "summary": "deleteWpV2WpPatternCategoryById — destructive (DELETE…",
+      "effects": {
+        "remote": "write",
+        "local": "none"
+      },
+      "permission": "api.wp-pattern-category-delete"
+    },
+    {
+      "path": [
+        "sync"
+      ],
+      "summary": "bring the copy of your posts up to date: channels, authors, tags and…",
+      "effects": {
+        "remote": "read",
+        "local": "write"
+      },
+      "permission": "sync",
+      "entity": "content_sync"
+    },
+    {
+      "path": [
+        "channels",
+        "list"
+      ],
+      "summary": "the channels copied by the last sync",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "channels.list",
+      "entity": "content_channel"
+    },
+    {
+      "path": [
+        "posts",
+        "list"
+      ],
+      "summary": "posts copied from the source, newest change first; run sync to bring them up…",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "posts.list",
+      "entity": "content_post"
+    },
+    {
+      "path": [
+        "posts",
+        "show"
+      ],
+      "summary": "one post with its text, its authors and tags by name, its earlier versions…",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "posts.show",
+      "entity": "content_post_detail"
+    },
+    {
+      "path": [
+        "posts",
+        "search"
+      ],
+      "summary": "find posts in the copy by the words of their title and text",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "posts.search",
+      "entity": "content_hit"
+    },
+    {
+      "path": [
+        "posts",
+        "stats"
+      ],
+      "summary": "a post's readings of its numbers, one per sync, each kept, the newest first",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "posts.stats",
+      "entity": "content_metric"
+    },
+    {
+      "path": [
+        "posts",
+        "create"
+      ],
+      "summary": "write a new draft; publishing is its own step, posts publish",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      },
+      "permission": "posts.create",
+      "entity": "content_write"
+    },
+    {
+      "path": [
+        "posts",
+        "update"
+      ],
+      "summary": "change a post's fields; a published or scheduled post's change is public and…",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      },
+      "permission": "posts.update",
+      "entity": "content_write"
+    },
+    {
+      "path": [
+        "posts",
+        "publish"
+      ],
+      "summary": "publish a post now, or at a later time with --at-time; a published post is…",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      },
+      "permission": "posts.publish",
+      "entity": "content_write"
+    },
+    {
+      "path": [
+        "posts",
+        "unpublish"
+      ],
+      "summary": "bring a published or scheduled post back to a draft",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      },
+      "permission": "posts.unpublish",
+      "entity": "content_write"
+    },
+    {
+      "path": [
+        "posts",
+        "delete"
+      ],
+      "summary": "move a post to the source's trash, from which it comes back; --allow-delete…",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      },
+      "permission": "posts.delete",
+      "entity": "content_write"
+    },
+    {
+      "path": [
+        "users",
+        "list"
+      ],
+      "summary": "users copied from the source",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "users.list",
+      "entity": "content_author"
+    },
+    {
+      "path": [
+        "tags",
+        "list"
+      ],
+      "summary": "tags copied from the source",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "permission": "tags.list",
+      "entity": "content_term"
+    },
+    {
+      "path": [
+        "doctor"
+      ],
+      "summary": "the state this installation is in, without connecting unless --online",
+      "effects": {
+        "remote": "read",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "doctor",
+        "reports",
+        "show"
+      ],
+      "summary": "what a report holds and never holds, and where to send it; writes nothing",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      }
+    },
+    {
+      "path": [
+        "doctor",
+        "reports",
+        "create"
+      ],
+      "summary": "the report file written: its path, the run it is about, and where to send it",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      },
+      "permission": "doctor.reports.create"
+    },
+    {
+      "path": [
+        "skill",
+        "show"
+      ],
+      "summary": "print the tool's instructions for AI agents",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "skill",
+        "install"
+      ],
+      "summary": "install the tool's instructions for AI agents",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "skill",
+        "status"
+      ],
+      "summary": "whether the installed instructions for AI agents match this version",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "serve"
+      ],
+      "summary": "serve this profile's commands to an AI agent",
+      "effects": {
+        "remote": "write",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "revoke"
+      ],
+      "summary": "forget every login given to a browser app",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "server",
+        "start"
+      ],
+      "summary": "start the HTTP MCP server in the background",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "server",
+        "stop"
+      ],
+      "summary": "stop the background HTTP MCP server",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "server",
+        "status"
+      ],
+      "summary": "whether the HTTP MCP server runs, its login code and the apps logged in",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "config"
+      ],
+      "summary": "print the local MCP configuration of this profile, or of those --profiles names",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "add"
+      ],
+      "summary": "add this profile's local MCP server to Codex or Claude Code",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "mcp",
+        "check"
+      ],
+      "summary": "check this profile's local MCP handshake and tool list",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "upgrade"
+      ],
+      "summary": "upgrade wordpress with the package manager that installed it; --check only looks",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "config",
+        "show"
+      ],
+      "summary": "the profile, the profiles that exist, and each setting with where it came from",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      }
+    },
+    {
+      "path": [
+        "config",
+        "set"
+      ],
+      "summary": "save a setting to the configuration file",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "config",
+        "unset"
+      ],
+      "summary": "remove a setting from the configuration file",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "config",
+        "migrate"
+      ],
+      "summary": "write each setting the file lacks at its default, keeping yours",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "config",
+        "repair"
+      ],
+      "summary": "fix the settings file's JSON syntax, keeping every value",
+      "effects": {
+        "remote": "none",
+        "local": "write"
+      }
+    },
+    {
+      "path": [
+        "runs",
+        "list"
+      ],
+      "summary": "recorded runs, newest first",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "entity": "run"
+    },
+    {
+      "path": [
+        "runs",
+        "show"
+      ],
+      "summary": "one run: what it was, how it ended, and every event it logged",
+      "effects": {
+        "remote": "none",
+        "local": "read"
+      },
+      "entity": "run"
+    },
+    {
+      "path": [
+        "runs",
+        "path"
+      ],
+      "summary": "the directory holding one run",
+      "effects": {
+        "remote": "none",
+        "local": "none"
+      },
+      "entity": "run_location"
+    }
+  ],
+  "entities": {
+    "api_operation": {
+      "fields": [
+        "effect",
+        "tag"
+      ]
+    },
+    "content_channel": {
+      "fields": [
+        "external_id",
+        "kind",
+        "network",
+        "name"
+      ]
+    },
+    "content_post": {
+      "fields": [
+        "type"
+      ]
+    },
+    "content_author": {
+      "fields": [
+        "kind",
+        "external_id",
+        "deleted"
+      ]
+    },
+    "content_term": {
+      "fields": [
+        "kind",
+        "external_id",
+        "deleted"
+      ]
+    },
+    "run": {
+      "fields": [
+        "run_id",
+        "command",
+        "profile",
+        "started_at",
+        "completed_at",
+        "status",
+        "requests",
+        "duration_ms",
+        "cli_version",
+        "runtime",
+        "platform",
+        "arch",
+        "error_code",
+        "provider_error",
+        "kept_because_failed",
+        "operations",
+        "codes",
+        "trace_id",
+        "cli_command",
+        "argv",
+        "unknown_command",
+        "via",
+        "events_dropped",
+        "directory",
+        "event_count",
+        "events_truncated"
+      ]
+    }
+  },
+  "network": {
+    "hosts": [
+      "registry.npmjs.org",
+      "huggingface.co",
+      "*.huggingface.co",
+      "*.hf.co",
+      "github.com",
+      "*.githubusercontent.com"
+    ]
+  },
+  "desktop": {
+    "tagline": "A new WireCat CLI, started from cli-template",
+    "profiles": {
+      "args": [
+        "session",
+        "list",
+        "--no-record",
+        "--json"
+      ],
+      "shape": "items"
+    },
+    "doctor": [
+      "{profile}",
+      "doctor",
+      "--record",
+      "--json"
+    ],
+    "runs": {
+      "list": [
+        "runs",
+        "list",
+        "{query}",
+        "--limit",
+        "{limit}",
+        "--page",
+        "{page}",
+        "--no-record",
+        "--json"
+      ],
+      "show": [
+        "runs",
+        "show",
+        "{run}",
+        "--no-record",
+        "--json"
+      ]
+    },
+    "search": null,
+    "setup": [
+      "{profile}",
+      "session",
+      "start"
+    ],
+    "signIn": {
+      "gives": "Lets your agent read and change your account through wordpress.",
+      "asks": "An API token or key from the service."
+    },
+    "skill": {
+      "status": [
+        "skill",
+        "status",
+        "--no-record",
+        "--json"
+      ],
+      "install": [
+        "skill",
+        "install",
+        "--for",
+        "{target}",
+        "--json"
+      ],
+      "show": [
+        "skill",
+        "show",
+        "--no-record",
+        "--json"
+      ]
+    },
+    "mcpServer": {
+      "start": [
+        "mcp",
+        "server",
+        "start",
+        "--port",
+        "{port}",
+        "--public-url",
+        "{url}",
+        "--profiles",
+        "all",
+        "--json"
+      ],
+      "stop": [
+        "mcp",
+        "server",
+        "stop",
+        "--profiles",
+        "all",
+        "--json"
+      ],
+      "status": [
+        "mcp",
+        "server",
+        "status",
+        "--profiles",
+        "all",
+        "--no-record",
+        "--json"
+      ],
+      "revoke": [
+        "mcp",
+        "revoke",
+        "--profiles",
+        "all",
+        "--json"
+      ],
+      "config": [
+        "mcp",
+        "config",
+        "--profiles",
+        "all",
+        "--no-record",
+        "--json"
+      ]
+    },
+    "tasks": null,
+    "sync": {
+      "run": [
+        "{profile}",
+        "sync",
+        "--record",
+        "--json"
+      ],
+      "last": [
+        "runs",
+        "list",
+        "command:sync",
+        "status:success",
+        "--limit",
+        "50",
+        "--no-record",
+        "--json"
+      ],
+      "lastShape": "runs",
+      "what": "your authors, terms and posts",
+      "note": null
+    },
+    "storeInfo": null,
+    "storeTables": null,
+    "storeTableSizes": null,
+    "storeCheck": null,
+    "storeBackup": null,
+    "storeBackupEncrypted": null,
+    "storeResetPreview": null,
+    "storeReset": null,
+    "storage": {
+      "app": "wordpress-cli",
+      "env": "WCWP"
+    },
+    "settings": null,
+    "accountRemove": {
+      "signOut": [
+        "{profile}",
+        "session",
+        "end",
+        "--record",
+        "--json"
+      ],
+      "remove": null,
+      "removes": [
+        "signIn"
+      ],
+      "keeps": [
+        "settings",
+        "data",
+        "listed"
+      ]
+    }
+  }
+}

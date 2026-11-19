@@ -1,0 +1,7 @@
+{
+  "source": "https://localhost:8443/wp-json/?context=help",
+  "version": "6.9.4",
+  "sha256": "2803426ab0d29195eac6975e6bfcbe2d47ecfc7327d5d57c2a2abfab1f898f5e",
+  "retrieved_at": "2026-11-19T06:10:16.683Z",
+  "normalization": "the namespaces and each route's namespace, methods, endpoints and schema (without its links); keys sorted, 2-space JSON"
+}

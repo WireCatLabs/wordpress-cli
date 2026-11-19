@@ -1,0 +1,8 @@
+[
+  {
+    "name": "wordpress",
+    "members": ["wordpress", "tg", "max", "memo", "drive", "zm", "wa"],
+    "covers": ["commands", "upgrade"],
+    "differences": []
+  }
+]
