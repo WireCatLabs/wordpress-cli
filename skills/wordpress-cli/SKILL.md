@@ -1,6 +1,6 @@
 ---
 name: wordpress-cli
-description: Use wordpress to read and write the owner's self-hosted WordPress site: posts and pages with every status, their text as Markdown, tags, categories and authors, synced into the local WireCat store, and write drafts, update them, publish or schedule, unpublish and trash, with the owner's profile and JSON answers. Use when a task needs what the owner published or drafted on WordPress, a draft written from notes, a post published or scheduled, or a WordPress API operation (media, comments, menus).
+description: Use wordpress to read and write the owner's self-hosted WordPress site, its posts and pages with every status, their text as Markdown, tags, categories and authors, synced into the local WireCat store, and write drafts, update them, publish or schedule, unpublish and trash, with the owner's profile and JSON answers. Use when a task needs what the owner published or drafted on WordPress, a draft written from notes, a post published or scheduled, or a WordPress API operation (media, comments, menus).
 metadata:
   openclaw:
     requires:
