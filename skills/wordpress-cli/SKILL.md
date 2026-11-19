@@ -46,8 +46,8 @@ unless the task says.
   `type:page`, `tag:<id>`, `author:<id>`, `published:` with a time, `>=`, or `[a TO b]`.
 - **Ids are strings.** Pass them back unchanged.
 - **Missing is not absent.** A sync can be partial and still exit `0`: read `complete` and its gaps. An Author or
-  Contributor sign-in cannot list pages, a Contributor sees only their own posts, and only an Administrator lists the
-  users. Say so when it matters, and do not claim a post is not there.
+  Contributor sign-in gets only their own posts and no pages, and only an Administrator lists the users. Say so when
+  it matters, and do not claim a post is not there.
 - **No view counts.** WordPress keeps none. `posts stats` holds only what the store has.
 
 ## Write and publish

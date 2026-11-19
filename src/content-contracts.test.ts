@@ -139,3 +139,75 @@ it("sync before session start says to sign in, and sends nothing", async () => {
   expect(unsigned.json()).toMatchObject({ error: { code: "authentication_error" } })
   expect(sent).toEqual([])
 })
+
+// A call a role may not make names its right in `optional.needs`: a sign-in without it never sends the call (the fake
+// would list it in `refusals`), and the sync ends complete with that gap.
+type Needs = { check: string; message: string }
+const needs = Object.values(SOURCE.entities as Record<string, { optional?: { needs?: Needs } }[]>)
+  .flat()
+  .flatMap((entity) => (entity.optional?.needs ? [entity.optional.needs] : []))
+
+if (needs.length)
+  it("a sign-in without a call's right skips that call, says so, and the sync completes", async () => {
+    const keyring = memoryKeyring()
+    // A store of its own: the file's other tests sync every call's rows into the shared one.
+    const env = { MESSAGING_STORE: join(mkdtempSync(join(tmpdir(), "content-needs-")), "store.db") }
+    const started = await runCli(["personal", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+      keyring,
+      service: fakeServiceApi(),
+      stdin: password,
+    })
+    expect(started.code, started.err).toBe(0)
+    const fake = contentManifestFake(SOURCE, { api: API.manifest, lacks: needs.map((one) => one.check) })
+    fakes.push(fake)
+    const synced = await runCli(["personal", "sync", "--json"], { keyring, service: fake, env })
+    expect(synced.code, synced.err).toBe(0)
+    const report = synced.json().item as { state: string; gaps: { message: string }[] }
+    expect(report.state).toBe("complete")
+    expect(report.gaps.map((one) => one.message)).toEqual(expect.arrayContaining(needs.map((one) => one.message)))
+  })
+
+// What WordPress 6.9.4 gives each role (checked on a local site): no right to edit others' posts or any page, and no
+// users list. The pages list with a private status is refused to both, HTTP 400 with 403 in its details.
+const ROLES = {
+  author: ["edit_others_posts", "edit_pages", "edit_others_pages"],
+  contributor: ["edit_others_posts", "edit_pages", "edit_others_pages"],
+}
+
+for (const [role, rights] of Object.entries(ROLES))
+  it(`${role === "author" ? "An Author" : "A Contributor"} syncs their posts, never asks for the pages, and gets later edits`, async () => {
+    const keyring = memoryKeyring()
+    // A store of its own: the file's other tests sync pages into the shared one.
+    const env = { MESSAGING_STORE: join(mkdtempSync(join(tmpdir(), "content-role-")), "store.db") }
+    const started = await runCli(["personal", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+      keyring,
+      service: fakeServiceApi(),
+      stdin: password,
+    })
+    expect(started.code, started.err).toBe(0)
+    const fake = contentManifestFake(SOURCE, {
+      api: API.manifest,
+      lacks: rights.map((one) => `capabilities.${one}`),
+      denied: ["getWpV2Users"],
+    })
+    fakes.push(fake)
+    const sync = async () => {
+      const synced = await runCli(["personal", "sync", "--json"], { keyring, service: fake, env })
+      expect(synced.code, synced.err).toBe(0)
+      return synced.json().item as { state: string; gaps: { scope?: string; message: string }[] }
+    }
+    const first = await sync()
+    expect(first.state).toBe("complete")
+    expect(first.gaps.find((one) => one.scope === "edit_pages")?.message).toBe(
+      "only an editor or administrator reads the pages",
+    )
+    const [posts] = fake.rows.post ?? []
+    const post = posts?.[0] as { id: number; title: { raw: string } }
+    post.title = { raw: "Edited on the site" }
+    fake.touch("post", String(post.id))
+    expect((await sync()).state).toBe("complete")
+    const listed = await runCli(["personal", "posts", "list", "--json"], { keyring, service: fake, env })
+    const items = (listed.json() as { items: { external_id: string; type: string; title: string }[] }).items
+    expect(items.map((one) => one.type)).not.toContain("page")
+    expect(items.find((one) => one.external_id === String(post.id))?.title).toBe("Edited on the site")
+  })

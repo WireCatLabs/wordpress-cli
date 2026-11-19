@@ -34,8 +34,8 @@ wordpress blog session status --check    # asks your site whose password it is
 | No **Application Passwords** section in your profile | The site needs WordPress 5.7 or later over https, and a plugin or the host may turn the section off. Ask the site's admin. |
 | A WordPress.com address | WordPress.com sites are not supported, only self-hosted WordPress. |
 | `posts list` is empty | Run `wordpress blog sync` first. Posts are read from the copy it makes. |
-| `sync` ends partial, or pages are missing | An Author or Contributor sign-in cannot list pages, and a Contributor sees only their own posts. Only an Administrator lists the users. Sign in as an Administrator for a full copy, or as an Editor for every post and page. |
-| A change on the site is missing from the copy | Run `sync`. If it still ends partial, see the row above. |
+| `sync` names gaps, or pages are missing | An Author or Contributor sign-in cannot list pages and gets only their own posts; a Contributor only their drafts and posts waiting for review. Only an Administrator lists the users. Sign in as an Administrator for a full copy, or as an Editor for every post and page. |
+| A change on the site is missing from the copy | Run `sync`. If the post is not yours and you sign in as an Author or Contributor, see the row above. |
 | `content.conflict` | The post changed on the site since the last sync. Run `sync`, look at the post again, then retry. |
 | `content.lossy-body` | The post has galleries, columns, embeds or iframes that Markdown cannot keep. Change only its title, excerpt, tags or status, or add `--replace-body` to write the body anyway and flatten them. See [when a write stops](usage.md#when-a-write-stops). |
 | `content.schedule-past` | `--at-time` must be ahead of now. |

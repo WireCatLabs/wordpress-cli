@@ -24,8 +24,6 @@ and trash a post, each with its own permission. `wordpress blog api` reaches eve
 
 ## Next
 
-- **Full sync for Authors and Contributors.** Copy what an Author or Contributor may read, without stopping at the
-  pages list.
 - **Sign in with the browser.** Approve the tool in wp-admin, in place of pasting an application password.
 - **Plugin fields.** Read and set common plugin fields, such as an SEO title, without a raw `--body`.
 
