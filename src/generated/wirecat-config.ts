@@ -180,7 +180,7 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
           },
         },
         optional: {
-          message: "the sign-in may not read every post: an author or a contributor reads only its own",
+          message: "the sign-in may not read every post: an author or a contributor reads only their own",
           scope: "edit_others_posts",
           requires: {
             operation: "getWpV2UsersMe",

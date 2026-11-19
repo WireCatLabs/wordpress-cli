@@ -122,8 +122,8 @@ password.
 - Only self-hosted WordPress with application passwords. WordPress.com sites are not supported.
 - You paste the application password. Sign-in through the browser is on the [roadmap](roadmap.md).
 - An Author or Contributor gets only their own posts, and no pages: WordPress refuses the pages list to both. A
-  Contributor gets only their drafts and posts waiting for review. For both, a post deleted for good on the site
-  stays in the copy. Only an Administrator gets the users list. Sync reports each of these as a gap.
+  Contributor gets only their drafts and posts waiting for review. For both, a post that leaves their view stays in
+  the copy as it was: one deleted for good, or a Contributor's post an editor published. Only an Administrator gets the users list. Sync reports each of these as a gap.
 - No view counts. WordPress itself keeps none, and Jetpack stats are not supported. `posts stats` shows only what the
   copy has.
 - Plugin fields, such as those of SEO or custom field plugins, have no flags. The `api` group sends them in a raw
