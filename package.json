@@ -1,6 +1,6 @@
 {
   "name": "@wirecat/wordpress-cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "WordPress posts and pages: sync, search and write drafts from your agent",
   "license": "Apache-2.0",
   "author": "Viacheslav Ptsarev",
@@ -61,7 +61,7 @@
     "source:check": "node --experimental-strip-types scripts/source-check.ts"
   },
   "dependencies": {
-    "@wirecat/cli-base": "0.123.0",
+    "@wirecat/cli-base": "0.124.0",
     "@wirecat/cli-core": "0.707.0",
     "commander": "15.0.0",
     "valibot": "1.5.0"

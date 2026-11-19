@@ -1,4 +1,4 @@
-wordpress — a new WireCat CLI, started from cli-template
+wordpress — WordPress posts and pages, searchable with your other WireCat data
 
 Usage: wordpress <profile> <command> [options]
 Account commands start with your profile, a name you choose; none is ever assumed.
