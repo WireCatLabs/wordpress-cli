@@ -20,8 +20,8 @@ permissions allow.
 - A self-hosted WordPress site, version 5.7 or later, reached over https. WordPress makes application passwords only
   there. WordPress.com sites are not supported.
 - A user on the site. For a full copy, the user should be an Administrator. An Editor gets every post and page, but
-  WordPress lists the users to an Administrator only. An Author or Contributor gets only part of the site: WordPress
-  refuses them the pages list, so the posts sync stays partial. A Contributor also sees only their own posts.
+  WordPress lists the users to an Administrator only. An Author or Contributor gets only their own posts, and no pages:
+  WordPress refuses them the pages list. A Contributor gets only their drafts and posts waiting for review.
 - For the command line: Node.js 22.16 or a later 22.x, or Node.js 24 or later. Node 23 is not supported.
 
 ## Install the tool
