@@ -121,9 +121,9 @@ password.
 
 - Only self-hosted WordPress with application passwords. WordPress.com sites are not supported.
 - You paste the application password. Sign-in through the browser is on the [roadmap](roadmap.md).
-- An Author or Contributor gets only part of the site. WordPress refuses the pages list to both, so the posts sync
-  stays partial and changes on the site do not reach the copy. A Contributor also sees only their own posts. Only an
-  Administrator gets the users list. Sync reports each of these as a gap.
+- An Author or Contributor gets only their own posts, and no pages: WordPress refuses the pages list to both. A
+  Contributor gets only their drafts and posts waiting for review. For both, a post deleted for good on the site
+  stays in the copy. Only an Administrator gets the users list. Sync reports each of these as a gap.
 - No view counts. WordPress itself keeps none, and Jetpack stats are not supported. `posts stats` shows only what the
   copy has.
 - Plugin fields, such as those of SEO or custom field plugins, have no flags. The `api` group sends them in a raw

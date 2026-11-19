@@ -48,10 +48,11 @@ tags and categories, and the users who write. A post's text is kept as Markdown.
 Later syncs ask WordPress only for posts changed since then. Once a day a sync also finds the posts the site deleted
 for good. A post in the trash stays in the copy, with its status.
 
-A sync can end partial and still succeed: it names each gap. With an Author or Contributor sign-in, WordPress
-refuses the pages list, so the posts stay partial and changes on the site do not reach the copy. A Contributor also
-sees only their own posts. Only an Administrator gets the users list, so an Editor's copy has every post and page but
-no users. Sign in as an Administrator for a full copy.
+A sync names each gap: what your WordPress role may not read. With an Author or Contributor sign-in, the sync copies
+your own posts and skips the pages, as WordPress refuses the pages list to both. A Contributor gets only their drafts
+and posts waiting for review. For both, a post deleted for good on the site stays in the copy, while one in the trash
+shows as trashed. Only an Administrator gets the users list, so an Editor's copy has every post and page but no
+users. Sign in as an Administrator for a full copy.
 
 `--max-pages` caps the requests in one run. The next sync goes on from where it stopped.
 
