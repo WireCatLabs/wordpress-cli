@@ -2,6 +2,16 @@
 
 Notable changes to `@wirecat/wordpress-cli`. One section per version, newest first.
 
+## 0.1.1 — 19.11.2026
+
+### Fixed
+
+- **`posts delete --dry-run` names `api.posts-delete` too.** The delete sends through the `api` group's delete, whose
+  own key the run checks. With `posts.delete` set to `allow`, the preview said `allow` while the run still asked.
+- **The agent skill's header is valid YAML again.** `skills/wordpress-cli/SKILL.md` had `site: posts` in its
+  unquoted `description`, which a YAML reader takes as a new key and refuses. Agents and wirecat.dev that read the
+  skill's header now can.
+
 ## 0.1.0 — 19.11.2026
 
 ### Added
