@@ -118,4 +118,14 @@ it("every option of the content commands runs over a synced copy", async () => {
   await ok(["posts", "delete", second, "--allow-delete", "--yes"])
   expect(post(second)).toBeUndefined()
   expect(service.refusals).toEqual([])
+
+  // --dry-run names what each write checks: the content key at its level, and the api key it sends through.
+  type Preview = { item: { permission: { key: string; level: string; also?: { key: string }[] } } }
+  const preview = async (argv: string[]) => ((await ran([...argv, "--dry-run"])).json() as Preview).item.permission
+  const drafted = await preview(["posts", "create", "--title", "Notes"])
+  expect(drafted).toMatchObject({ key: "posts.create", level: "ask" })
+  expect(drafted.also?.map(({ key }) => key)).toContain("api.posts-create")
+  const erased = await preview(["posts", "delete", first, "--allow-delete"])
+  expect(erased).toMatchObject({ key: "posts.delete", level: "ask" })
+  expect(erased.also?.map(({ key }) => key)).toEqual(expect.arrayContaining(["posts.delete.force", "api.posts-delete"]))
 })
