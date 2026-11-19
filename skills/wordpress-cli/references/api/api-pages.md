@@ -41,7 +41,7 @@
 
 - What: postWpV2Pages — write (POST /wp/v2/pages)
 - Call: `POST /wp/v2/pages`, effect: write
-- Permission keys: `pages.publish`
+- Permission keys: `pages.publish`, `posts.create`
 - Body: `PostWpV2PagesRequest`
 
 | Flag | Required | What |
@@ -151,7 +151,7 @@
 
 - What: postWpV2PagesById — write (POST /wp/v2/pages/{id})
 - Call: `POST /wp/v2/pages/{id}`, effect: write
-- Permission keys: `pages.publish`
+- Permission keys: `pages.publish`, `posts.update`
 - Body: `PostWpV2PagesByIdRequest`
 
 | Flag | Required | What |

@@ -62,9 +62,13 @@ run it yourself in a terminal.
   `status` to `draft`, `pending` or `private`.
 - **Deleting** needs `<route>.delete`. With `force=true`, which deletes for good, it needs `<route>.delete.force` too.
   Both ask by default.
-- **Site-wide writes ask.** `api.plugins-create` installs code on the site, `api.settings-create` changes its
-  settings, and `api.users-create`, `api.users-update` and `api.users-me-create` make or change a user, a role
-  included. Each asks by default. Other api writes run without a question.
+- **Writes as `posts` commands do check their keys too.** `api posts-create` and `api pages-create` check
+  `posts.create`, and `api posts-update` and `api pages-update` check `posts.update`. So `posts.create` at `deny`
+  stops drafts on every path.
+- **Site-wide writes ask.** Installing a plugin, changing the site's settings, making or changing a user (a role
+  included), a new or changed comment, and changes to templates, template parts, widgets, sidebars, menus and
+  navigation each ask by default: `api.plugins-create`, `api.comments-create` and so on. Other api writes, such as
+  media, tags and categories, run without a question.
 - Making an application password is never offered: WordPress answers with the new password in clear.
 - WordPress's batch route (`batch/v1`) is never offered: one batch call would run other routes' writes past their
   keys.

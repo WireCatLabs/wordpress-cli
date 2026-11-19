@@ -8,7 +8,7 @@ import { SOURCE } from "./generated/wirecat-config.js"
 import { FAKE_API_TOKEN, FAKE_SITE, fakeServiceApi } from "./testing/fake-api.js"
 import { runCli } from "./testing/harness.js"
 
-// The fake answers example rows, so this proves every content command and option runs, not what a real post holds.
+// Each write is checked on the fake's own rows, as WordPress would hold them after it.
 it("every option of the content commands runs over a synced copy", async () => {
   const keyring = memoryKeyring()
   const [login, password] = FAKE_API_TOKEN.split(":") as [string, string]

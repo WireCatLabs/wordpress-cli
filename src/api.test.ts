@@ -161,7 +161,10 @@ it.each(API.manifest.operations.map((operation) => [operation.command, operation
     const [call] = service.calls
     for (const parameter of operation.parameters) {
       const sent = parameter.in === "path" ? call?.path : parameter.in === "query" ? call?.query : undefined
-      if (sent) expect(sent, `--${apiFlagOf(parameter.name)}`).toHaveProperty([parameter.name])
+      if (sent)
+        expect([sent[parameter.name]].flat().join(","), `--${apiFlagOf(parameter.name)}`).toBe(
+          String(sampleOf(parameter.schema, definitions)),
+        )
     }
     if (body !== undefined && !sendsBytes(operation)) expect(call?.body).toEqual(body)
     if (!operation.pagination) return
@@ -185,7 +188,7 @@ it.each(API.manifest.operations.map((operation) => [operation.command, operation
 )
 
 // Installing a plugin runs code on the site; a new user, a role or a site setting reaches every visitor.
-it.each(["plugins-create", "settings-create", "users-create", "users-update", "users-me-create"])(
+it.each(["plugins-create", "settings-create", "users-create", "users-update", "comments-create", "menus-update"])(
   "%s asks before it writes",
   async (command) => {
     const service = fake()
@@ -201,3 +204,15 @@ it.each(["plugins-create", "settings-create", "users-create", "users-update", "u
     expect(service.calls).toEqual([])
   },
 )
+
+// posts.create: deny keeps drafts out of every path, the api group's included.
+it.each(["posts-create", "pages-create"])("posts.create: deny stops api %s", async (command) => {
+  withPermissions({ "posts.create": "deny" })
+  const service = fake()
+  const ran = await runCli(["personal", "api", command, "--body", '{"status":"draft"}', "--yes", "--json"], {
+    service,
+    env,
+  })
+  expect(ran.json()).toMatchObject({ error: { code: "permission_error" } })
+  expect(service.calls).toEqual([])
+})

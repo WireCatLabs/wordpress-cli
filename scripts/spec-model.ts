@@ -18,7 +18,7 @@ export const specModel = async (
     // whole route can be left out, so its list and delete-all go too.
     exclude: {
       "/wp/v2/users/(?P<user_id>(?:[\\d]+|me))/application-passwords":
-        "its POST creates an application password and answers with it in clear; the CLI signs in through session start",
+        "its POST creates an application password and answers with it in clear. The CLI signs in through session start",
     },
   })
   return { model: adaptOpenApi(document), notes: omissions, overrides }

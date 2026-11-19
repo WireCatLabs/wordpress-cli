@@ -17,7 +17,8 @@ export const IDENTITY: AppIdentity = {
   contentLanguages: ["en"],
 }
 
-// What `wcat` and WireCat Desktop show before the tool is installed. The bin passes it to wcatStart before anything else loads; src/wcat.ts adds the permission keys.
+// What `wcat` and WireCat Desktop show before the tool is installed. The bin passes it to wcatStart before anything
+// else loads; src/wcat.ts adds the permission keys.
 export const DESKTOP = {
   ...IDENTITY,
   docs: "https://github.com/WireCatLabs/wordpress-cli#readme",

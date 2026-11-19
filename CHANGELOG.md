@@ -7,7 +7,7 @@ Notable changes to `@wirecat/wordpress-cli`. One section per version, newest fir
 ### Added
 
 - Started from `@wirecat/cli-template` 0.32.0.
-- Built from one file, `wirecat.config.ts`, with no hooks, plus two command names and the permission key form in
+- Built from one file, `wirecat.config.ts`, with no hooks, plus one command name and the permission key form in
   `scripts/generate.ts`.
 - **`wordpress <profile> session start --site <address> --login <user>` signs in with an application password**
   from stdin, checked against `GET /wp/v2/users/me`, and keeps it with its site. It goes to that site alone.
@@ -21,5 +21,7 @@ Notable changes to `@wirecat/wordpress-cli`. One section per version, newest fir
   `--replace-body`, and a post changed on the site since the last sync is not overwritten. Pages are read, not
   written: a write to a page stops with `content.write-unsupported`.
 - **`wordpress <profile> api` runs every `wp/v2` route of WordPress 6.9.4**, each with its own flags, help and
-  `--json`. Publishing and deleting for good need their own keys. Installing a plugin, changing a site setting, and
-  making or changing a user ask by default. `batch/v1` and making an application password are never offered.
+  `--json`. Publishing and deleting for good need their own keys. Installing a plugin, changing a site setting,
+  making or changing a user or a comment, and changing templates, widgets, menus or navigation ask by default.
+  `api posts-create` and `api pages-create` check `posts.create` too, and their updates check `posts.update`.
+  `batch/v1` and making an application password are never offered.

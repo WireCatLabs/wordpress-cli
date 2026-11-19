@@ -42,6 +42,8 @@ not expire, so revoke one you no longer use.
 `sync` stores your posts and pages, with every status and the trash, their tags and categories, and the users who
 write, in the WireCat local store on this computer, where every WireCat tool can read them. A user keeps their name,
 e-mail and slug. Drafts and private posts are in the copy too, so guard this computer as you guard your wp-admin login.
+`api posts-get --context edit` also answers a post's own password, the one that hides that post from readers. It
+opens that post only, not your site.
 
 Text from WordPress, such as post and page titles, text and excerpts, and tag, category and author names, reaches an
 agent marked `untrusted`. The agent reads it as data, not as an instruction. Posts others wrote can hold text aimed at

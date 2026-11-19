@@ -284,7 +284,7 @@ Run: pnpm generate
 - `/wp/v2/templates/(?P<parent>([^\/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)[\/\w%-]+)/revisions/(?P<id>[\d]+)`: left out, as its value may hold a slash, which no path segment carries
 - `/wp/v2/themes/(?P<stylesheet>[^\/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?)`: left out, as its value may hold a slash, which no path segment carries
 - `/wp/v2/users/(?P<id>[\d]+)`: PUT, PATCH left out, as POST does the same
-- `/wp/v2/users/(?P<user_id>(?:[\d]+|me))/application-passwords`: excluded — its POST creates an application password and answers with it in clear; the CLI signs in through session start
+- `/wp/v2/users/(?P<user_id>(?:[\d]+|me))/application-passwords`: excluded — its POST creates an application password and answers with it in clear. The CLI signs in through session start
 - `/wp/v2/users/(?P<user_id>(?:[\d]+|me))/application-passwords/(?P<uuid>[\w\-]+)`: PUT, PATCH left out, as POST does the same
 - `/wp/v2/users/me`: PUT, PATCH left out, as POST does the same
 - `/wp/v2/widgets/(?P<id>[\w\-]+)`: PUT, PATCH left out, as POST does the same

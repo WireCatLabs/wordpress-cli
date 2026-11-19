@@ -41,7 +41,7 @@
 
 - What: postWpV2Posts — write (POST /wp/v2/posts)
 - Call: `POST /wp/v2/posts`, effect: write
-- Permission keys: `posts.publish`
+- Permission keys: `posts.publish`, `posts.create`
 - Body: `PostWpV2PostsRequest`
 
 | Flag | Required | What |
@@ -156,7 +156,7 @@
 
 - What: postWpV2PostsById — write (POST /wp/v2/posts/{id})
 - Call: `POST /wp/v2/posts/{id}`, effect: write
-- Permission keys: `posts.publish`
+- Permission keys: `posts.publish`, `posts.update`
 - Body: `PostWpV2PostsByIdRequest`
 
 | Flag | Required | What |
