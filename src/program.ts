@@ -39,9 +39,8 @@ const update = appUpdate({
 const mcpCommand = () =>
   appMcpCommand(IDENTITY, configuration, {
     name: SERVICE,
-    // SAMPLE: name the kinds of text other people wrote that your answers carry (WC-MCP-11).
-    untrusted: ["names and text the service's users wrote"],
-    permissionExample: "api.list=deny",
+    untrusted: ["post and page titles, text and excerpts", "tag, category and author names"],
+    permissionExample: "posts.publish=deny",
     skill: SKILL,
     signedIn: (profile, env, keyring) => new ProfileTokenStore({ app: IDENTITY, env, keyring }).signedIn(profile),
   })

@@ -8897,10 +8897,10 @@ export const operations: readonly ManifestOperation[] = [
     tags: ["wp_pattern_category"],
     permissions: [
       {
-        key: "wp_pattern_category.delete",
+        key: "wp-pattern-category.delete",
       },
       {
-        key: "wp_pattern_category.delete.force",
+        key: "wp-pattern-category.delete.force",
         query: ["force"],
       },
     ],

@@ -19,9 +19,10 @@ const root = resolve(import.meta.dirname, "..")
 // A fresh CLI has no src/generated/ yet and cannot build without it, so build runs this with --if-missing first.
 if (process.argv.includes("--if-missing") && existsSync(join(root, "src/generated/manifest.ts"))) process.exit(0)
 const { model, notes, overrides } = await specModel(root)
-// The route after /wp/v2/ names the keys: posts.publish, pages.delete.force.
+// The route after /wp/v2/ names the keys: posts.publish, pages.delete.force. A key is written as its command is, so
+// wp_pattern_category becomes wp-pattern-category.
 const group = (operation: ApiOperation) =>
-  operation.binding.kind === "http" ? (operation.binding.path.split("/")[3] ?? "wp") : "wp"
+  operation.binding.kind === "http" ? (operation.binding.path.split("/")[3] ?? "wp").replaceAll("_", "-") : "wp"
 const artifacts = generate(
   model,
   [

@@ -17,7 +17,7 @@
 
 - What: deleteWpV2WpPatternCategoryById — destructive (DELETE…
 - Call: `DELETE /wp/v2/wp_pattern_category/{id}`, effect: destructive
-- Permission keys: `wp_pattern_category.delete`, `wp_pattern_category.delete.force`
+- Permission keys: `wp-pattern-category.delete`, `wp-pattern-category.delete.force`
 
 | Flag | Required | What |
 |---|---|---|

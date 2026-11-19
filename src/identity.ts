@@ -10,7 +10,7 @@ export const IDENTITY: AppIdentity = {
   command: "wordpress",
   appName: "wordpress-cli",
   envPrefix: "WCWP",
-  description: "a new WireCat CLI, started from cli-template",
+  description: "WordPress posts and pages, searchable with your other WireCat data",
   version: VERSION,
   issues: "https://github.com/WireCatLabs/wordpress-cli/issues/new",
   messenger: false,
@@ -23,11 +23,13 @@ export const DESKTOP = {
   ...IDENTITY,
   docs: "https://github.com/WireCatLabs/wordpress-cli#readme",
   hosts: [],
-  tagline: "A new WireCat CLI, started from cli-template",
-  syncs: "your authors, terms and posts",
+  tagline: "Your WordPress posts and pages for your agent",
+  syncs: "your posts, pages and tags",
   signIn: {
-    gives: "Lets your agent read and change your account through wordpress.",
-    asks: "An API token or key from the service.",
+    gives: "Lets your agent read your WordPress posts and pages, write drafts, and publish when you allow it.",
+    asks:
+      "Your site's address, your user name and an application password: in WordPress, Users → Profile → " +
+      "Application Passwords. WordPress 5.6 or later, over https.",
   },
 } satisfies ManifestIdentity
 

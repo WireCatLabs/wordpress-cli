@@ -53,7 +53,6 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
         list: {
           operation: "getWpV2Tags",
           query: {
-            context: "edit",
             per_page: 100,
             orderby: "id",
           },
@@ -62,9 +61,6 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
           operation: "getWpV2TagsById",
           path: {
             id: "{id}",
-          },
-          query: {
-            context: "edit",
           },
         },
         map: {
@@ -80,7 +76,6 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
         list: {
           operation: "getWpV2Categories",
           query: {
-            context: "edit",
             per_page: 100,
             orderby: "id",
           },
@@ -89,9 +84,6 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
           operation: "getWpV2CategoriesById",
           path: {
             id: "{id}",
-          },
-          query: {
-            context: "edit",
           },
         },
         map: {

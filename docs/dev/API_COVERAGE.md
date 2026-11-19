@@ -252,8 +252,8 @@ Run: pnpm generate
 | `deleteWpV2UsersMe` | `users.delete.force` | query `force` is true |
 | `deleteWpV2WidgetsById` | `widgets.delete` | always |
 | `deleteWpV2WidgetsById` | `widgets.delete.force` | query `force` is true |
-| `deleteWpV2WpPatternCategoryById` | `wp_pattern_category.delete` | always |
-| `deleteWpV2WpPatternCategoryById` | `wp_pattern_category.delete.force` | query `force` is true |
+| `deleteWpV2WpPatternCategoryById` | `wp-pattern-category.delete` | always |
+| `deleteWpV2WpPatternCategoryById` | `wp-pattern-category.delete.force` | query `force` is true |
 
 ## Routes left out
 

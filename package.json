@@ -1,7 +1,7 @@
 {
   "name": "@wirecat/wordpress-cli",
   "version": "0.0.0",
-  "description": "A new WireCat CLI, started from cli-template",
+  "description": "WordPress posts and pages: sync, search and write drafts from your agent",
   "license": "Apache-2.0",
   "author": "Viacheslav Ptsarev",
   "repository": {
