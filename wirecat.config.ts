@@ -89,7 +89,18 @@ export default defineCli({
           // biome-ignore lint/security/noSecrets: an operation id, not a secret
           get: { operation: "getWpV2UsersById", path: { id: "{id}" }, query: { context: "edit" } },
           map: { externalId: "id", name: "name", email: "email", slug: "slug" },
-          optional: { message: "only an administrator lists the users", scope: "list_users" },
+          optional: {
+            message: "only an administrator lists the users",
+            scope: "list_users",
+            // WordPress refuses context=edit without list_users, and lists in context=view the authors with published
+            // posts, without their e-mail (checked on 6.9.4 as an Editor and an Author).
+            fallback: {
+              query: { context: "view" },
+              message:
+                "only an administrator lists every user and their e-mail: these are the authors with published posts",
+              scope: "list_users",
+            },
+          },
         },
       ],
       // A tag's or category's name and slug are public. An Author or Contributor may not edit terms: no context=edit.
@@ -123,6 +134,15 @@ export default defineCli({
       publish: { status: "publish" },
       schedule: { status: "future", date_gmt: "{at}" },
       unpublish: { status: "draft" },
+      // A page has no tags or categories.
+      page: {
+        create: { operation: "postWpV2Pages", body: { status: "draft" } },
+        // biome-ignore lint/security/noSecrets: an operation id, not a secret
+        update: { operation: "postWpV2PagesById", path: { id: "{id}" } },
+        trash: { operation: "deleteWpV2PagesById", path: { id: "{id}" } },
+        delete: { operation: "deleteWpV2PagesById", path: { id: "{id}" }, query: { force: true } },
+        fields: { title: "title.raw", body: "content.raw", excerpt: "excerpt.raw", slug: "slug" },
+      },
     },
   },
 })

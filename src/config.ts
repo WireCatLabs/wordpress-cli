@@ -46,6 +46,15 @@ const API_KEYS: Readonly<Record<string, string>> = {
   "posts.unpublish": "api.posts-update",
   "posts.delete": "api.posts-delete",
 }
+const PAGE = "the post is a page"
+/** A page goes through the pages routes, whose publish and delete keys are the pages' own. */
+const PAGE_KEYS: Readonly<Record<string, readonly string[]>> = {
+  "posts.create": ["api.pages-create"],
+  "posts.update": ["api.pages-update", "pages.publish"],
+  "posts.publish": ["api.pages-update", "pages.publish"],
+  "posts.unpublish": ["api.pages-update"],
+  "posts.delete": ["api.pages-delete", "pages.delete", "pages.delete.force"],
+}
 
 // cli-core lets every api write but a delete run unasked. These install code, give a user a role, or change what
 // every visitor sees, so they ask (WC-PERM-7: a CLI only tightens). A new comment is public at once.
@@ -76,7 +85,8 @@ export const permissions = commandPermissions({
   extra: [...new Set([...api.extra, ...CONTENT_WRITE_KEYS])],
   alsoChecks: (path) => {
     const own = API_KEYS[path.join(".")]
-    return [...api.alsoChecks(path), ...contentAlsoChecks(path), ...(own ? [own] : [])]
+    const page = (PAGE_KEYS[path.join(".")] ?? []).map((key) => ({ key, when: PAGE }))
+    return [...api.alsoChecks(path), ...contentAlsoChecks(path), ...(own ? [own] : []), ...page]
   },
   defaults: { ...api.defaults, ...SITE_WIDE_WRITES, ...CONTENT_WRITE_DEFAULTS },
 })

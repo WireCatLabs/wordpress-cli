@@ -45,6 +45,14 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
         optional: {
           message: "only an administrator lists the users",
           scope: "list_users",
+          fallback: {
+            query: {
+              context: "view",
+            },
+            message:
+              "only an administrator lists every user and their e-mail: these are the authors with published posts",
+            scope: "list_users",
+          },
         },
       },
     ],
@@ -346,6 +354,41 @@ export const SOURCE: Readonly<Record<string, unknown>> & {
     },
     unpublish: {
       status: "draft",
+    },
+    page: {
+      create: {
+        operation: "postWpV2Pages",
+        body: {
+          status: "draft",
+        },
+      },
+      update: {
+        operation: "postWpV2PagesById",
+        path: {
+          id: "{id}",
+        },
+      },
+      trash: {
+        operation: "deleteWpV2PagesById",
+        path: {
+          id: "{id}",
+        },
+      },
+      delete: {
+        operation: "deleteWpV2PagesById",
+        path: {
+          id: "{id}",
+        },
+        query: {
+          force: true,
+        },
+      },
+      fields: {
+        title: "title.raw",
+        body: "content.raw",
+        excerpt: "excerpt.raw",
+        slug: "slug",
+      },
     },
   },
 }

@@ -6,8 +6,8 @@ import {
   type ContentRun,
   contentSourceFromManifest,
   contentWriterFromManifest,
+  openContentStore,
 } from "@wirecat/cli-core/content"
-import { openCrmStore } from "@wirecat/cli-core/crm/cli"
 import { Pacer, pacePathFor } from "@wirecat/cli-core/sends"
 import type { MessageStore } from "@wirecat/cli-core/store"
 import { Command } from "commander"
@@ -51,7 +51,7 @@ const write = serviceApiWriter(API_OPTIONS)
 
 const open = async (command: Command, { readOnly }: { readOnly: boolean }): Promise<ContentRun> => {
   const { env, profile, environment } = contextOf(command)
-  const { store, account } = await openCrmStore({
+  const { store, account } = await openContentStore({
     app: IDENTITY,
     env,
     profile,
