@@ -69,7 +69,10 @@ it("offers no call that answers with an application password", () => {
   expect(commands).not.toContain("users-application-passwords-create")
   expect(commands).not.toContain("users-application-passwords-list")
   expect(commands).not.toContain("users-application-passwords-get")
+  expect(commands).not.toContain("users-application-passwords-update")
+  expect(commands).not.toContain("users-application-passwords-introspect-list")
   expect(commands).toContain("users-application-passwords-delete")
+  expect(commands).toContain("users-application-passwords-delete-all")
 })
 
 it("api show describes an operation from the generated files, without calling the service", async () => {

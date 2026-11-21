@@ -203,3 +203,30 @@ it("lists the authors to a sign-in refused the users list, and names the gap", a
   expect(users.items.map((one) => one.external_id).sort()).toEqual(service.ids("author").sort())
   expect(service.refusals).toEqual([])
 })
+
+// An author without published posts is left out of the context=view list and refused when read alone: absence from
+// a list is never deletion, so the copy keeps them.
+it("keeps an author the fallback list leaves out", async () => {
+  const keyring = memoryKeyring()
+  const [login, password] = FAKE_API_TOKEN.split(":") as [string, string]
+  await runCli(["editor", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+    keyring,
+    service: fakeServiceApi(),
+    stdin: password,
+  })
+  const admin = contentManifestFake(SOURCE, { api: API.manifest })
+  expect((await runCli(["editor", "sync", "--json"], { keyring, service: admin })).code).toBe(0)
+  const quiet = admin.ids("author")[0] as string
+  const editor = contentManifestFake(SOURCE, {
+    api: API.manifest,
+    denied: ["getWpV2Users"],
+    hidden: { author: [quiet] },
+  })
+  const resynced = await runCli(["editor", "sync", "--rescan", "--json"], { keyring, service: editor })
+  expect(resynced.code, resynced.err).toBe(0)
+  const users = (await runCli(["editor", "users", "list", "--json"], { keyring, service: editor })).json() as {
+    items: { external_id: string; deleted_at?: string | null }[]
+  }
+  expect(users.items.find((one) => one.external_id === quiet)).toMatchObject({ external_id: quiet })
+  expect(users.items.find((one) => one.external_id === quiet)?.deleted_at ?? null).toBeNull()
+})

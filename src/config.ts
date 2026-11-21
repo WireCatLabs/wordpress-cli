@@ -15,13 +15,15 @@ import { IDENTITY } from "./identity.js"
  */
 /**
  * The content command each raw write does the same as, so `posts.create: deny` also stops `api posts-create` and
- * `api pages-create` (WC-PERM-22). Deletes need no entry: the generator gave them `posts.delete` already.
+ * `api pages-create` (WC-PERM-22). A post's delete needs no entry: the generator gave it `posts.delete` already, and a
+ * page's only `pages.delete`.
  */
 const COMMAND_KEYS: Readonly<Record<string, string>> = {
   "posts-create": "posts.create",
   "posts-update": "posts.update",
   "pages-create": "posts.create",
   "pages-update": "posts.update",
+  "pages-delete": "posts.delete",
 }
 
 const offered = serviceApiOperations(manifest).offered
@@ -39,12 +41,13 @@ export const API = {
 const api = serviceApiPermissions(API)
 
 /** The content commands write through the api group's operations, whose own keys the run checks too. */
-const API_KEYS: Readonly<Record<string, string>> = {
-  "posts.create": "api.posts-create",
-  "posts.update": "api.posts-update",
-  "posts.publish": "api.posts-update",
-  "posts.unpublish": "api.posts-update",
-  "posts.delete": "api.posts-delete",
+const NOT_PAGE = "the post is not a page"
+const API_KEYS: Readonly<Record<string, { key: string; when: string }>> = {
+  "posts.create": { key: "api.posts-create", when: NOT_PAGE },
+  "posts.update": { key: "api.posts-update", when: NOT_PAGE },
+  "posts.publish": { key: "api.posts-update", when: NOT_PAGE },
+  "posts.unpublish": { key: "api.posts-update", when: NOT_PAGE },
+  "posts.delete": { key: "api.posts-delete", when: NOT_PAGE },
 }
 const PAGE = "the post is a page"
 /** A page goes through the pages routes, whose publish and delete keys are the pages' own. */
