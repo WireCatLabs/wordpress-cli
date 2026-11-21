@@ -30,6 +30,16 @@ export const DESKTOP = {
     asks:
       "Your site's address, your user name and an application password: in WordPress, Users → Profile → " +
       "Application Passwords. WordPress 5.7 or later, over https.",
+    methods: [
+      {
+        id: "app-password",
+        label: "WordPress application password",
+        words: ["{profile}", "session", "start", "--json"],
+        stdin: true,
+        site: "--site",
+        login: "--login",
+      },
+    ],
   },
 } satisfies ManifestIdentity
 
