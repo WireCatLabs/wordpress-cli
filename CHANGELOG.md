@@ -2,7 +2,7 @@
 
 Notable changes to `@wirecat/wordpress-cli`. One section per version, newest first.
 
-## 0.1.3 — 21.11.2026
+## 0.2.0 — 21.11.2026
 
 ### Added
 
