@@ -36,6 +36,7 @@ export const API = {
     }),
   },
   service: "WordPress",
+  spec: "its index at /wp-json",
 }
 
 const api = serviceApiPermissions(API)
