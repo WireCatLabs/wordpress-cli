@@ -22,3 +22,5 @@
   so the `api` group no longer offers any call whose answer can hold one: `users-application-passwords-create`,
   `-list`, `-get`, `-update` and `-introspect-list`. The hand-written exclusion of that route is gone, and
   `api users-application-passwords-delete-all` is back, asking first like every delete.
+- **`posts.delete: deny` also stops `api pages-delete`.** A page's delete route checked only `pages.delete`, so the
+  content key did not reach it, as it already did for the posts route and for creating and updating a page.
