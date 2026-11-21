@@ -15,3 +15,10 @@
   may no longer read stays as it was.
 - **A post's text keeps its `-` list marker** instead of turning `- one` into `* one`.
 - **`posts publish --at-time` with a past time names `--at-time`** in its error, not `--at`.
+
+### Changed — may break callers
+
+- **cli-core 0.716.0 and cli-base 0.125.3.** cli-base now marks a new application password in an answer as secret,
+  so the `api` group no longer offers any call whose answer can hold one: `users-application-passwords-create`,
+  `-list`, `-get`, `-update` and `-introspect-list`. The hand-written exclusion of that route is gone, and
+  `api users-application-passwords-delete-all` is back, asking first like every delete.

@@ -7,7 +7,7 @@ ran it · ⛔ not tested offline, with the reason and where it is checked instea
 Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 [TESTING.md](TESTING.md) for how, and for the states and failures that cut across commands.
 
-**878 ✅ · 24 ⛔ · 0 ❌** — 192 commands, 710 options.
+**868 ✅ · 24 ⛔ · 0 ❌** — 190 commands, 702 options.
 
 | Command | Option | | Note |
 |---|---|---|---|
@@ -719,21 +719,11 @@ Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 | `api users-delete` | `--id` | ✅ |  |
 | `api users-delete` | `--force` | ✅ |  |
 | `api users-delete` | `--reassign` | ✅ |  |
-| `api users-application-passwords-get` |  | ✅ |  |
-| `api users-application-passwords-get` | `--user-id` | ✅ |  |
-| `api users-application-passwords-get` | `--uuid` | ✅ |  |
-| `api users-application-passwords-get` | `--context` | ✅ |  |
-| `api users-application-passwords-update` |  | ✅ |  |
-| `api users-application-passwords-update` | `--user-id` | ✅ |  |
-| `api users-application-passwords-update` | `--uuid` | ✅ |  |
-| `api users-application-passwords-update` | `--body` | ✅ |  |
-| `api users-application-passwords-update` | `--body-file` | ✅ |  |
+| `api users-application-passwords-delete-all` |  | ✅ |  |
+| `api users-application-passwords-delete-all` | `--user-id` | ✅ |  |
 | `api users-application-passwords-delete` |  | ✅ |  |
 | `api users-application-passwords-delete` | `--user-id` | ✅ |  |
 | `api users-application-passwords-delete` | `--uuid` | ✅ |  |
-| `api users-application-passwords-introspect-list` |  | ✅ |  |
-| `api users-application-passwords-introspect-list` | `--user-id` | ✅ |  |
-| `api users-application-passwords-introspect-list` | `--context` | ✅ |  |
 | `api users-me-get` |  | ✅ |  |
 | `api users-me-get` | `--context` | ✅ |  |
 | `api users-me-create` |  | ✅ |  |

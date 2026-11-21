@@ -2387,6 +2387,14 @@ export const PostWpV2UsersByIdRequest: v.GenericSchema<unknown, T.PostWpV2UsersB
   username: v.optional(v.string()),
 })
 
+export const PostWpV2UsersByUserIdApplicationPasswordsRequest: v.GenericSchema<
+  unknown,
+  T.PostWpV2UsersByUserIdApplicationPasswordsRequest
+> = v.looseObject({
+  app_id: v.optional(v.union([v.string(), v.picklist([""])])),
+  name: v.pipe(v.string(), v.minLength(1), v.regex(/.*\S.*/)),
+})
+
 export const PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest: v.GenericSchema<
   unknown,
   T.PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest
@@ -2584,6 +2592,7 @@ export const schemas = {
   GetWpV2UsersResponse,
   PostWpV2UsersRequest,
   PostWpV2UsersByIdRequest,
+  PostWpV2UsersByUserIdApplicationPasswordsRequest,
   PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest,
   PostWpV2UsersMeRequest,
   PostWpV2WidgetTypesByIdEncodeRequest,

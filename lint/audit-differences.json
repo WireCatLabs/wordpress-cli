@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "group": "wordpress",
+    "rule": "same-error-reason",
+    "target": "reason account-remove.unknown-profile=account-rename.unknown-profile",
+    "reason": "one failure under two names, from cli-core 0.716.0, that every CLI of the family prints (FIND-2855)",
+    "review_after": "2026-12-05"
+  }
+]

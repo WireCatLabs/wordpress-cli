@@ -3251,6 +3251,13 @@ export type PostWpV2UsersByIdRequest = {
   username?: string
 }
 
+export type PostWpV2UsersByUserIdApplicationPasswordsRequest = {
+  /** A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace. */
+  app_id?: string | ""
+  /** The name of the application password. */
+  name: string
+}
+
 export type PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest = {
   /** A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace. */
   app_id?: string | ""
@@ -3494,6 +3501,9 @@ export interface Responses {
   getWpV2UsersById: User
   postWpV2UsersById: User
   deleteWpV2UsersById: unknown
+  getWpV2UsersByUserIdApplicationPasswords: ApplicationPassword
+  postWpV2UsersByUserIdApplicationPasswords: ApplicationPassword
+  deleteWpV2UsersByUserIdApplicationPasswords: unknown
   getWpV2UsersByUserIdApplicationPasswordsByUuid: ApplicationPassword
   postWpV2UsersByUserIdApplicationPasswordsByUuid: ApplicationPassword
   deleteWpV2UsersByUserIdApplicationPasswordsByUuid: unknown
