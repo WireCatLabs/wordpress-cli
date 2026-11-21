@@ -1,0 +1,26 @@
+### Added
+
+- **`posts create --type page` and every write to a page.** A page is now written through WordPress's pages routes:
+  create, update, publish, schedule, unpublish, trash and delete for good. A page has no tags, so `--tags` on a page
+  stops with `content.write-unsupported`. `--dry-run` names the pages keys a page write checks.
+
+### Fixed
+
+- **An Editor or Author gets the authors.** WordPress lists the users with their e-mail to an Administrator only, and
+  the sync got no authors at all for any other role. It now reads them the way WordPress answers every role: the
+  authors with published posts, by name, without e-mail. The sync names this as a gap.
+- **An Author or Contributor sync reads only the changes, and sees a post deleted for good.** Each sync read every post
+  again, and a post deleted for good stayed in the copy. Later syncs now read only what changed. Once a day the sync
+  reads each post that left the list once more: a post the site deleted for good is marked deleted, and one the role
+  may no longer read stays as it was.
+- **A post's text keeps its `-` list marker** instead of turning `- one` into `* one`.
+- **`posts publish --at-time` with a past time names `--at-time`** in its error, not `--at`.
+
+### Changed — may break callers
+
+- **cli-core 0.716.0 and cli-base 0.125.3.** cli-base now marks a new application password in an answer as secret,
+  so the `api` group no longer offers any call whose answer can hold one: `users-application-passwords-create`,
+  `-list`, `-get`, `-update` and `-introspect-list`. The hand-written exclusion of that route is gone, and
+  `api users-application-passwords-delete-all` is back, asking first like every delete.
+- **`posts.delete: deny` also stops `api pages-delete`.** A page's delete route checked only `pages.delete`, so the
+  content key did not reach it, as it already did for the posts route and for creating and updating a page.

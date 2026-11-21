@@ -187,9 +187,10 @@ More: [permissions](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/
 - Only self-hosted WordPress with application passwords. WordPress.com sites, which sign in with OAuth, are not
   supported. Sign-in through the browser is not there yet: you paste the password.
 - An Author or Contributor gets only their own posts, and no pages: WordPress refuses the pages list to both, and the
-  sync says so. A Contributor gets only their drafts and posts waiting for review. For both, a post that leaves their
-  view stays in the copy as it was: one deleted for good, or a Contributor's post an editor published. Only an Administrator gets the users list. Sign in as an Administrator for a full
-  copy.
+  sync says so. A Contributor gets only their drafts and posts waiting for review. A post that leaves their view and
+  that they may no longer read stays in the copy as it was, such as a Contributor's post an editor published. Only an
+  Administrator gets every user with their e-mail; other roles get the authors with published posts. Sign in as an
+  Administrator for a full copy.
 - No view counts. WordPress itself keeps none, and Jetpack stats are not supported.
 - A post with galleries, columns, embeds or iframes keeps its body: `posts update` changes its title, excerpt, tags
   and status only, unless you add `--replace-body`.

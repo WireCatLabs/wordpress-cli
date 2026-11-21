@@ -22,7 +22,6 @@ it("every option of the content commands runs over a synced copy", async () => {
   const ran = (argv: string[]) => runCli(["options", ...argv, "--json"], { keyring, service })
   const synced = await ran(["sync", "--rescan", "--max-pages", "50"])
   expect(synced.code, synced.err).toBe(0)
-  // Pages are read but not written: the config's writes name the posts route only.
   const listed = (await ran(["posts", "list"])).json() as { items: { external_id: string; type: string }[] }
   const [first, second] = listed.items.filter((one) => one.type === "post").map((one) => one.external_id) as [
     string,
@@ -128,4 +127,106 @@ it("every option of the content commands runs over a synced copy", async () => {
   const erased = await preview(["posts", "delete", first, "--allow-delete"])
   expect(erased).toMatchObject({ key: "posts.delete", level: "ask" })
   expect(erased.also?.map(({ key }) => key)).toEqual(expect.arrayContaining(["posts.delete.force", "api.posts-delete"]))
+})
+
+// FIND-2816: a page was read but not written; the config's writes.page names the pages routes.
+it("writes a page through the pages routes, and refuses tags on it", async () => {
+  const keyring = memoryKeyring()
+  const [login, password] = FAKE_API_TOKEN.split(":") as [string, string]
+  const started = await runCli(["pages", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+    keyring,
+    service: fakeServiceApi(),
+    stdin: password,
+  })
+  expect(started.code, started.err).toBe(0)
+  const service = contentManifestFake(SOURCE, { api: API.manifest })
+  const ran = (argv: string[]) => runCli(["pages", ...argv, "--json"], { keyring, service })
+  expect((await ran(["sync"])).code).toBe(0)
+  const page = (id: string) =>
+    service.rows.post?.[1]?.find((one) => String(one.id) === id) as Record<string, unknown> | undefined
+  const ok = async (argv: string[]) => {
+    const answer = await ran(argv)
+    expect(answer.code, `${argv.join(" ")}: ${answer.err}`).toBe(0)
+    return answer.json() as { item: { post: { external_id: string; type: string } } }
+  }
+  const made = await ok(["posts", "create", "--type", "page", "--title", "Contact", "--yes"])
+  const id = made.item.post.external_id
+  expect(made.item.post.type).toBe("page")
+  expect(page(id)).toMatchObject({ status: "draft", title: { raw: "Contact" } })
+  await ok(["posts", "update", id, "--title", "Contact us", "--yes"])
+  expect(page(id)).toMatchObject({ title: { raw: "Contact us" } })
+  await ok(["posts", "publish", id, "--yes"])
+  expect(page(id)?.status).toBe("publish")
+  await ok(["posts", "unpublish", id, "--yes"])
+  expect(page(id)?.status).toBe("draft")
+  await ok(["posts", "publish", id, "--at-time", "2030-01-01T10:00:00Z", "--yes"])
+  expect(page(id)).toMatchObject({ status: "future", date_gmt: "2030-01-01T10:00:00Z" })
+  const tagged = await ran(["posts", "update", id, "--tags", service.ids("term")[0] as string, "--yes"])
+  expect(tagged.err).toContain("content.write-unsupported")
+  await ok(["posts", "delete", id, "--yes"])
+  expect(page(id)?.status).toBe("trash")
+  await ok(["posts", "delete", id, "--allow-delete", "--yes"])
+  expect(page(id)).toBeUndefined()
+  expect(service.writes).toEqual([
+    "postWpV2Pages",
+    "postWpV2PagesById",
+    "postWpV2PagesById",
+    "postWpV2PagesById",
+    "postWpV2PagesById",
+    "deleteWpV2PagesById",
+    "deleteWpV2PagesById",
+  ])
+  expect(service.refusals).toEqual([])
+
+  type Preview = { item: { permission: { also?: { key: string }[] } } }
+  const preview = (await ran(["posts", "publish", id, "--dry-run"])).json() as Preview
+  expect(preview.item.permission.also?.map(({ key }) => key)).toEqual(
+    expect.arrayContaining(["api.pages-update", "pages.publish"]),
+  )
+})
+
+// FIND-2815: an Editor is refused the users with context=edit; the config's fallback reads them with context=view.
+it("lists the authors to a sign-in refused the users list, and names the gap", async () => {
+  const keyring = memoryKeyring()
+  const [login, password] = FAKE_API_TOKEN.split(":") as [string, string]
+  const started = await runCli(["editor", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+    keyring,
+    service: fakeServiceApi(),
+    stdin: password,
+  })
+  expect(started.code, started.err).toBe(0)
+  const service = contentManifestFake(SOURCE, { api: API.manifest, denied: ["getWpV2Users"] })
+  const ran = (argv: string[]) => runCli(["editor", ...argv, "--json"], { keyring, service })
+  const synced = (await ran(["sync"])).json() as { item: { gaps: { kind: string; scope?: string }[] } }
+  expect(synced.item.gaps).toContainEqual(expect.objectContaining({ kind: "author", scope: "list_users" }))
+  const users = (await ran(["users", "list"])).json() as { items: { external_id: string }[] }
+  expect(users.items.map((one) => one.external_id).sort()).toEqual(service.ids("author").sort())
+  expect(service.refusals).toEqual([])
+})
+
+// An author without published posts is left out of the context=view list and refused when read alone: absence from
+// a list is never deletion, so the copy keeps them.
+it("keeps an author the fallback list leaves out", async () => {
+  const keyring = memoryKeyring()
+  const [login, password] = FAKE_API_TOKEN.split(":") as [string, string]
+  await runCli(["editor", "session", "start", "--site", FAKE_SITE, "--login", login, "--json"], {
+    keyring,
+    service: fakeServiceApi(),
+    stdin: password,
+  })
+  const admin = contentManifestFake(SOURCE, { api: API.manifest })
+  expect((await runCli(["editor", "sync", "--json"], { keyring, service: admin })).code).toBe(0)
+  const quiet = admin.ids("author")[0] as string
+  const editor = contentManifestFake(SOURCE, {
+    api: API.manifest,
+    denied: ["getWpV2Users"],
+    hidden: { author: [quiet] },
+  })
+  const resynced = await runCli(["editor", "sync", "--rescan", "--json"], { keyring, service: editor })
+  expect(resynced.code, resynced.err).toBe(0)
+  const users = (await runCli(["editor", "users", "list", "--json"], { keyring, service: editor })).json() as {
+    items: { external_id: string; deleted_at?: string | null }[]
+  }
+  expect(users.items.find((one) => one.external_id === quiet)).toMatchObject({ external_id: quiet })
+  expect(users.items.find((one) => one.external_id === quiet)?.deleted_at ?? null).toBeNull()
 })

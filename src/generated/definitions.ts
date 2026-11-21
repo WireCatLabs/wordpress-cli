@@ -4537,6 +4537,7 @@ export const definitions: Readonly<Record<string, SchemaNode>> = {
       password: {
         description: "The generated password. Only available after adding an application.",
         type: "string",
+        sensitive: true,
       },
       uuid: {
         description: "The unique identifier for the application password.",
@@ -7734,6 +7735,32 @@ export const definitions: Readonly<Record<string, SchemaNode>> = {
       },
     },
     required: [],
+  },
+  PostWpV2UsersByUserIdApplicationPasswordsRequest: {
+    type: "object",
+    properties: {
+      app_id: {
+        description:
+          "A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.",
+        type: "union",
+        of: [
+          {
+            type: "string",
+          },
+          {
+            type: "string",
+            enum: [""],
+          },
+        ],
+      },
+      name: {
+        description: "The name of the application password.",
+        type: "string",
+        minLength: 1,
+        pattern: ".*\\S.*",
+      },
+    },
+    required: ["name"],
   },
   PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest: {
     type: "object",

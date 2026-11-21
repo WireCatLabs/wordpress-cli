@@ -53,7 +53,7 @@
 
 - What: deleteWpV2PagesById — destructive (DELETE /wp/v2/pages/{id})
 - Call: `DELETE /wp/v2/pages/{id}`, effect: destructive
-- Permission keys: `pages.delete`, `pages.delete.force`
+- Permission keys: `pages.delete`, `pages.delete.force`, `posts.delete`
 
 | Flag | Required | What |
 |---|---|---|

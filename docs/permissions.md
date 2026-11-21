@@ -53,6 +53,12 @@ run it yourself in a terminal.
 | `posts.delete.force` | `ask` | `posts delete --allow-delete`, which deletes for good. |
 | Every read | `allow` | `sync`, `posts list`, `posts show` and the other reads. |
 
+A write to a page goes through the pages routes, so it also checks their keys: `pages.publish` when it publishes or
+schedules the page, or updates a page that is published or scheduled; `pages.delete` when it deletes the page, to the
+trash or for good; and `pages.delete.force` with `--allow-delete`. Each asks by default. After a yes to the `posts`
+key, the same action on the page is not asked again. `posts publish` and `posts unpublish` still ask `posts.update`
+a second time, for a post and a page, until the next cli-core release.
+
 ## The api group
 
 `wordpress blog api` reaches every WordPress operation, and checks the same publishing and deleting keys:

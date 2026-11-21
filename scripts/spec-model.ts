@@ -14,12 +14,6 @@ export const specModel = async (
 ): Promise<{ model: ApiModel; notes: string[]; overrides: Record<string, Override> }> => {
   const { document, omissions, overrides } = wpJsonToOpenApi(readWpJson(join(root, "spec/wordpress")), {
     namespaces: NAMESPACES,
-    // The converter marks no field sensitive, so cli-core cannot see that this answer holds a new password. Only a
-    // whole route can be left out, so its list and delete-all go too.
-    exclude: {
-      "/wp/v2/users/(?P<user_id>(?:[\\d]+|me))/application-passwords":
-        "its POST creates an application password and answers with it in clear. The CLI signs in through session start",
-    },
   })
   return { model: adaptOpenApi(document), notes: omissions, overrides }
 }

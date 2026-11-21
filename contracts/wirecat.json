@@ -1611,26 +1611,14 @@
     {
       "path": [
         "api",
-        "users-application-passwords-get"
+        "users-application-passwords-delete-all"
       ],
-      "summary": "getWpV2UsersByUserIdApplicationPasswordsByUuid — read (GET…",
-      "effects": {
-        "remote": "read",
-        "local": "none"
-      },
-      "permission": "api.users-application-passwords-get"
-    },
-    {
-      "path": [
-        "api",
-        "users-application-passwords-update"
-      ],
-      "summary": "postWpV2UsersByUserIdApplicationPasswordsByUuid — write (POST…",
+      "summary": "deleteWpV2UsersByUserIdApplicationPasswords — destructive (DELETE…",
       "effects": {
         "remote": "write",
         "local": "none"
       },
-      "permission": "api.users-application-passwords-update"
+      "permission": "api.users-application-passwords-delete-all"
     },
     {
       "path": [
@@ -1643,18 +1631,6 @@
         "local": "none"
       },
       "permission": "api.users-application-passwords-delete"
-    },
-    {
-      "path": [
-        "api",
-        "users-application-passwords-introspect-list"
-      ],
-      "summary": "getWpV2UsersByUserIdApplicationPasswordsIntrospect — read (GET…",
-      "effects": {
-        "remote": "read",
-        "local": "none"
-      },
-      "permission": "api.users-application-passwords-introspect-list"
     },
     {
       "path": [

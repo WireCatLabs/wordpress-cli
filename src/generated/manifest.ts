@@ -7991,6 +7991,104 @@ export const operations: readonly ManifestOperation[] = [
     ],
   },
   {
+    id: "getWpV2UsersByUserIdApplicationPasswords",
+    command: "users-application-passwords-list",
+    binding: {
+      kind: "http",
+      method: "GET",
+      path: "/wp/v2/users/{user_id}/application-passwords",
+    },
+    effect: "read",
+    tags: ["users"],
+    parameters: [
+      {
+        name: "user_id",
+        in: "path",
+        required: true,
+        schema: {
+          type: "string",
+          pattern: "^(?:(?:[\\d]+|me))$",
+        },
+      },
+      {
+        name: "context",
+        in: "query",
+        required: false,
+        schema: {
+          description: "Scope under which the request is made; determines fields present in response.",
+          default: "view",
+          type: "string",
+          enum: ["view", "embed", "edit"],
+        },
+        description: "Scope under which the request is made; determines fields present in response.",
+      },
+    ],
+    response: {
+      confidence: "contract",
+      schema: "ApplicationPassword",
+      sensitive: true,
+    },
+  },
+  {
+    id: "postWpV2UsersByUserIdApplicationPasswords",
+    command: "users-application-passwords-create",
+    binding: {
+      kind: "http",
+      method: "POST",
+      path: "/wp/v2/users/{user_id}/application-passwords",
+    },
+    effect: "write",
+    tags: ["users"],
+    parameters: [
+      {
+        name: "user_id",
+        in: "path",
+        required: true,
+        schema: {
+          type: "string",
+          pattern: "^(?:(?:[\\d]+|me))$",
+        },
+      },
+    ],
+    request: {
+      required: true,
+      confidence: "contract",
+      schema: "PostWpV2UsersByUserIdApplicationPasswordsRequest",
+    },
+    response: {
+      confidence: "contract",
+      schema: "ApplicationPassword",
+      sensitive: true,
+    },
+  },
+  {
+    id: "deleteWpV2UsersByUserIdApplicationPasswords",
+    command: "users-application-passwords-delete-all",
+    binding: {
+      kind: "http",
+      method: "DELETE",
+      path: "/wp/v2/users/{user_id}/application-passwords",
+    },
+    effect: "destructive",
+    tags: ["users"],
+    permissions: [
+      {
+        key: "users.delete",
+      },
+    ],
+    parameters: [
+      {
+        name: "user_id",
+        in: "path",
+        required: true,
+        schema: {
+          type: "string",
+          pattern: "^(?:(?:[\\d]+|me))$",
+        },
+      },
+    ],
+  },
+  {
     id: "getWpV2UsersByUserIdApplicationPasswordsByUuid",
     command: "users-application-passwords-get",
     binding: {
@@ -8035,6 +8133,7 @@ export const operations: readonly ManifestOperation[] = [
     response: {
       confidence: "contract",
       schema: "ApplicationPassword",
+      sensitive: true,
     },
   },
   {
@@ -8075,6 +8174,7 @@ export const operations: readonly ManifestOperation[] = [
     response: {
       confidence: "contract",
       schema: "ApplicationPassword",
+      sensitive: true,
     },
   },
   {
@@ -8149,6 +8249,7 @@ export const operations: readonly ManifestOperation[] = [
     response: {
       confidence: "contract",
       schema: "ApplicationPassword",
+      sensitive: true,
     },
   },
   {

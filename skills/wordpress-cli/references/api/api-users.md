@@ -13,39 +13,15 @@
 | `--user-id <value>` | yes | user\_id |
 | `--uuid <value>` | yes | uuid |
 
-## `wordpress api users-application-passwords-get [options]`
+## `wordpress api users-application-passwords-delete-all [options]`
 
-- What: getWpV2UsersByUserIdApplicationPasswordsByUuid — read (GET…
-- Call: `GET /wp/v2/users/{user_id}/application-passwords/{uuid}`, effect: read
-
-| Flag | Required | What |
-|---|---|---|
-| `--user-id <value>` | yes | user\_id |
-| `--uuid <value>` | yes | uuid |
-| `--context <value>` | no | Scope under which the request is made; determines fields present in response. |
-
-## `wordpress api users-application-passwords-introspect-list [options]`
-
-- What: getWpV2UsersByUserIdApplicationPasswordsIntrospect — read (GET…
-- Call: `GET /wp/v2/users/{user_id}/application-passwords/introspect`, effect: read
+- What: deleteWpV2UsersByUserIdApplicationPasswords — destructive (DELETE…
+- Call: `DELETE /wp/v2/users/{user_id}/application-passwords`, effect: destructive
+- Permission keys: `users.delete`
 
 | Flag | Required | What |
 |---|---|---|
 | `--user-id <value>` | yes | user\_id |
-| `--context <value>` | no | Scope under which the request is made; determines fields present in response. |
-
-## `wordpress api users-application-passwords-update [options]`
-
-- What: postWpV2UsersByUserIdApplicationPasswordsByUuid — write (POST…
-- Call: `POST /wp/v2/users/{user_id}/application-passwords/{uuid}`, effect: write
-- Body: `PostWpV2UsersByUserIdApplicationPasswordsByUuidRequest`
-
-| Flag | Required | What |
-|---|---|---|
-| `--user-id <value>` | yes | user\_id |
-| `--uuid <value>` | yes | uuid |
-| `--body <json>` | no | the request body as JSON; - reads it from stdin |
-| `--body-file <path>` | no | the request body from a JSON file; - is stdin |
 
 ## `wordpress api users-create [options]`
 

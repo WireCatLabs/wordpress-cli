@@ -62,6 +62,19 @@ it("the spec offers operations", () => {
   expect(API.manifest.operations.length).toBeGreaterThan(0)
 })
 
+// A new application password comes back in clear: cli-base marks the field secret, and the api group never offers
+// the call that answers with it, nor the list of them.
+it("offers no call that answers with an application password", () => {
+  const commands = API.manifest.operations.map((one) => one.command)
+  expect(commands).not.toContain("users-application-passwords-create")
+  expect(commands).not.toContain("users-application-passwords-list")
+  expect(commands).not.toContain("users-application-passwords-get")
+  expect(commands).not.toContain("users-application-passwords-update")
+  expect(commands).not.toContain("users-application-passwords-introspect-list")
+  expect(commands).toContain("users-application-passwords-delete")
+  expect(commands).toContain("users-application-passwords-delete-all")
+})
+
 it("api show describes an operation from the generated files, without calling the service", async () => {
   const [operation] = API.manifest.operations
   const service = fake()

@@ -50,10 +50,11 @@ for good. A post in the trash stays in the copy, with its status.
 
 A sync names each gap: what your WordPress role may not read. With an Author or Contributor sign-in, the sync copies
 your own posts and skips the pages, as WordPress refuses the pages list to both. A Contributor gets only their drafts
-and posts waiting for review. For both, each sync reads all of your posts again, not only the changes, and a post
-that leaves your view stays in the copy as it was: one deleted for good, or a Contributor's post an editor published.
-Only an Administrator gets the users list, so an Editor's copy has every post and page but no users. Sign in as an
-Administrator for a full copy.
+and posts waiting for review. Later syncs read only the changes for these roles too. Once a day the sync reads again,
+by its id, each post your list no longer shows: a post deleted for good is marked deleted, and one you may no longer
+read (a Contributor's post an editor published) stays in the copy as it was. Only an Administrator gets every user with
+their e-mail. Other roles get the authors with published posts, by name. Sign in as an Administrator for a full
+copy.
 
 `--max-pages` caps the requests in one run. The next sync goes on from where it stopped.
 
@@ -98,7 +99,7 @@ wordpress blog channels list   # the site this profile copies
 ```
 
 `posts create --tags` and the `tag:` filter take the ids that `tags list` shows. `users list` also names the person
-the store knows by the same e-mail, from your other WireCat tools.
+the store knows by the same e-mail, from your other WireCat tools. Only an Administrator's copy has the e-mails.
 
 ## Write a draft
 
@@ -107,11 +108,14 @@ wordpress blog posts create --title "Version 3" --text-file notes.md --descripti
 cat notes.md | wordpress blog posts create --title "Version 3" --text-file -
 wordpress blog posts update 63 --title "Version 3 is out"
 wordpress blog posts update 63 --text-file notes-v2.md --slug version-3
+wordpress blog posts create --type page --title "Contact" --text-file contact.md
 ```
 
 `posts create` always makes a draft. Publishing is its own step. The text is Markdown, from a file or from stdin
 with `--text-file -`. `--description` sets the excerpt, the short text that lists show. `--tags` takes tag and
-category ids and replaces the ones the post had. `--slug` is the last part of the post's address.
+category ids and replaces the ones the post had. `--slug` is the last part of the post's address. `--type page`
+makes a page. Every other write finds out by itself if the id is a page. A page has no tags, so `--tags` on a page
+stops with `content.write-unsupported`.
 
 `posts update` changes the fields you name. A change to a published or scheduled post is public, so it checks
 `posts.publish` too.

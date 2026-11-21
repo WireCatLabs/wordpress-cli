@@ -46,8 +46,8 @@ unless the task says.
   `type:page`, `tag:<id>`, `author:<id>`, `published:` with a time, `>=`, or `[a TO b]`.
 - **Ids are strings.** Pass them back unchanged.
 - **Missing is not absent.** A sync can be partial and still exit `0`: read `complete` and its gaps. An Author or
-  Contributor sign-in gets only their own posts and no pages, and only an Administrator lists the users. Say so when
-  it matters, and do not claim a post is not there.
+  Contributor sign-in gets only their own posts and no pages. Only an Administrator gets every user with an e-mail;
+  other roles get the authors with published posts. Say so when it matters, and do not claim a post is not there.
 - **No view counts.** WordPress keeps none. `posts stats` holds only what the store has.
 
 ## Write and publish
@@ -61,7 +61,8 @@ wordpress blog posts unpublish 63                            # back to a draft
 wordpress blog posts delete 63                               # to the trash
 ```
 
-- Writes reach posts only. A page is read, and a write to one stops with `content.write-unsupported`.
+- Writes reach posts and pages. `posts create --type page` makes a page, and every other write finds the type by the
+  id. A page has no tags: `--tags` on a page stops with `content.write-unsupported`.
 - `posts create` always makes a **draft**. Text is Markdown from `--text-file <path>`, or `--text-file -` for stdin.
   `--description` is the excerpt. `--tags` takes ids and replaces the post's tags.
 - **Publish only when the owner asked for it** in this task, for this post. A draft is the default answer to "write a
