@@ -48,12 +48,22 @@ const API_KEYS: Readonly<Record<string, string>> = {
 }
 const PAGE = "the post is a page"
 /** A page goes through the pages routes, whose publish and delete keys are the pages' own. */
-const PAGE_KEYS: Readonly<Record<string, readonly string[]>> = {
-  "posts.create": ["api.pages-create"],
-  "posts.update": ["api.pages-update", "pages.publish"],
-  "posts.publish": ["api.pages-update", "pages.publish"],
-  "posts.unpublish": ["api.pages-update"],
-  "posts.delete": ["api.pages-delete", "pages.delete", "pages.delete.force"],
+const PAGE_KEYS: Readonly<Record<string, readonly { key: string; when: string }[]>> = {
+  "posts.create": [{ key: "api.pages-create", when: PAGE }],
+  "posts.update": [
+    { key: "api.pages-update", when: PAGE },
+    { key: "pages.publish", when: "the post is a page that is published or scheduled" },
+  ],
+  "posts.publish": [
+    { key: "api.pages-update", when: PAGE },
+    { key: "pages.publish", when: PAGE },
+  ],
+  "posts.unpublish": [{ key: "api.pages-update", when: PAGE }],
+  "posts.delete": [
+    { key: "api.pages-delete", when: PAGE },
+    { key: "pages.delete", when: PAGE },
+    { key: "pages.delete.force", when: "the post is a page, with --allow-delete" },
+  ],
 }
 
 // cli-core lets every api write but a delete run unasked. These install code, give a user a role, or change what
@@ -85,7 +95,7 @@ export const permissions = commandPermissions({
   extra: [...new Set([...api.extra, ...CONTENT_WRITE_KEYS])],
   alsoChecks: (path) => {
     const own = API_KEYS[path.join(".")]
-    const page = (PAGE_KEYS[path.join(".")] ?? []).map((key) => ({ key, when: PAGE }))
+    const page = PAGE_KEYS[path.join(".")] ?? []
     return [...api.alsoChecks(path), ...contentAlsoChecks(path), ...(own ? [own] : []), ...page]
   },
   defaults: { ...api.defaults, ...SITE_WIDE_WRITES, ...CONTENT_WRITE_DEFAULTS },

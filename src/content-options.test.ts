@@ -157,6 +157,10 @@ it("writes a page through the pages routes, and refuses tags on it", async () =>
   expect(page(id)).toMatchObject({ title: { raw: "Contact us" } })
   await ok(["posts", "publish", id, "--yes"])
   expect(page(id)?.status).toBe("publish")
+  await ok(["posts", "unpublish", id, "--yes"])
+  expect(page(id)?.status).toBe("draft")
+  await ok(["posts", "publish", id, "--at-time", "2030-01-01T10:00:00Z", "--yes"])
+  expect(page(id)).toMatchObject({ status: "future", date_gmt: "2030-01-01T10:00:00Z" })
   const tagged = await ran(["posts", "update", id, "--tags", service.ids("term")[0] as string, "--yes"])
   expect(tagged.err).toContain("content.write-unsupported")
   await ok(["posts", "delete", id, "--yes"])
@@ -165,6 +169,8 @@ it("writes a page through the pages routes, and refuses tags on it", async () =>
   expect(page(id)).toBeUndefined()
   expect(service.writes).toEqual([
     "postWpV2Pages",
+    "postWpV2PagesById",
+    "postWpV2PagesById",
     "postWpV2PagesById",
     "postWpV2PagesById",
     "deleteWpV2PagesById",

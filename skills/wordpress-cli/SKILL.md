@@ -61,7 +61,8 @@ wordpress blog posts unpublish 63                            # back to a draft
 wordpress blog posts delete 63                               # to the trash
 ```
 
-- Writes reach posts only. A page is read, and a write to one stops with `content.write-unsupported`.
+- Writes reach posts and pages. `posts create --type page` makes a page, and every other write finds the type by the
+  id. A page has no tags: `--tags` on a page stops with `content.write-unsupported`.
 - `posts create` always makes a **draft**. Text is Markdown from `--text-file <path>`, or `--text-file -` for stdin.
   `--description` is the excerpt. `--tags` takes ids and replaces the post's tags.
 - **Publish only when the owner asked for it** in this task, for this post. A draft is the default answer to "write a
