@@ -13,8 +13,8 @@ Notable changes to `@wirecat/wordpress-cli`. One section per version, newest fir
 ### Fixed
 
 - **`posts publish` and `posts unpublish` ask one question**, not `posts.update` a second time.
-- **`session --help` and `api --help` name WordPress's own sign-in and spec**: the application password, and its
-  index at `/wp-json`.
+- **`--help` names WordPress's own sign-in and spec**: the `session` group says application password, and `api` says
+  its index at `/wp-json`.
 
 ## 0.2.0 — 21.11.2026
 
