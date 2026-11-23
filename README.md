@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/WireCatLabs/wordpress-cli/main/docs/images/social-preview.png" alt="WordPress CLI for AI agents" width="100%">
+</p>
+
 # wordpress: WordPress CLI and MCP server for AI agents
 
 <p align="center">
@@ -6,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/index.md">Docs</a> ·
-  <a href="https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/installation.md">Install</a> ·
+  <a href="https://wirecat.dev/en/docs/wordpress">Docs</a> ·
+  <a href="https://wirecat.dev/en/docs/wordpress/installation">Install</a> ·
   <a href="https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/usage.md">Usage</a> ·
   <a href="https://discord.gg/DebENqbRrJ">Discord</a>
 </p>
@@ -61,6 +65,9 @@ Agent:  (runs wordpress blog posts create --title "Pricing in 2027" --text-file 
 
 ## Quick start
 
+In [WireCat Desktop](https://wirecat.dev/en/download), add WordPress from the tool list and give it your site, your
+user name and an application password when it asks. Or in a terminal:
+
 ```sh
 npm install -g @wirecat/wordpress-cli
 wordpress skill install          # the agent skill, for Claude Code, Codex, Gemini CLI and OpenClaw
@@ -107,22 +114,6 @@ days (`keep_successful_runs_for_days`). The first line above stops it.
 
 More: [agents and MCP](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/mcp.md) ·
 [permissions](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/permissions.md)
-
-## What needs which key
-
-- **Publishing** needs `<route>.publish` (`posts.publish`, `pages.publish`): a write that sets `status` to
-  `publish` or `future`, or that sets `date`, `date_gmt` or `password`, unless the same call sets `status` to
-  `draft`, `pending` or `private`. WordPress publishes a scheduled post whose date moves into the past, and a
-  password taken off a published post makes it public, with no status in the call. `private` is not public.
-  Where a route's `status` starts at `publish` (menu items, for one), each create needs the key, as the
-  write publishes unless it says otherwise.
-- **Deleting** needs `<route>.delete`. With `force=true`, which deletes for good instead of moving to the trash,
-  it needs `<route>.delete.force` too. Both ask by default.
-- WordPress's batch route (`batch/v1`) is never offered: one batch call would run other routes' writes past
-  their keys.
-
-Known limit of the raw `api` group: WordPress publishes a scheduled post whose time has already passed (a
-missed schedule) on any edit, a title change too. The CLI cannot see that without reading the post first.
 
 ## What it can do
 
@@ -182,6 +173,22 @@ wordpress blog config show                                 # each setting and wh
 More: [permissions](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/permissions.md) ·
 [settings](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/configuration.md)
 
+### What needs which key
+
+- **Publishing** needs `<route>.publish` (`posts.publish`, `pages.publish`): a write that sets `status` to
+  `publish` or `future`, or that sets `date`, `date_gmt` or `password`, unless the same call sets `status` to
+  `draft`, `pending` or `private`. WordPress publishes a scheduled post whose date moves into the past, and a
+  password taken off a published post makes it public, with no status in the call. `private` is not public.
+  Where a route's `status` starts at `publish` (menu items, for one), each create needs the key, as the
+  write publishes unless it says otherwise.
+- **Deleting** needs `<route>.delete`. With `force=true`, which deletes for good instead of moving to the trash,
+  it needs `<route>.delete.force` too. Both ask by default.
+- WordPress's batch route (`batch/v1`) is never offered: one batch call would run other routes' writes past
+  their keys.
+
+Known limit of the raw `api` group: WordPress publishes a scheduled post whose time has already passed (a
+missed schedule) on any edit, a title change too. The CLI cannot see that without reading the post first.
+
 ## Limits
 
 - Only self-hosted WordPress with application passwords. WordPress.com sites, which sign in with OAuth, are not
@@ -189,7 +196,7 @@ More: [permissions](https://github.com/WireCatLabs/wordpress-cli/blob/main/docs/
 - An Author or Contributor gets only their own posts, and no pages: WordPress refuses the pages list to both, and the
   sync says so. A Contributor gets only their drafts and posts waiting for review. A post that leaves their view and
   that they may no longer read stays in the copy as it was, such as a Contributor's post an editor published. Only an
-  Administrator gets every user with their e-mail; other roles get the authors with published posts. Sign in as an
+  Administrator gets every user with their e-mail, and other roles get the authors with published posts. Sign in as an
   Administrator for a full copy.
 - No view counts. WordPress itself keeps none, and Jetpack stats are not supported.
 - A post with galleries, columns, embeds or iframes keeps its body: `posts update` changes its title, excerpt, tags
