@@ -1,7 +1,8 @@
 # Install
 
-Get `wordpress` running on your computer and connected to your WordPress site in about five minutes. WordPress lets a
-program in through an application password that you make in your own profile, and this page walks you through it.
+Connect your WordPress site once, and from then on your AI agent reads your posts and drafts new ones without you
+opening wp-admin. WordPress lets a program in only through an application password that you make in your own
+profile. Making the password, installing `wordpress` and signing in take about five minutes.
 
 Once it is done, an agent on this computer reads your posts and pages when you ask, and writes drafts as far as your
 permissions allow.
@@ -9,11 +10,12 @@ permissions allow.
 **On this page:**
 
 1. [What you need](#what-you-need)
-2. [Install the tool](#install-the-tool)
-3. [Make an application password in WordPress](#make-an-application-password-in-wordpress)
-4. [Sign in](#sign-in)
-5. [Check it works](#check-it-works)
-6. [Sign out or change the password](#sign-out-or-change-the-password)
+2. [In WireCat Desktop](#in-wirecat-desktop)
+3. [Install the tool](#install-the-tool)
+4. [Make an application password in WordPress](#make-an-application-password-in-wordpress)
+5. [Sign in](#sign-in)
+6. [Check it works](#check-it-works)
+7. [Sign out or change the password](#sign-out-or-change-the-password)
 
 ## What you need
 
@@ -24,6 +26,17 @@ permissions allow.
   posts. An Author or Contributor gets only their own posts, and no pages: WordPress refuses them the pages list. A
   Contributor gets only their drafts and posts waiting for review.
 - For the command line: Node.js 22.16 or a later 22.x, or Node.js 24 or later. Node 23 is not supported.
+
+## In WireCat Desktop
+
+1. Make an application password, as
+   [make an application password in WordPress](#make-an-application-password-in-wordpress) shows.
+2. On the **Tools** page, click **Install** on the WordPress row.
+3. Click **Manage**, type an account name, such as `blog`, and click **Sign in here**.
+4. Fill in **Site address**, **User name** and **Application password**. Desktop checks them with your site before it
+   saves them.
+
+Desktop also gives your AI agents the tool's skill, so the terminal steps are not needed.
 
 ## Install the tool
 
@@ -49,7 +62,7 @@ WordPress describes these steps in its
 [Application Passwords guide](https://make.wordpress.org/core/2020/11/05/application-passwords-integration-guide/).
 
 1. Log in to your site's wp-admin.
-2. Open **Users → Profile**.
+2. Open **Users → Profile**, or **Profile** if you are not an Administrator.
 3. Scroll to **Application Passwords**.
 4. Type a name for the new password, such as `WireCat`, and click **Add Application Password**.
 5. Copy the password WordPress shows. It shows it once only.

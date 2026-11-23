@@ -98,7 +98,8 @@ Agent:  (runs wordpress blog posts publish 63 --at-time 2026-11-23T09:00:00Z)
 
 ## Start in a few minutes
 
-Paste this into your agent:
+In WireCat Desktop, install WordPress on the **Tools** page and sign in under **Manage**, as
+[install](./installation.md#in-wirecat-desktop) shows. Or paste this into your agent:
 
 ```text prompt
 Install wordpress with npm install -g @wirecat/wordpress-cli. Help me make a WordPress application password and run wordpress blog session start --site blog.example.com --login anna to connect my site, then sync and show my drafts.
