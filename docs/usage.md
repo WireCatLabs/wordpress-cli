@@ -58,6 +58,11 @@ copy.
 
 `--max-pages` caps the requests in one run. The next sync goes on from where it stopped.
 
+A sync that would mark most of the copy deleted at once marks nothing and says why: WordPress listed far fewer posts
+than the copy holds, most often because the sign-in lost rights. Check the sign-in first. If the posts really are
+gone, run `wordpress blog sync --allow-deletions <count>` with the number the message names. `--rescan` lists
+everything again but does not lift this hold. Only you can pass `--allow-deletions`: an MCP client is not offered it.
+
 ## Read posts and pages
 
 ```sh
