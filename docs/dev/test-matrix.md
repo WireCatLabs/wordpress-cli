@@ -7,7 +7,7 @@ ran it · ⛔ not tested offline, with the reason and where it is checked instea
 Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 [TESTING.md](TESTING.md) for how, and for the states and failures that cut across commands.
 
-**868 ✅ · 24 ⛔ · 0 ❌** — 190 commands, 702 options.
+**869 ✅ · 24 ⛔ · 0 ❌** — 190 commands, 703 options.
 
 | Command | Option | | Note |
 |---|---|---|---|
@@ -790,6 +790,7 @@ Measured from the test run (`coverage/argv.jsonl`), not searched for — see
 | `api wp-pattern-category-delete` | `--force` | ✅ |  |
 | `sync` |  | ✅ |  |
 | `sync` | `--rescan` | ✅ |  |
+| `sync` | `--allow-deletions` | ✅ |  |
 | `sync` | `--max-pages` | ✅ |  |
 | `channels list` |  | ✅ |  |
 | `posts list` |  | ✅ |  |
