@@ -1,6 +1,4 @@
 {
-  "session status": "read",
-  "session list": "read",
   "api block-directory-search-list": "read",
   "api block-patterns-categories-list": "read",
   "api block-patterns-patterns-list": "read",
